@@ -44,6 +44,10 @@ COSA CONTIENE QUESTO PACCHETTO
 - il file di ripristino per tornare indietro in un minuto
 - crediti e licenze
 
+DOVE SI SCARICA
+  https://github.com/oLdpZ/FL26-DLSS-Radeon-Pack/releases
+Li' c'e' sempre l'ultima versione del pacchetto, con la guida e l'installatore.
+
 AGGIORNAMENTI: NON DOVETE STARE DIETRO ALLE VERSIONI
 I due progetti su cui si appoggia la mod pubblicano versioni nuove ogni pochi
 giorni. L'installatore, ogni volta che parte, controlla in rete quali versioni
@@ -155,6 +159,10 @@ WHAT IS IN THIS PACK
 - the dlss5-neural.ini already tuned, with the scale measured in-game
 - a restore file to undo everything in a minute
 - credits and licences
+
+WHERE TO DOWNLOAD IT
+  https://github.com/oLdpZ/FL26-DLSS-Radeon-Pack/releases
+That page always has the latest version of the pack, guide and installer.
 
 UPDATES: YOU DO NOT HAVE TO KEEP UP WITH THE VERSIONS
 The two projects this mod is built on release new versions every few days.
