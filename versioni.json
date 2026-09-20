@@ -1,0 +1,34 @@
+{
+  "_leggimi": "Elenco delle versioni provate per il pack DLSS 5 Neural su Radeon (Football Life 2026 / PES 2021), by oLd_pZ. L'installer legge questo file dal gist ufficiale a ogni avvio e usa queste versioni. Per aggiornarlo: prova le versioni nuove, lancia _impronte.ps1 per ottenere le SHA-256 e incollale qui. Istruzioni complete in COME AGGIORNARE - HOW TO UPDATE.txt",
+  "_readme": "List of tested versions for the DLSS 5 Neural on Radeon pack (Football Life 2026 / PES 2021), by oLd_pZ. The installer reads this file from the official gist at every run and installs these versions.",
+  "aggiornato": "2026-09-20",
+  "addon": {
+    "versione": "v0.5.2",
+    "url": "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.5.2/dlss5-neural.addon64",
+    "sha256": "0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6",
+    "dimensione": 552960,
+    "accettati_anche": []
+  },
+  "runtime": {
+    "versione": "0.3.0",
+    "pagina": "https://github.com/danielblnc/DLSS-NR-on-AMD/releases",
+    "pass1_sha256": "70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6",
+    "pass1_dimensione": 7290880,
+    "pesi_sha256": "6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab",
+    "pesi_dimensione": 147689451,
+    "pass1_accettati_anche": [],
+    "pesi_accettati_anche": []
+  },
+  "reshade": {
+    "versione": "6.8.0",
+    "url": "https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe",
+    "sha256": "0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7",
+    "dimensione": 5592064,
+    "accettati_anche": []
+  },
+  "amdnr_zip": {
+    "url": "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.5.2/AMD-NR-ReShade-Installer-v0.1.1.zip"
+  },
+  "avviso_it": "",
+  "avviso_en": ""
+}

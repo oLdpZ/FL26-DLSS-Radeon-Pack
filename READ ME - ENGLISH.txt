@@ -1,0 +1,467 @@
+===============================================================================
+  DLSS 5 NEURAL RENDERING ON AMD RADEON  --  Football Life 2026 and PES 2021
+  (Football Life with sider, or PES 2021 from Steam with or without sider)
+===============================================================================
+
+  This pack does NOT contain the mod. It contains the INSTRUCTIONS and the
+  ready-made SETTINGS that make it work on Football Life and PES 2021, which
+  is the hard part. You download the mod files yourself, for free, from the
+  official tool: they are copyrighted and cannot be redistributed.
+
+  Time needed: about 15 minutes.
+  No modding experience required: you copy four files and press one key.
+
+  WHICH GAME IT WORKS WITH:
+      - Football Life 2026 (with sider)          -> tested, it is my own game
+      - PES 2021 from Steam, with or without sider -> same game and engine,
+                                                    but not tested by me
+  Football Life 2026 IS PES 2021 with patches: the mod works on the very same
+  game. Everything written here for Football Life applies to PES 2021 too;
+  where there is a difference, it is pointed out.
+
+
+-------------------------------------------------------------------------------
+  1. YOU NEED THE RIGHT GRAPHICS CARD.  READ THIS FIRST.
+-------------------------------------------------------------------------------
+
+  Works ONLY with AMD Radeon cards:
+      - RX 9000 series  (RDNA 4)  -- e.g. RX 9070, RX 9070 XT
+      - RX 7000 series  (RDNA 3)  -- e.g. RX 7800 XT, RX 7900 XTX
+
+  Does NOT work on:
+      - NVIDIA cards (they already have real DLSS)
+      - AMD cards older than the RX 7000 series
+      - Intel cards
+
+  You also need:
+      - Windows 10 or 11, 64-bit
+      - a recent AMD Adrenalin driver
+      - about 200 MB of free disk space
+
+  HOW TO CHECK YOUR CARD:
+      press  Windows + R,  type   dxdiag   and press Enter.
+      Open the "Display" tab: your card name is there.
+
+
+-------------------------------------------------------------------------------
+  2. WHAT IT DOES, AND WHAT IT DOES NOT DO
+-------------------------------------------------------------------------------
+
+  WHAT IT DOES:
+      It runs NVIDIA's DLSS 5 neural network on your AMD card.
+      It changes how the image looks: detail, skin, tone.
+
+  WHAT IT DOES NOT DO:
+      It does NOT increase your frame rate. It LOWERS it, a lot.
+
+  This is the most important line in the whole guide, so here it is plainly:
+  the neural network costs GPU time, and the game sits and waits for it on
+  every single frame.
+
+  MEASURED on screen on a Radeon RX 9070 XT at 2560x1440, in the game menus
+  (ReShade's own fps counter):
+
+      EFFECT OFF                  ->  about 500 fps (499 and 515 read)
+      Scale 0.76 (1946x1094)      ->   19 fps
+      Scale 0.96                  ->   31 fps
+      Scale 1.00 (2560x1440)      ->   20 fps
+
+  That is not a typo: from almost 500 frames per second down to under 30.
+  In an actual match, with twenty-two players on the pitch, expect less.
+
+  If you play PES for smoothness, this mod is not for you.
+  If you want to see how the image changes, read on.
+
+
+-------------------------------------------------------------------------------
+  3. DOWNLOAD THE MOD FILES (the tool does it all for you)
+-------------------------------------------------------------------------------
+
+  The actual mod files are downloaded by the project's official tool, which
+  fetches them from the right sources and verifies their checksums:
+
+      https://github.com/zmodelerlover/dlss5-neural-amd/releases
+
+  The neural engine itself is a second project, by Daniel Blanco, and this is
+  its official page:
+
+      https://github.com/danielblnc/DLSS-NR-on-AMD/releases
+
+  DO NOT RE-UPLOAD THOSE FILES ANYWHERE ELSE.
+  That project's licence expressly forbids redistributing them, bundling them
+  into other packages, and re-uploading them to any site: it asks you to link
+  to the official release page instead, which is exactly what this pack does.
+  It also forbids any commercial use, so no paid links and no ad-gated
+  downloads.
+
+  On that page, download:      AMD-NR-ReShade-Installer-v0.1.1.zip
+  (or the newest version at the top of the page)
+
+  Extract the zip anywhere, for example on your Desktop.
+  IMPORTANT: the tool needs the three .json files that sit next to it inside
+  the zip. Do not separate them, do not move just the .exe.
+
+  Run  AMD-NR-ReShade-Installer.exe  and follow the four steps:
+      1. language
+      2. a check of your graphics card
+      3. downloading the files (about 165 MB, once only)
+      4. finding your games
+
+  AFTER STEP 3, CLOSE THE TOOL.
+  Do not use its automatic install: it does not know Football Life and would
+  install into the wrong folder. We do step 4 by hand, below.
+
+  The downloaded files live in this folder (paste it into the address bar of
+  a File Explorer window):
+
+      %AppData%\AmdNrInstaller
+
+  Look inside the subfolders for these three files:
+      dlss5-neural.addon64          (about 540 KB)
+      dlssnr_amd_pass1.dll          (about 7 MB)
+      dlssnr_on_amd_weights.bin     (about 141 MB)
+
+
+-------------------------------------------------------------------------------
+  4. YOU ALSO NEED RESHADE (the add-on support build)
+-------------------------------------------------------------------------------
+
+  Download ReShade from the official site:
+
+      https://reshade.me
+
+  Download the version   "with full add-on support".
+  The standard one will NOT work: it does not load add-ons.
+
+  Run the ReShade setup, and when it asks for the game, choose:
+
+      C:\...\FL26\FL_2026.exe      (Football Life 2026)
+      or      PES2021.exe         (PES 2021)
+
+  When it asks for the rendering API choose   Direct3D 10/11/12.
+  When it offers effect packages, select none: you do not need them.
+
+  If you would rather not use their setup tool, that is fine too: copy
+  ReShade64.dll into the game folder and RENAME it to d3d11.dll
+  (see section 5 -- it is the same thing).
+
+
+-------------------------------------------------------------------------------
+  4b. THE SHORTCUT: LET THE INSTALLER DO EVERYTHING
+-------------------------------------------------------------------------------
+
+  YOU CAN SKIP STEPS 3, 4 AND 5: THE INSTALLER DOWNLOADS AND INSTALLS IT ALL.
+
+      DOUBLE-CLICK:     INSTALLA - INSTALL.bat
+
+  A window opens, with music (there is a button to switch it off) and a log
+  that scrolls. It downloads the add-on from GitHub by itself, verifying its
+  fingerprint. For the runtime and the weights it opens Daniel Blanco's
+  official installer, because his licence asks you to go through his own
+  channel: pick a language, run the machine check, download the files, close
+  it, and our installer carries on by itself. ReShade usually comes along
+  with Blanco's files; if it is missing, the installer downloads it from the
+  official site and opens its setup (pick Direct3D 10/11/12 and no effects).
+
+  It asks for administrator rights (needed to write into the game folder),
+  then does everything by itself:
+
+      - looks for the game folder: in the Windows registry (it finds it even
+        if you gave the folder another name), in the usual folders on every
+        drive, and in your Steam libraries. It asks you to confirm before
+        using it; if it finds nothing, it lets you pick FL_2026.exe or
+        PES2021.exe
+      - checks your graphics card is suitable and your drivers are in order
+      - checks the game is closed
+      - finds the files you downloaded (in Downloads, on the Desktop, in
+        Documents, and in the official tool's cache)
+      - verifies each one's SHA-256 fingerprint: if a file is damaged or
+        altered it stops and installs NOTHING
+      - copies them under the right names, ReShade included, already renamed
+        to d3d11.dll
+      - copies the recommended settings (but keeps yours if you have some)
+      - writes a record of what it installed, so it can be removed later
+      - if everything is already installed with the right files, it says so
+        and touches NOTHING
+
+  TO REMOVE EVERYTHING:   DISINSTALLA - UNINSTALL.bat
+  It removes the mod files and your settings too (dlss5-neural.ini,
+  ReShade.ini): if you want to keep them, copy them somewhere first. The
+  game's original files are never touched.
+
+  If the installer says it cannot find the files, put them in this pack's
+  "files" folder and run it again: there is a note inside that folder
+  explaining which ones.
+
+  If you would rather do it by hand, or if something does not work, read on:
+  the next sections explain exactly the same operations, one at a time.
+
+
+-------------------------------------------------------------------------------
+  5. COPY THE FILES INTO THE GAME  --  BY HAND
+-------------------------------------------------------------------------------
+
+  Open the game folder, the one that contains  FL_2026.exe  (Football Life
+  2026) or  PES2021.exe  (PES 2021). Do NOT rename the executable: ReShade
+  loads from the folder, the name does not matter.
+      - Football Life 2026: usually C:\Games\FL26 or similar
+        (sider.exe is there too)
+      - PES 2021 from Steam: in your Steam library, right-click the game ->
+        Manage -> Browse local files
+
+  Copy these four files into that folder, next to the executable:
+
+      d3d11.dll                     <- this is ReShade, RENAMED
+      dlss5-neural.addon64
+      dlssnr_amd_pass1.dll
+      dlssnr_on_amd_weights.bin
+
+  MIND THE RESHADE FILE NAME:
+
+      ReShade is normally called  dxgi.dll  and nearly every guide online
+      installs it under that name.
+      HERE IT IS BETTER TO CALL IT  d3d11.dll  INSTEAD.
+
+      The reasoning: sider, the program that makes all the patches work,
+      hooks a Windows entry point called CreateDXGIFactory1 -- the one tied
+      to the dxgi name. Giving ReShade a different name avoids the two of
+      them competing for the same hook in the first place.
+
+      On my own install, with d3d11.dll, ReShade and sider coexist with no
+      trouble at all, with every patch active.
+
+      I did not test the dxgi.dll route thoroughly: it may well work on your
+      setup. But if the game will not start, the file name is the first
+      thing to change.
+
+      If you have PES 2021 WITHOUT sider: d3d11.dll works just as well, no
+      need to change anything.
+
+  To rename a file: right-click it -> Rename.
+  If you cannot see the ".dll" part of the names, open File Explorer, go to
+  "View" and tick "File name extensions".
+
+  ONE MORE FILE: also copy into the game folder the file
+
+      dlss5-neural.ini
+
+  included in this pack. It is the pre-tuned configuration (see section 8).
+
+
+-------------------------------------------------------------------------------
+  6. START THE GAME AND SWITCH THE EFFECT ON
+-------------------------------------------------------------------------------
+
+  Start the game THE WAY YOU ALWAYS DO:
+      - Football Life / patches with sider: with the .bat file or the
+        shortcut that launches sider first. Do not start the executable on its
+        own: you would lose all your patches.
+      - PES 2021 without sider: from Steam, as usual.
+
+  Once in the game:
+
+      HOME key        opens the ReShade panel
+      CTRL + END      switches the neural network on and off
+
+  The effect starts switched OFF. That is deliberate, by the author.
+
+  IF YOU PRESS CTRL+END AND NOTHING HAPPENS:
+      close the ReShade panel first, with HOME. While the panel is open it
+      holds the keyboard and the shortcut never reaches the mod.
+
+
+-------------------------------------------------------------------------------
+  7. HOW TO TELL IT IS REALLY WORKING
+-------------------------------------------------------------------------------
+
+  Do not trust your eyes: the difference can be subtle. Check the files.
+  After you switch the effect on, the game folder must contain:
+
+      dlssnr_on_amd.log     <- if this exists, the network really is running
+      dlssnr_on_amd.ini
+
+  Open  dlssnr_on_amd.log  in Notepad and you should see lines like:
+
+      HIP: adapter AMD Radeon RX ... matches the game's D3D12 device
+      network job 100 done in 15 ms (...)
+
+  If dlssnr_on_amd.log does NOT exist, the effect is NOT on: you pressed
+  Ctrl+End with the ReShade panel open (see section 6).
+
+  Another reliable sign: your frame rate DROPS sharply. If nothing drops,
+  it is not on.
+
+
+-------------------------------------------------------------------------------
+  8. RECOMMENDED SETTINGS
+-------------------------------------------------------------------------------
+
+  The  dlss5-neural.ini  file in this pack is already tuned. Only one setting
+  really matters:
+
+      Scale=0.60
+
+  "Scale" is the resolution the network runs at, relative to your screen.
+  Lower is faster, and fine detail is lost.
+
+  Measured on an RX 9070 XT at 2560x1440:
+
+      EFFECT OFF                           499 fps
+      Scale=1.00  (network at 2560x1440)    20 fps
+      Scale=0.96                            31 fps
+      Scale=0.76  (network at 1946x1094) 19-31 fps
+      Scale=0.60                         not measured on screen: it should
+                                         be the cheapest   RECOMMENDED
+
+  These numbers come from ReShade's own counter, captured on video, in the
+  game menus. In an actual match, expect less.
+
+  Leave everything else alone.
+
+  DO NOT TOUCH THE RED CONTROLS IN THE PANEL:
+  the mod's author marks them red because they CAN CRASH THE DISPLAY DRIVER.
+  Amber ones are "beyond what has been tested".
+  Also leave "Passes" at 1: setting it to 2 doubles the cost and puts you
+  back below 30 fps.
+
+  If you want the effect already on at startup, open dlss5-neural.ini in
+  Notepad and change    StartOn=0    to    StartOn=1
+
+
+-------------------------------------------------------------------------------
+  9. IF SOMETHING GOES WRONG
+-------------------------------------------------------------------------------
+
+  THE GAME NO LONGER STARTS
+      Quick fix: run  DISINSTALLA - UNINSTALL.bat  and try again.
+      Alternatively rename  d3d11.dll  to  d3d11.dll.off : that is the file
+      that steps in at startup.
+
+      If you prefer renaming by hand, FIRST turn on file extensions:
+      File Explorer -> View -> Show -> File name extensions.
+      Without this step Windows hides the final ".dll" and the file becomes
+      d3d11.dll.off.dll  : it looks renamed, but it will not be d3d11.dll
+      again by itself. To put it back, rename it to exactly d3d11.dll.
+
+      MOST LIKELY CAUSE: ANOTHER RESHADE.
+      If you already used a graphics preset (SweetFX, "photorealistic"
+      presets...), there is a  dxgi.dll  in the game folder: that is another
+      ReShade. Two ReShades together (its dxgi.dll and our d3d11.dll) can
+      block the start. Run INSTALLA - INSTALL.bat again: if it finds a
+      dxgi.dll it asks whether to set it aside (it becomes
+      dxgi.dll.prima-del-dlss.bak, together with its ReShade.ini), and the
+      game should start again with DLSS. The preset stays disabled;
+      UNINSTALL puts it back. By hand: rename dxgi.dll to
+      dxgi.dll.prima-del-dlss.bak yourself.
+
+  THE GAME STARTS BUT HOME OPENS NOTHING
+      ReShade did not load. Check that d3d11.dll is in the same folder as
+      FL_2026.exe / PES2021.exe, not in a subfolder.
+
+  THE PANEL OPENS BUT THE "ADD-ONS" TAB IS EMPTY
+      dlss5-neural.addon64 is missing, or it was disabled.
+      Open  ReShade.ini  in Notepad and find the DisabledAddons line:
+      it must be empty.
+
+  EVERYTHING LOOKS FINE BUT NOTHING CHANGES
+      See section 7. Almost always it is the open panel swallowing Ctrl+End.
+
+  I WANT TO REMOVE EVERYTHING
+      Delete these files from the game folder:
+          d3d11.dll
+          dlss5-neural.addon64
+          dlssnr_amd_pass1.dll
+          dlssnr_on_amd_weights.bin
+          dlss5-neural.ini
+          dlssnr_on_amd.ini
+          ReShade.ini, ReShade.log, dlss5-neural.log, dlssnr_on_amd.log
+      Nothing else. The game goes back exactly as it was: this procedure
+      never modifies or overwrites any original game file.
+
+
+-------------------------------------------------------------------------------
+  10. HONEST WARNINGS
+-------------------------------------------------------------------------------
+
+  - The author calls the project "proof of concept, not finished software".
+    It was started on 9 September 2026.
+  - Some settings can crash the display driver. This does no permanent harm:
+    the driver restarts by itself.
+  - This mod LOWERS your frame rate. See section 2.
+  - USE IT OFFLINE ONLY. This mod hooks into the game while it runs, which is
+    exactly the behaviour anti-cheat systems treat as suspicious. The author's
+    licence says it plainly: you are responsible for complying with the game's
+    terms, anti-cheat rules included. So: offline modes, career, matches
+    against the CPU. NEVER in myClub, online matches, or anti-cheat servers.
+    If you have the original PES 2021, which still has online modes: turning
+    the effect off with the hotkey is NOT enough, the files stay loaded.
+    Before going online run DISINSTALLA - UNINSTALL.bat, and reinstall when
+    you are offline again. (Renaming d3d11.dll is fine only with file
+    extensions visible: see section 9.)
+  - None of these files were written by me. All I did was work out how to
+    make them coexist with sider on Football Life, and measure the settings.
+
+
+-------------------------------------------------------------------------------
+  11. UPDATES: HOW TO ALWAYS GET THE RIGHT VERSION
+-------------------------------------------------------------------------------
+
+  The two projects this mod is built on release a new version every few days.
+  You do not have to keep up with them.
+
+  TO UPDATE:   run   INSTALLA - INSTALL.bat   again
+
+  Every time it starts, the installer checks online which versions I have
+  tested and installs those. So:
+
+      - if you are behind, it updates you: it replaces the files and KEEPS
+        your settings (dlss5-neural.ini and ReShade.ini are never touched)
+      - if you are already up to date, it says "already installed" and touches
+        nothing
+      - each replaced file is kept as  filename.precedente.bak , so if you do
+        not like the new version you are back in ten seconds (rename the file,
+        dropping the  .precedente.bak )
+
+  The first lines of the log always tell you which versions it is installing
+  and how recent the list is.
+
+  WITH NO INTERNET the installer uses the last list it saved, or the versions
+  written inside it: it works either way.
+
+  IF YOU WOULD RATHER DO IT BY HAND (not needed, but worth knowing):
+  the three mod files are self-contained. Download the new versions with
+  Blanco's official tool (section 3), then from %AppData%\AmdNrInstaller copy
+  dlssnr_amd_pass1.dll  and  dlssnr_on_amd_weights.bin  over the ones in the
+  game folder; get the add-on  dlss5-neural.addon64  from cLohan's GitHub
+  releases page. Runtime and add-on have to match each other: if the effect
+  stops switching on after an update, either update the other piece too or roll
+  back with the  .precedente.bak  files.
+
+  A NEW VERSION IS OUT BUT THE INSTALLER GIVES YOU AN OLDER ONE?
+  That is on purpose: it means I have not tested the new one yet (or I did and
+  it broke something). The whole point of this pack is to ship only the
+  combinations I have seen working on Football Life.
+
+
+-------------------------------------------------------------------------------
+  CREDITS
+-------------------------------------------------------------------------------
+
+  Guide, settings, installer and music:  oLd_pZ
+
+  Neural network and runtime:  danielblnc  --  DLSS-NR-on-AMD
+        https://github.com/danielblnc/DLSS-NR-on-AMD
+
+  ReShade add-on:              cLohan (zmodelerlover)  --  dlss5-neural-amd
+        https://github.com/zmodelerlover/dlss5-neural-amd
+
+  ReShade:                     crosire (Patrick Mours)
+        https://reshade.me
+
+  Full licence texts are in the  _licenze  folder of this pack.
+
+  IMPORTANT NOTE ABOUT THE FILES THAT ARE NOT INCLUDED:
+  the neural network files (dlssnr_amd_pass1.dll and dlssnr_on_amd_weights.bin)
+  are NOT in this pack and never will be: they contain NVIDIA-derived data and
+  the original authors chose not to distribute them. Download them with the
+  official tool, as explained in section 3.

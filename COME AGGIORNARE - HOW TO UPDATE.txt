@@ -1,0 +1,116 @@
+===============================================================================
+  COME AGGIORNARE IL PACK   /   HOW TO UPDATE THE PACK
+  (questo file serve a chi pubblica il pack, non agli utenti)
+  (this file is for whoever publishes the pack, not for users)
+                                                            by  oLd_pZ
+===============================================================================
+
+
+-------------------------------------------------------------------------------
+  COM'E' FATTO / HOW IT WORKS
+-------------------------------------------------------------------------------
+
+  L'installer NON ha piu' le versioni scritte dentro e basta. A ogni avvio
+  legge un file su GitHub, questo:
+
+      gist (da modificare):
+      https://gist.github.com/oLdpZ/b99deca59ef76cc5fb7895b786fe36dc
+
+      link che legge l'installer (NON cambiarlo):
+      https://gist.githubusercontent.com/oLdpZ/b99deca59ef76cc5fb7895b786fe36dc/raw/versioni.json
+
+  Dentro ci sono: numero di versione, link di download e impronta SHA-256 di
+  ogni pezzo (add-on, runtime di Blanco, ReShade).
+
+  Quindi: modifichi quel file e TUTTI gli installer gia' scaricati, anche
+  quelli di sei mesi fa, installano la versione nuova al primo avvio. Non devi
+  ripubblicare niente.
+
+  Se il gist non si raggiunge l'installer usa l'ultima copia che aveva salvato
+  in %AppData%\FL26-DLSS-Installer\versioni.json; se non ha nemmeno quella usa
+  le versioni scritte nello script. Non si blocca mai per questo motivo.
+
+  Un elenco manomesso non puo' fare danni: l'installer accetta solo link
+  https verso github.com e reshade.me, e verifica comunque l'impronta
+  SHA-256 di ogni file scaricato.
+
+
+-------------------------------------------------------------------------------
+  QUANDO ESCE UNA VERSIONE NUOVA: 5 PASSI
+-------------------------------------------------------------------------------
+
+  1. Scarica la versione nuova come farebbe un utente (l'installer ufficiale di
+     Blanco per runtime e pesi, la pagina GitHub di cLohan per l'add-on,
+     reshade.me per ReShade) e PROVALA IN PARTITA.
+
+     Se non va: non fare niente. Il gist resta com'e' e gli utenti continuano a
+     installare la versione che funziona. Al massimo scrivi due parole nel
+     campo "avviso_it" / "avviso_en": l'installer le mostra nel log.
+
+  2. Lancia questo script:
+
+         .\_impronte.ps1 -Addon v0.6.0 -ReShade 6.9.0
+
+     (i numeri di versione mettili solo se quel pezzo e' cambiato davvero;
+      per il runtime di Blanco la versione la ricava da sola dalla cartella
+      della sua cache)
+
+     Cerca i file, calcola le impronte, sposta le impronte vecchie in
+     "accettati_anche" e scrive   versioni-nuovo.json
+
+  3. Apri il gist -> Edit -> cancella tutto -> incolla il contenuto di
+     versioni-nuovo.json -> Update. Il link raw ci mette fino a un minuto ad
+     aggiornarsi.
+
+  4. Controlla che abbia funzionato:
+
+         .\_installer-gui.ps1 -Test
+
+     Deve scrivere "fonte: gist", la data di oggi e le impronte nuove.
+
+  5. Se tutto torna, copia versioni-nuovo.json su versioni.json (cosi' anche
+     la copia di riserva dentro il pack e' aggiornata). Non serve ripubblicare
+     il pack.
+
+
+-------------------------------------------------------------------------------
+  PERCHE' "accettati_anche" E' IMPORTANTE
+-------------------------------------------------------------------------------
+
+  In quella lista ci vanno le impronte delle versioni PRECEDENTI.
+
+  Serve a una cosa sola: quando l'utente rilancia INSTALLA, l'installer guarda
+  i file che ha in cartella. Se corrispondono a una impronta di
+  "accettati_anche" capisce "questa e' roba mia, solo vecchia" e fa un
+  AGGIORNAMENTO: sostituisce i file, tiene le impostazioni dell'utente
+  (dlss5-neural.ini e ReShade.ini) e mette da parte i file sostituiti come
+  nome-file.precedente.bak.
+
+  Se quelle impronte non ci fossero, l'installer tratterebbe un d3d11.dll piu'
+  vecchio come "un ReShade di qualcun altro" e lo metterebbe da parte come
+  .prima-del-dlss.bak insieme alle impostazioni. Funziona, ma l'utente si
+  ritrova il preset spento senza motivo.
+
+  _impronte.ps1 fa questo spostamento da solo: e' il motivo per cui esiste.
+
+
+-------------------------------------------------------------------------------
+  SE UNA VERSIONE NUOVA SI RIVELA UN DISASTRO
+-------------------------------------------------------------------------------
+
+  Rimetti nel gist la versione di prima (Edit -> Revisions ti fa vedere lo
+  storico, oppure reincolla versioni.json del pack) e lascia l'impronta nuova
+  in "accettati_anche": cosi' chi ha gia' installato quella nuova viene
+  riportato indietro al primo INSTALLA, senza perdere le impostazioni.
+
+  L'utente puo' tornare indietro anche da solo: nella cartella del gioco
+  rinomina i file  *.precedente.bak  togliendo il  .precedente.bak .
+
+
+-------------------------------------------------------------------------------
+  COSA DIRE AGLI UTENTI
+-------------------------------------------------------------------------------
+
+  "Per aggiornare non devi fare niente di speciale: rilancia
+   INSTALLA - INSTALL.bat. Prende da solo l'ultima versione che ho provato.
+   Se ti dice 'gia' installato', vuol dire che sei gia' a posto."

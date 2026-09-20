@@ -1,0 +1,110 @@
+﻿===============================================================================
+  COME TORNARE INDIETRO  /  HOW TO UNDO EVERYTHING
+===============================================================================
+
+-------------------------------------------------------------------------------
+  ITALIANO
+-------------------------------------------------------------------------------
+
+  Buona notizia: questa procedura NON modifica e NON sovrascrive nessun file
+  originale del gioco. Aggiunge soltanto file nuovi. Per tornare indietro
+  basta cancellarli.
+
+  CANCELLA QUESTI FILE dalla cartella del gioco (con FL_2026.exe o PES2021.exe):
+
+      d3d11.dll                     <- ReShade rinominato
+      dlss5-neural.addon64
+      dlssnr_amd_pass1.dll
+      dlssnr_on_amd_weights.bin
+      dlss5-neural.ini
+
+  E anche questi, se li trovi (li lascia un aggiornamento: sono le copie della
+  versione precedente, e servono solo per tornare indietro):
+
+      d3d11.dll.precedente.bak
+      dlss5-neural.addon64.precedente.bak
+      dlssnr_amd_pass1.dll.precedente.bak
+      dlssnr_on_amd_weights.bin.precedente.bak
+
+  (per tornare alla versione precedente, invece di cancellarli, togli il
+   .precedente.bak dal nome: quello torna a essere il file buono)
+
+  E anche questi, se li trovi (li creano i programmi al primo avvio):
+
+      dlssnr_on_amd.ini
+      dlssnr_on_amd.log
+      dlss5-neural.log
+      ReShade.ini
+      ReShade.log
+      ReShadePreset.ini
+      cartella  reshade-shaders     (se l'hai fatta creare a ReShade)
+
+  NON CANCELLARE, perche' NON c'entrano con questa mod e servono al gioco:
+
+      dinput8.dll
+      PES21_Hook.dll
+      sider.exe, sider.dll, sider.ini
+      la cartella SiderAddons
+      qualsiasi file .cpk
+
+  SE IL GIOCO NON PARTE PIU':
+  cancella per primo  d3d11.dll  e riprova. Nove volte su dieci il problema
+  e' li'. Se cosi' riparte, era il conflitto fra ReShade e sider.
+
+  SE HAI SBAGLIATO NOME AL FILE DI RESHADE:
+  controlla che si chiami esattamente  d3d11.dll  e non  dxgi.dll,
+  d3d11.dll.dll, o ReShade64.dll.
+
+
+-------------------------------------------------------------------------------
+  ENGLISH
+-------------------------------------------------------------------------------
+
+  Good news: this procedure does NOT modify and does NOT overwrite any
+  original game file. It only adds new ones. To undo it, just delete them.
+
+  DELETE THESE FILES from the game folder (with FL_2026.exe or PES2021.exe):
+
+      d3d11.dll                     <- ReShade, renamed
+      dlss5-neural.addon64
+      dlssnr_amd_pass1.dll
+      dlssnr_on_amd_weights.bin
+      dlss5-neural.ini
+
+  And these too, if you find them (left by an update: they are the copies of the
+  previous version, only needed to roll back):
+
+      d3d11.dll.precedente.bak
+      dlss5-neural.addon64.precedente.bak
+      dlssnr_amd_pass1.dll.precedente.bak
+      dlssnr_on_amd_weights.bin.precedente.bak
+
+  (to go back to the previous version, instead of deleting them, drop the
+   .precedente.bak from the name: that file becomes the live one again)
+
+  And these too, if you find them (created on first run):
+
+      dlssnr_on_amd.ini
+      dlssnr_on_amd.log
+      dlss5-neural.log
+      ReShade.ini
+      ReShade.log
+      ReShadePreset.ini
+      the  reshade-shaders  folder   (if you let ReShade create it)
+
+  DO NOT DELETE these -- they have nothing to do with this mod and the game
+  needs them:
+
+      dinput8.dll
+      PES21_Hook.dll
+      sider.exe, sider.dll, sider.ini
+      the SiderAddons folder
+      any .cpk file
+
+  IF THE GAME NO LONGER STARTS:
+  delete  d3d11.dll  first and try again. Nine times out of ten that is the
+  problem. If it starts again, it was the ReShade/sider conflict.
+
+  IF YOU GOT THE RESHADE FILE NAME WRONG:
+  check it is called exactly  d3d11.dll  and not  dxgi.dll, d3d11.dll.dll,
+  or ReShade64.dll.

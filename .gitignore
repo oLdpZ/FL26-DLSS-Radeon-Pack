@@ -1,0 +1,8 @@
+# roba di lavoro, non va pubblicata / working files, not for publishing
+versioni-nuovo.json
+*.bak
+files/dlss5-neural.addon64
+files/dlssnr_amd_pass1.dll
+files/dlssnr_on_amd_weights.bin
+files/ReShade64.dll
+files/*.dll

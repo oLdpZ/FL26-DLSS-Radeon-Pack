@@ -1,0 +1,107 @@
+===============================================================================
+  CREDITI E LICENZE  /  CREDITS AND LICENCES
+===============================================================================
+
+  GUIDA, IMPOSTAZIONI E INSTALLATORE  /  GUIDE, SETTINGS AND INSTALLER
+      oLd_pZ
+
+  Musica dell'installatore: composta per questo pacchetto, originale.
+  Installer music: composed for this package, original work.
+      oLd_pZ
+
+-------------------------------------------------------------------------------
+  ITALIANO
+-------------------------------------------------------------------------------
+
+  Nessuno dei programmi di cui parla questa guida e' opera mia. Io ho scritto
+  soltanto: questa guida, il file dlss5-neural.ini tarato, e il file di
+  ripristino. Tutto il resto e' lavoro di altri, e va scaricato dalle loro
+  pagine ufficiali.
+
+  Questa guida racconta come ha funzionato sulla MIA installazione, con la
+  MIA scheda video. Non e' una procedura ufficiale ne' l'unica possibile:
+  se sulla vostra configurazione serve qualcosa di diverso, scrivetelo nel
+  thread, cosi' la guida migliora.
+
+  1. MOTORE NEURALE E RUNTIME
+     Progetto "DLSS-NR on AMD", di Daniel Blanco (danielblnc)
+     https://github.com/danielblnc/DLSS-NR-on-AMD
+
+     Licenza propria, "tutti i diritti riservati". In sintesi:
+       - uso personale e non commerciale: permesso, gratis
+       - RIDISTRIBUZIONE: VIETATA, in tutto o in parte, anche non modificata,
+         compreso l'inserimento in altri pacchetti o il ricaricamento su
+         altri siti. La licenza chiede di linkare la pagina ufficiale.
+       - modifica, reimpacchettamento, reverse engineering: vietati
+       - uso commerciale: vietato (le donazioni volontarie all'autore no)
+     Testo completo:  _licenze\LICENSE-DLSS-NR-on-AMD.txt
+
+     Per questo motivo questo pacchetto NON contiene quei file.
+
+  2. ADD-ON PER RESHADE
+     Progetto "dlss5-neural-amd", di cLohan (zmodelerlover)
+     https://github.com/zmodelerlover/dlss5-neural-amd
+     Licenza MIT, Copyright (c) 2026 cLohan.
+     Testo completo:  _licenze\LICENSE-dlss5-neural-amd-MIT.txt
+
+  3. RESHADE
+     di crosire (Patrick Mours) -- https://reshade.me
+     Licenza BSD a 3 clausole, Copyright 2014 Patrick Mours.
+     Testo completo:  _licenze\LICENSE-ReShade-BSD3.txt
+     Va scaricato dal sito ufficiale, nella versione "with full add-on
+     support".
+
+  I pesi della rete neurale sono dati derivati da NVIDIA. Gli autori originali
+  hanno scelto di non distribuirli, e questo pacchetto rispetta quella scelta.
+
+  I nomi degli autori e dei progetti sono citati qui solo per dare loro il
+  credito dovuto. Nessuno di loro ha approvato, verificato o sostenuto questo
+  pacchetto.
+
+
+-------------------------------------------------------------------------------
+  ENGLISH
+-------------------------------------------------------------------------------
+
+  None of the software this guide talks about is mine. I only wrote: this
+  guide, the tuned dlss5-neural.ini, and the restore file. Everything else is
+  other people's work and must be downloaded from their official pages.
+
+  This guide describes how it worked on MY install, with MY graphics card.
+  It is neither an official procedure nor the only possible one: if your
+  setup needs something different, post it in the thread so the guide can
+  get better.
+
+  1. NEURAL ENGINE AND RUNTIME
+     "DLSS-NR on AMD", by Daniel Blanco (danielblnc)
+     https://github.com/danielblnc/DLSS-NR-on-AMD
+
+     Custom licence, all rights reserved. In short:
+       - personal, non-commercial use: permitted, free of charge
+       - REDISTRIBUTION: FORBIDDEN, in whole or in part, modified or not,
+         including bundling it into other packages or re-uploading it to any
+         site. The licence asks you to link the official release page.
+       - modification, repackaging, reverse engineering: forbidden
+       - commercial use: forbidden (voluntary donations to the author are not)
+     Full text:  _licenze\LICENSE-DLSS-NR-on-AMD.txt
+
+     This is why this pack does NOT contain those files.
+
+  2. RESHADE ADD-ON
+     "dlss5-neural-amd", by cLohan (zmodelerlover)
+     https://github.com/zmodelerlover/dlss5-neural-amd
+     MIT Licence, Copyright (c) 2026 cLohan.
+     Full text:  _licenze\LICENSE-dlss5-neural-amd-MIT.txt
+
+  3. RESHADE
+     by crosire (Patrick Mours) -- https://reshade.me
+     BSD 3-Clause Licence, Copyright 2014 Patrick Mours.
+     Full text:  _licenze\LICENSE-ReShade-BSD3.txt
+     Download it from the official site, the "with full add-on support"
+     build.
+
+  The neural network weights are NVIDIA-derived data. The original authors
+  chose not to distribute them, and this pack respects that choice.
+
+  The authors' and projects' names are quoted here only to give due credit.
+  None of them has endorsed, reviewed or supported this pack.

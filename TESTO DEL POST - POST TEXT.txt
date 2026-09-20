@@ -1,0 +1,219 @@
+﻿===============================================================================
+  TESTO PRONTO PER IL POST  /  READY-MADE POST TEXT
+  Copia e incolla sul forum o sul sito. Prima l'italiano, poi l'inglese.
+  Copy and paste onto the forum or site. Italian first, then English.
+===============================================================================
+
+
+###############################################################################
+#  VERSIONE ITALIANA
+###############################################################################
+
+TITOLO PROPOSTO:
+
+  [GUIDA] DLSS 5 Neural Rendering su schede AMD Radeon in Football Life 2026
+  e PES 2021 -- configurazione funzionante con sider
+
+
+TESTO:
+
+Ho fatto funzionare il DLSS 5 Neural Rendering su Football Life 2026 con una
+Radeon RX 9070 XT, insieme a sider e a tutte le patch attive. Condivido la
+guida e le impostazioni gia' tarate.
+
+Vale anche per PES 2021 da Steam, con o senza sider: Football Life 2026 e'
+PES 2021 con le patch, stesso eseguibile e stesso motore. Io l'ho provato
+su Football Life; su PES 2021 senza patch non l'ho provato di persona.
+
+ATTENZIONE, LEGGETE QUESTO PRIMA DI SCARICARE:
+questa mod NON aumenta gli fps, LI FA CALARE. Non e' un accelleratore: e' una
+modifica alla resa dell'immagine. Sulla mia scheda, a 2560x1440, si passa da
+499-515 fps a effetto spento a 20-31 fps con l'effetto acceso (misurati a
+schermo nei menu). Se cercate fluidita', questa mod non fa
+per voi.
+
+Funziona SOLO su AMD Radeon RX 7000 (RDNA 3) e RX 9000 (RDNA 4).
+Su NVIDIA no (hanno gia' il DLSS vero), su schede AMD piu' vecchie no.
+
+COSA CONTIENE QUESTO PACCHETTO
+- guida passo passo in italiano e in inglese, scritta per chi non ha mai
+  modificato un gioco
+- un installatore con finestra: doppio clic e fa tutto lui (trova il gioco,
+  scarica, verifica gli hash, mette i file con i nomi giusti)
+- il file dlss5-neural.ini gia' tarato, con la scala misurata sul campo
+- il file di ripristino per tornare indietro in un minuto
+- crediti e licenze
+
+AGGIORNAMENTI: NON DOVETE STARE DIETRO ALLE VERSIONI
+I due progetti su cui si appoggia la mod pubblicano versioni nuove ogni pochi
+giorni. L'installatore, ogni volta che parte, controlla in rete quali versioni
+ho provato IO su Football Life e installa quelle. Quindi per aggiornarvi
+rilanciate INSTALLA - INSTALL.bat: se siete indietro vi aggiorna tenendo le
+vostre impostazioni, se siete a posto ve lo dice e non tocca niente. Dei file
+sostituiti tiene una copia .precedente.bak per tornare indietro in dieci
+secondi. Non serve riscaricare il pacchetto.
+Se l'installatore vi da' una versione piu' vecchia di quella appena uscita, e'
+voluto: quella nuova non l'ho ancora provata.
+
+COSA NON CONTIENE, E PERCHE'
+I file della mod non sono inclusi e non lo saranno: contengono dati derivati
+da NVIDIA e le licenze dei progetti originali ne vietano la ridistribuzione.
+Li scaricate voi, gratis, dal programma ufficiale, che se li prende dalle
+fonti giuste e ne verifica gli hash. I link sono nella guida.
+
+COME L'HO FATTO FUNZIONARE NEL MIO CASO
+Ho installato ReShade con il nome d3d11.dll invece del solito dxgi.dll.
+Il ragionamento: sider si aggancia a CreateDXGIFactory1, e ho preferito non
+fargli usare lo stesso punto di aggancio. Con d3d11.dll, sulla mia
+installazione, i due convivono senza problemi: l'ho verificato nei log di
+entrambi, con tutte le mie patch attive.
+
+Non ho provato a fondo la versione con dxgi.dll, quindi non escludo affatto
+che funzioni anche cosi' su altre configurazioni. Se la provate, scrivetelo
+nel thread: piu' riscontri abbiamo, piu' la guida diventa affidabile.
+
+NUMERI VERI, MISURATI A SCHERMO (RX 9070 XT, 2560x1440, nei menu del gioco)
+  EFFETTO SPENTO            circa 500 fps (letti 499 e 515)
+  Scale 1,00 (2560x1440)     20 fps
+  Scale 0,96                 31 fps
+  Scale 0,76 (1946x1094)     19 fps
+  Passes: lasciare 1. A 2 il costo raddoppia.
+  Nel pannello NON toccate i controlli rossi: possono far crashare il driver.
+
+  Da 500 fps a meno di 30. Ripeto: questa mod NON serve ad andare piu' veloci.
+
+NOTA TECNICA PER CHI SMANETTA
+  Su PES 2021 la profondita' del gioco viene vista dall'add-on ma risulta
+  inutilizzabile: nel pannello compare "Depth: ... binds seen, NONE USABLE",
+  e la misura dice "depth 0.0000..0.0156", cioe' schiacciata quasi a zero.
+  La documentazione del progetto lo spiega: i motori vecchi non riempiono
+  l'intervallo di profondita'. In pratica la rete lavora sull'immagine finale
+  e stima il resto, anche se siamo in DirectX 11.
+
+USATELA SOLO OFFLINE. La mod si aggancia al gioco in esecuzione: e' il tipo
+di comportamento che gli anti-cheat considerano sospetto. Carriera e partite
+contro il computer, mai online. Chi ha PES 2021 originale: prima di
+myClub o dell'online lanciate DISINSTALLA - UNINSTALL.bat, spegnere
+l'effetto col tasto non basta.
+
+AVVISI ONESTI
+Il progetto originale e' dichiarato dall'autore "proof of concept, not
+finished software" ed e' nato il 9 settembre 2026. Alcune impostazioni
+possono far crashare il driver video (si riavvia da solo, nessun danno).
+Io non ho scritto nessuno di quei programmi: ho solo capito come farli
+convivere con sider e ho misurato le impostazioni.
+
+CREDITI
+- Guida, impostazioni, installatore e musica: oLd_pZ
+- Motore neurale e runtime: Daniel Blanco (danielblnc), progetto DLSS-NR-on-AMD
+  https://github.com/danielblnc/DLSS-NR-on-AMD
+- Add-on per ReShade: cLohan (zmodelerlover), progetto dlss5-neural-amd
+  https://github.com/zmodelerlover/dlss5-neural-amd
+- ReShade: crosire (Patrick Mours) -- https://reshade.me
+
+Scaricate i file solo dalle pagine ufficiali qui sopra. Non ricaricateli
+altrove: le licenze lo vietano espressamente e chiedono di linkare la pagina
+ufficiale. Vietato anche qualsiasi uso commerciale, quindi niente link a
+pagamento.
+
+
+###############################################################################
+#  ENGLISH VERSION
+###############################################################################
+
+SUGGESTED TITLE:
+
+  [GUIDE] DLSS 5 Neural Rendering on AMD Radeon in Football Life 2026
+  and PES 2021 -- working setup alongside sider
+
+
+TEXT:
+
+I got DLSS 5 Neural Rendering running in Football Life 2026 on a Radeon
+RX 9070 XT, with sider and all patches active. Sharing the guide and the
+settings I measured.
+
+It applies to PES 2021 from Steam too, with or without sider: Football Life
+2026 is PES 2021 with patches, same executable and same engine. I tested it
+on Football Life; I have not personally tested it on unpatched PES 2021.
+
+READ THIS BEFORE YOU DOWNLOAD:
+this mod does NOT raise your fps, it LOWERS them. It is not a performance
+booster: it changes how the image looks. On my card at 2560x1440 it goes from
+499-515 fps with the effect off down to 20-31 fps with it on (measured on
+screen, in the menus). If you want smoothness, this is not
+for you.
+
+Works ONLY on AMD Radeon RX 7000 (RDNA 3) and RX 9000 (RDNA 4).
+Not on NVIDIA (they already have real DLSS), not on older AMD cards.
+
+WHAT IS IN THIS PACK
+- step-by-step guide in Italian and English, written for people who have
+  never modded a game
+- a graphical installer: double-click and it does the lot (finds the game,
+  downloads, verifies hashes, puts the files in under the right names)
+- the dlss5-neural.ini already tuned, with the scale measured in-game
+- a restore file to undo everything in a minute
+- credits and licences
+
+UPDATES: YOU DO NOT HAVE TO KEEP UP WITH THE VERSIONS
+The two projects this mod is built on release new versions every few days.
+Every time it starts, the installer checks online which versions I have tested
+on Football Life and installs those. So to update, just run
+INSTALLA - INSTALL.bat again: if you are behind it updates you while keeping
+your settings, if you are up to date it says so and touches nothing. Each
+replaced file is kept as a .precedente.bak copy, so rolling back takes ten
+seconds. No need to download the pack again.
+If the installer gives you an older version than the one just released, that is
+on purpose: it means I have not tested the new one yet.
+
+WHAT IS NOT IN IT, AND WHY
+The mod files are not included and never will be: they contain NVIDIA-derived
+data and the original projects' licences forbid redistributing them. You
+download them yourself, for free, with the official tool, which fetches them
+from the right sources and verifies their hashes. Links are in the guide.
+
+HOW I GOT IT WORKING, IN MY OWN CASE
+I installed ReShade under the name d3d11.dll instead of the usual dxgi.dll.
+The reasoning: sider hooks CreateDXGIFactory1, so I preferred not to let
+ReShade use the same hook point. With d3d11.dll, on my install, the two
+coexist with no trouble at all -- I checked both logs, with all my patches
+active.
+
+I did not test the dxgi.dll route thoroughly, so I would not rule out that it
+works too on other setups. If you try it, post your result in the thread: the
+more reports we have, the more reliable this guide becomes.
+
+RECOMMENDED SETTINGS (measured on an RX 9070 XT at 2560x1440)
+  EFFECT OFF                 499 fps
+  Scale=1.00 (2560x1440)      20 fps
+  Scale=0.96                  31 fps
+  Scale=0.76 (1946x1094)   19-31 fps
+  Scale=0.60               not measured on screen, should be the cheapest
+  Passes: leave at 1. At 2 the cost doubles.
+  In the panel, do NOT touch the red controls: they can crash the driver.
+
+USE IT OFFLINE ONLY. The mod hooks into the running game, which is exactly
+what anti-cheat systems treat as suspicious. Career and matches against the
+CPU, never online. If you have the original PES 2021: before myClub or
+online play, run DISINSTALLA - UNINSTALL.bat -- switching the effect off with
+the hotkey is not enough.
+
+HONEST WARNINGS
+The upstream project is described by its own author as "proof of concept, not
+finished software" and was started on 9 September 2026. Some settings can
+crash the display driver (it restarts by itself, no harm done).
+I wrote none of that software: I only worked out how to make it coexist with
+sider, and measured the settings.
+
+CREDITS
+- Guide, settings, installer and music: oLd_pZ
+- Neural engine and runtime: Daniel Blanco (danielblnc), DLSS-NR-on-AMD
+  https://github.com/danielblnc/DLSS-NR-on-AMD
+- ReShade add-on: cLohan (zmodelerlover), dlss5-neural-amd
+  https://github.com/zmodelerlover/dlss5-neural-amd
+- ReShade: crosire (Patrick Mours) -- https://reshade.me
+
+Download the files only from the official pages above. Do not re-upload them
+anywhere: the licences expressly forbid it and ask you to link the official
+page instead. Commercial use is forbidden too, so no paid or ad-gated links.

@@ -1,0 +1,179 @@
+===============================================================================
+  INIZIA QUI   /   START HERE
+===============================================================================
+
+  DLSS 5 Neural Rendering su AMD Radeon  --  Football Life 2026 / PES 2021
+  DLSS 5 Neural Rendering on AMD Radeon  --  Football Life 2026 / PES 2021
+
+                                                            by  oLd_pZ
+
+
+-------------------------------------------------------------------------------
+  ITALIANO
+-------------------------------------------------------------------------------
+
+  PRIMA DI TUTTO, QUATTRO COSE DA SAPERE:
+
+    1. Serve una scheda AMD Radeon RX 7000 o RX 9000. Su NVIDIA non serve
+       (hanno gia' il DLSS) e su schede piu' vecchie non funziona.
+
+    2. Questa mod NON aumenta gli fps: LI FA CALARE. Cambia la resa
+       dell'immagine, non la velocita'.
+
+    3. Funziona con Football Life 2026 (provato) e con PES 2021 da Steam,
+       con o senza sider (stesso gioco e stesso motore, ma non provato).
+
+    4. SOLO OFFLINE. Prima di myClub o dell'online lancia
+       DISINSTALLA - UNINSTALL.bat. Spegnere l'effetto non basta.
+
+  COME SI INSTALLA (serve internet, circa 10 minuti):
+
+       1. Chiudi il gioco (e sider, se lo usi).
+
+       2. Fai doppio clic su:     INSTALLA - INSTALL.bat
+          Windows chiede i permessi di amministratore: rispondi Si'.
+          Se compare l'avviso blu di SmartScreen: "Ulteriori informazioni"
+          -> "Esegui comunque".
+
+       3. Nella finestra premi INSTALLA. In alto a destra scegli ITA o ENG.
+
+       4. Ti chiede "Ho trovato il gioco qui: ... Installo in questa
+          cartella?". Rispondi Si'. Se non lo trova, ti fa scegliere tu
+          il file FL_2026.exe (Football Life) o PES2021.exe (PES 2021).
+          NON rinominare l'eseguibile del gioco: non serve.
+
+       5. Scarica da solo l'add-on. Poi si apre l'installer ufficiale di
+          Daniel Blanco (la sua licenza chiede di passare da li'):
+          scegli la lingua, fai il controllo della scheda, scarica i file
+          (circa 165 MB) e CHIUDILO. Al resto pensa l'installatore.
+
+       6. Se serve, si apre il setup di ReShade: scegli Direct3D 10/11/12
+          e nessun effetto. Di solito non serve, perche' ReShade arriva gia'
+          insieme ai file di Blanco.
+
+       7. Aspetta la scritta FATTO!  Poi avvia il gioco come sempre.
+          In partita: HOME apre il pannello, CTRL+FINE accende l'effetto.
+
+  Se e' gia' tutto installato, l'installatore lo dice e non tocca nulla.
+
+  PER AGGIORNARE: rilancia   INSTALLA - INSTALL.bat   e basta. Controlla in
+  rete quali versioni ho provato io e, se sei indietro, ti aggiorna tenendo le
+  tue impostazioni (dei file sostituiti tiene una copia .precedente.bak).
+
+  PER TOGLIERE TUTTO:   DISINSTALLA - UNINSTALL.bat
+  Attenzione: toglie anche le tue impostazioni (dlss5-neural.ini e
+  ReShade.ini). I file originali del gioco non vengono toccati.
+
+  SE PREFERISCI FARE A MANO, O SE L'INSTALLATORE SI FERMA CON UN ERRORE,
+  APRI LA GUIDA COMPLETA E SEGUILA DALL'INIZIO:
+
+       ==>   LEGGIMI - ITALIANO.txt
+
+  Gli altri file, a cosa servono:
+
+       INSTALLA - INSTALL.bat      l'installatore: doppio clic e fa tutto lui
+       DISINSTALLA - UNINSTALL.bat toglie tutto quello che ha installato
+       dlss5-neural.ini            le impostazioni gia' tarate (le copia
+                                   l'installatore, o tu a mano)
+       files\                      serve solo se l'installatore non trova i
+                                   file scaricati: dentro c'e' spiegato
+       versioni.json               l'elenco delle versioni provate (copia di
+                                   riserva: quello che conta sta online)
+       musica\                     la musica dell'installatore
+       RIPRISTINO - RESTORE.txt    come togliere tutto a mano
+       CREDITI - CREDITS.txt       chi ha fatto cosa, e le licenze
+       TESTO DEL POST              serve solo a chi vuole ripubblicare la guida
+       _licenze\                   i testi completi delle licenze
+       _installer-gui.ps1          il programma dell'installatore (finestra):
+                                   non aprirlo, lo chiama il .bat
+       _installa.ps1               versione testuale di riserva, usata solo
+                                   se la finestra non si apre
+       _impronte.ps1               serve solo a chi pubblica il pacchetto
+       COME AGGIORNARE             idem: la procedura per aggiornare l'elenco
+                                   delle versioni
+
+
+-------------------------------------------------------------------------------
+  ENGLISH
+-------------------------------------------------------------------------------
+
+  FOUR THINGS TO KNOW FIRST:
+
+    1. You need an AMD Radeon RX 7000 or RX 9000 card. On NVIDIA it is
+       pointless (they already have DLSS) and on older cards it will not work.
+
+    2. This mod does NOT raise your fps: it LOWERS them. It changes how the
+       image looks, not how fast it runs.
+
+    3. It works with Football Life 2026 (tested) and with PES 2021 from Steam,
+       with or without sider (same game and engine, but not tested).
+
+    4. OFFLINE ONLY. Before myClub or online play run
+       DISINSTALLA - UNINSTALL.bat. Switching the effect off is not enough.
+
+  HOW TO INSTALL (internet needed, about 10 minutes):
+
+       1. Close the game (and sider, if you use it).
+
+       2. Double-click:     INSTALLA - INSTALL.bat
+          Windows asks for administrator rights: answer Yes.
+          If the blue SmartScreen warning appears: "More info"
+          -> "Run anyway".
+
+       3. In the window press INSTALL. Pick ITA or ENG at the top right.
+
+       4. It asks "I found the game here: ... Install into this folder?".
+          Answer Yes. If it cannot find it, it lets you pick the
+          FL_2026.exe (Football Life) or PES2021.exe (PES 2021) yourself.
+          Do NOT rename the game executable: there is no need.
+
+       5. It downloads the add-on by itself. Then Daniel Blanco's official
+          installer opens (his licence asks to go through it): pick a
+          language, run the machine check, download the files (about
+          165 MB) and CLOSE IT. The installer does the rest.
+
+       6. If needed, the ReShade setup opens: pick Direct3D 10/11/12 and no
+          effects. Usually it is not needed, because ReShade already comes
+          with Blanco's files.
+
+       7. Wait for DONE!  Then start the game as usual.
+          In game: HOME opens the panel, CTRL+END switches the effect on.
+
+  If everything is already installed, the installer says so and touches
+  nothing.
+
+  TO UPDATE: just run   INSTALLA - INSTALL.bat   again. It checks online which
+  versions I have tested and, if you are behind, updates you while keeping your
+  settings (each replaced file is kept as a .precedente.bak copy).
+
+  TO REMOVE EVERYTHING:   DISINSTALLA - UNINSTALL.bat
+  Note: it also removes your settings (dlss5-neural.ini and ReShade.ini).
+  The game's original files are never touched.
+
+  IF YOU PREFER DOING IT BY HAND, OR IF THE INSTALLER STOPS WITH AN ERROR,
+  OPEN THE FULL GUIDE AND FOLLOW IT FROM THE TOP:
+
+       ==>   READ ME - ENGLISH.txt
+
+  What the other files are for:
+
+       INSTALLA - INSTALL.bat      the installer: double-click and it does
+                                   the lot
+       DISINSTALLA - UNINSTALL.bat removes everything it installed
+       dlss5-neural.ini            the pre-tuned settings (the installer
+                                   copies them, or you can by hand)
+       files\                      only needed if the installer cannot find
+                                   your downloads: there is a note inside
+       versioni.json               the list of tested versions (backup copy:
+                                   the one that counts is online)
+       musica\                     the installer's music
+       RIPRISTINO - RESTORE.txt    how to remove everything by hand
+       CREDITI - CREDITS.txt       who made what, and the licences
+       POST TEXT                   only needed if you want to re-post the guide
+       _licenze\                   the full licence texts
+       _installer-gui.ps1          the installer program (window): do not
+                                   open it, the .bat calls it
+       _installa.ps1               backup text version, used only if the
+                                   window does not open
+       _impronte.ps1               only needed by whoever publishes the pack
+       HOW TO UPDATE               same: how to refresh the version list

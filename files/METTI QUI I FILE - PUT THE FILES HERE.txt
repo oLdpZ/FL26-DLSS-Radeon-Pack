@@ -1,0 +1,77 @@
+===============================================================================
+  METTI QUI I FILE SCARICATI   /   PUT THE DOWNLOADED FILES HERE
+===============================================================================
+
+-------------------------------------------------------------------------------
+  ITALIANO
+-------------------------------------------------------------------------------
+
+  Questa cartella serve SOLO se l'installatore non trova da solo i file che
+  hai scaricato. Normalmente li cerca lui, in automatico, in:
+
+      - la cartella del gioco
+      - la cache del programma ufficiale (%AppData%\AmdNrInstaller)
+      - la cartella Download
+      - il Desktop
+      - Documenti
+
+  Se ti dice che mancano, copia qui dentro questi quattro file e rilancia
+  INSTALLA - INSTALL.bat :
+
+      dlss5-neural.addon64          circa 540 KB
+      dlssnr_amd_pass1.dll          circa 7 MB
+      dlssnr_on_amd_weights.bin     circa 141 MB
+      ReShade64.dll                 circa 5,4 MB
+
+  DOVE SI SCARICANO:
+
+      I primi tre con il programma ufficiale:
+      https://github.com/zmodelerlover/dlss5-neural-amd/releases
+      (scaricalo, avvialo, arriva al passo 3 e chiudilo)
+
+      ReShade64.dll dal sito ufficiale, versione "with full add-on support":
+      https://reshade.me
+
+  L'installatore controlla l'impronta digitale (SHA-256) di ogni file prima
+  di copiarlo: se un file e' incompleto o alterato, si ferma e non installa
+  niente.
+
+  NOTA: questi file NON possono essere ridistribuiti, quindi non li trovi
+  dentro il pacchetto. Le licenze dei progetti originali lo vietano.
+
+
+-------------------------------------------------------------------------------
+  ENGLISH
+-------------------------------------------------------------------------------
+
+  This folder is ONLY needed if the installer cannot find the files you
+  downloaded by itself. Normally it looks for them automatically in:
+
+      - the game folder
+      - the official tool's cache (%AppData%\AmdNrInstaller)
+      - your Downloads folder
+      - your Desktop
+      - your Documents
+
+  If it says they are missing, copy these four files in here and run
+  INSTALLA - INSTALL.bat again:
+
+      dlss5-neural.addon64          about 540 KB
+      dlssnr_amd_pass1.dll          about 7 MB
+      dlssnr_on_amd_weights.bin     about 141 MB
+      ReShade64.dll                 about 5.4 MB
+
+  WHERE TO GET THEM:
+
+      The first three with the official tool:
+      https://github.com/zmodelerlover/dlss5-neural-amd/releases
+      (download it, run it, go as far as step 3 and close it)
+
+      ReShade64.dll from the official site, the "with full add-on support"
+      build: https://reshade.me
+
+  The installer checks each file's SHA-256 fingerprint before copying it: if
+  a file is incomplete or altered, it stops and installs nothing.
+
+  NOTE: these files may NOT be redistributed, which is why they are not in
+  the pack. The original projects' licences forbid it.
