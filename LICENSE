@@ -1,0 +1,94 @@
+LICENZE DI QUESTO PACCHETTO  /  LICENCES OF THIS PACK
+=====================================================
+
+Copyright (c) 2026 oLd_pZ
+
+Il pacchetto ha DUE licenze, una per le parti "da leggere e ascoltare" e una
+per il codice. I progetti di altri autori mantengono le loro.
+
+This pack has TWO licences, one for the parts you read and listen to, one for
+the code. Other authors' projects keep their own.
+
+
+1. GUIDA, IMPOSTAZIONI E MUSICA  --  CC BY-NC-SA 4.0
+   GUIDE, SETTINGS AND MUSIC
+------------------------------------------------------------------------------
+
+   Tutti i file di testo della guida (LEGGIMI, READ ME, INIZIA QUI,
+   RIPRISTINO, COME AGGIORNARE, TESTO DEL POST, CREDITI, README.md),
+   le impostazioni tarate in dlss5-neural.ini e la musica in musica/.
+
+   All the guide's text files (LEGGIMI, READ ME, INIZIA QUI, RIPRISTINO,
+   COME AGGIORNARE, TESTO DEL POST, CREDITI, README.md), the tuned settings
+   in dlss5-neural.ini and the music in musica/.
+
+   Licenza: Creative Commons Attribuzione - Non commerciale - Condividi allo
+   stesso modo 4.0 Internazionale.
+   Licence: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+   International.
+
+   In parole povere / in plain words:
+     - puoi condividerli, tradurli e modificarli / you may share, translate
+       and adapt them
+     - CITANDO oLd_pZ come autore / CREDITING oLd_pZ as the author
+     - MAI per soldi: niente link a pagamento, niente download dietro
+       pubblicita' o abbonamenti / NEVER for money: no paid links, no
+       ad-gated or subscription downloads
+     - se li modifichi, la tua versione deve avere questa stessa licenza /
+       if you adapt them, your version must carry this same licence
+
+   Testo completo / full text:  _licenze/LICENSE-oLd_pZ-CC-BY-NC-SA-4.0.txt
+   https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+
+2. INSTALLATORE  --  MIT
+   INSTALLER
+------------------------------------------------------------------------------
+
+   _installer-gui.ps1, _installa.ps1, _impronte.ps1,
+   INSTALLA - INSTALL.bat, DISINSTALLA - UNINSTALL.bat
+
+   Il codice e' libero: chi vuole riusare questo modo di installare le mod
+   (verifica delle impronte, convivenza con sider, elenco versioni online)
+   nel proprio installer puo' farlo, basta mantenere la nota qui sotto.
+   The code is free: anyone who wants to reuse this way of installing mods
+   (fingerprint checks, coexisting with sider, online version list) in their
+   own installer may do so, as long as the notice below is kept.
+
+   --------------------------------------------------------------------------
+   MIT License
+
+   Copyright (c) 2026 oLd_pZ
+
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the "Software"),
+   to deal in the Software without restriction, including without limitation
+   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+   and/or sell copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+   --------------------------------------------------------------------------
+
+
+3. TUTTO IL RESTO NON E' MIO  /  EVERYTHING ELSE IS NOT MINE
+------------------------------------------------------------------------------
+
+   La rete neurale e il runtime (Daniel Blanco), l'add-on ReShade (cLohan) e
+   ReShade (crosire) hanno le loro licenze, i cui testi sono nella cartella
+   _licenze. Questo pacchetto NON contiene i loro file: li scaricano i loro
+   programmi ufficiali. Le licenze qui sopra non valgono per loro.
+
+   The neural network and runtime (Daniel Blanco), the ReShade add-on (cLohan)
+   and ReShade (crosire) have their own licences, whose texts are in the
+   _licenze folder. This pack does NOT contain their files: their official
+   tools download them. The licences above do not apply to them.

@@ -1,4 +1,4 @@
-# DLSS 5 Neural Rendering on AMD Radeon — Football Life 2026 / PES 2021
+﻿# DLSS 5 Neural Rendering on AMD Radeon — Football Life 2026 / PES 2021
 
 Guida, impostazioni tarate e installatore per far girare il **DLSS 5 Neural Rendering** su schede **AMD Radeon** in **Football Life 2026** e **PES 2021**, convivendo con **sider** e con tutte le patch attive.
 
@@ -90,6 +90,12 @@ The tested-version list lives in the gist linked above. If it cannot be reached,
 - **Add-on ReShade:** [cLohan (zmodelerlover) — dlss5-neural-amd](https://github.com/zmodelerlover/dlss5-neural-amd)
 - **ReShade:** [crosire (Patrick Mours)](https://reshade.me)
 
-I testi completi delle licenze sono in `_licenze/`. La guida, l'installatore e la musica sono opera di oLd_pZ: condividili liberamente **citando l'autore**, e senza metterli dietro link a pagamento o pieni di pubblicità.
+## Licenza / Licence
 
-Full licence texts are in `_licenze/`. The guide, the installer and the music are oLd_pZ's own work: share them freely **with credit**, and never behind paid or ad-gated links.
+| Cosa / What | Licenza / Licence |
+|---|---|
+| Guida, impostazioni, musica / guide, settings, music | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — condividi e modifica **citando oLd_pZ**, **mai per soldi** (niente link a pagamento o download dietro pubblicità), stessa licenza per le versioni modificate |
+| Installatore (`*.ps1`, `*.bat`) | [MIT](https://opensource.org/license/mit) — riusalo pure nel tuo installer, mantenendo la nota di copyright |
+| Rete neurale, runtime, add-on, ReShade | le licenze dei loro autori, testi completi in `_licenze/` / their authors' licences, full texts in `_licenze/` |
+
+Dettagli nel file [`LICENSE`](LICENSE). / Details in [`LICENSE`](LICENSE).

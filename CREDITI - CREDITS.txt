@@ -1,4 +1,4 @@
-===============================================================================
+﻿===============================================================================
   CREDITI E LICENZE  /  CREDITS AND LICENCES
 ===============================================================================
 
@@ -9,13 +9,19 @@
   Installer music: composed for this package, original work.
       oLd_pZ
 
+  LICENZE DELLA MIA PARTE  /  LICENCES OF MY PART   (dettagli / details: LICENSE)
+      guida, impostazioni, musica / guide, settings, music ..... CC BY-NC-SA 4.0
+          condividi citando l'autore, mai per soldi
+          share with credit, never for money
+      installatore / installer ................................. MIT
+
 -------------------------------------------------------------------------------
   ITALIANO
 -------------------------------------------------------------------------------
 
   Nessuno dei programmi di cui parla questa guida e' opera mia. Io ho scritto
-  soltanto: questa guida, il file dlss5-neural.ini tarato, e il file di
-  ripristino. Tutto il resto e' lavoro di altri, e va scaricato dalle loro
+  soltanto: questa guida, il file dlss5-neural.ini tarato, il file di
+  ripristino e l'installatore. Tutto il resto e' lavoro di altri, e va scaricato dalle loro
   pagine ufficiali.
 
   Questa guida racconta come ha funzionato sulla MIA installazione, con la
@@ -64,7 +70,7 @@
 -------------------------------------------------------------------------------
 
   None of the software this guide talks about is mine. I only wrote: this
-  guide, the tuned dlss5-neural.ini, and the restore file. Everything else is
+  guide, the tuned dlss5-neural.ini, the restore file and the installer. Everything else is
   other people's work and must be downloaded from their official pages.
 
   This guide describes how it worked on MY install, with MY graphics card.
