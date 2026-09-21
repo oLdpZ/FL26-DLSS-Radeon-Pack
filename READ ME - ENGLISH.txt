@@ -1,4 +1,4 @@
-===============================================================================
+﻿===============================================================================
   DLSS 5 NEURAL RENDERING ON AMD RADEON  --  Football Life 2026 and PES 2021
   (Football Life with sider, or PES 2021 from Steam with or without sider)
 ===============================================================================
@@ -299,10 +299,11 @@
   The  dlss5-neural.ini  file in this pack is already tuned. Only one setting
   really matters:
 
-      Scale=0.60
+      Scale=0.50
 
   "Scale" is the resolution the network runs at, relative to your screen.
-  Lower is faster, and fine detail is lost.
+  Lower is faster, and fine detail is lost. 0.50 is what I play with: the best
+  compromise I found. For a touch more fine detail, try 0.60.
 
   Measured on an RX 9070 XT at 2560x1440:
 
@@ -310,8 +311,8 @@
       Scale=1.00  (network at 2560x1440)    20 fps
       Scale=0.96                            31 fps
       Scale=0.76  (network at 1946x1094) 19-31 fps
-      Scale=0.60                         not measured on screen: it should
-                                         be the cheapest   RECOMMENDED
+      Scale=0.60                         not measured on screen: both cost
+      Scale=0.50                         less than the rest  0.50 RECOMMENDED
 
   These numbers come from ReShade's own counter, captured on video, in the
   game menus. In an actual match, expect less.

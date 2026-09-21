@@ -197,7 +197,8 @@ RECOMMENDED SETTINGS (measured on an RX 9070 XT at 2560x1440)
   Scale=1.00 (2560x1440)      20 fps
   Scale=0.96                  31 fps
   Scale=0.76 (1946x1094)   19-31 fps
-  Scale=0.60               not measured on screen, should be the cheapest
+  Scale=0.50 RECOMMENDED   not measured on screen, cheaper than all the above
+                           (0.50 is what I play with; 0.60 for a touch more detail)
   Passes: leave at 1. At 2 the cost doubles.
   In the panel, do NOT touch the red controls: they can crash the driver.
 

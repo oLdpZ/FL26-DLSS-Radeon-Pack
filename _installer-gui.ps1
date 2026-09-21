@@ -391,6 +391,11 @@ function Leggi-Manifesto {
     }
     if (-not $testo) { return }
 
+    # via il BOM: se c'e', ConvertFrom-Json di PowerShell 5.1 va in errore e
+    # l'elenco verrebbe buttato via senza motivo
+    # strip the BOM: with it, PowerShell 5.1's ConvertFrom-Json errors out and the
+    # list would be thrown away for no reason
+    $testo = $testo.TrimStart([char]0xFEFF)
     $m = $null
     try { $m = $testo | ConvertFrom-Json } catch { $m = $null }
     if (-not $m) { return }
@@ -401,7 +406,7 @@ function Leggi-Manifesto {
         try {
             $d = Split-Path $CACHE_MANIFESTO -Parent
             if (-not (Test-Path $d)) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
-            $testo | Set-Content -LiteralPath $CACHE_MANIFESTO -Encoding UTF8
+            [IO.File]::WriteAllText($CACHE_MANIFESTO, $testo, (New-Object Text.UTF8Encoding($false)))
         } catch { }
     }
 }
@@ -823,7 +828,7 @@ function Installa {
     $destIni = Join-Path $gioco 'dlss5-neural.ini'
     if ((Test-Path $ini) -and -not (Test-Path $destIni)) {
         Copy-Item -LiteralPath $ini -Destination $destIni -Force
-        Buono (T 'dlss5-neural.ini (Scale=0.60)' 'dlss5-neural.ini (Scale=0.60)'); $messi += 'dlss5-neural.ini'
+        Buono (T 'dlss5-neural.ini (Scale=0.50)' 'dlss5-neural.ini (Scale=0.50)'); $messi += 'dlss5-neural.ini'
     }
 
     Stato @('Verifica finale...', 'Final check...') 95

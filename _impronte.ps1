@@ -173,7 +173,9 @@ $testo = ($j | ConvertTo-Json -Depth 8)
 # ConvertTo-Json scrive gli apostrofi come \u0027: li rimetto in chiaro, e' JSON valido
 # ConvertTo-Json writes apostrophes as \u0027: put them back, it is still valid JSON
 $testo = $testo.Replace('\u0027', "'")
-$testo | Set-Content -LiteralPath $out -Encoding UTF8
+# senza BOM: il BOM manda in errore la lettura dell'elenco negli installer
+# no BOM: a BOM breaks the installers when they read the list
+[IO.File]::WriteAllText($out, $testo, (New-Object Text.UTF8Encoding($false)))
 
 Titolo "Fatto"
 if ($cambiati -eq 0) { Nota "niente da cambiare: le impronte erano gia' queste" }

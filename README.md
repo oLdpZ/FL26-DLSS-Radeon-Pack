@@ -67,7 +67,7 @@ The tested-version list lives in the gist linked above. If it cannot be reached,
 | `LEGGIMI - ITALIANO.txt`, `READ ME - ENGLISH.txt` | la guida completa / the full guide |
 | `INSTALLA - INSTALL.bat`, `DISINSTALLA - UNINSTALL.bat` | installa / disinstalla |
 | `_installer-gui.ps1`, `_installa.ps1` | l'installatore (finestra e versione testuale di riserva) |
-| `dlss5-neural.ini` | le impostazioni già tarate (`Scale=0.60`) |
+| `dlss5-neural.ini` | le impostazioni già tarate (`Scale=0.50`) |
 | `versioni.json` | copia di riserva dell'elenco versioni / backup copy of the version list |
 | `RIPRISTINO - RESTORE.txt` | come togliere tutto a mano / how to undo it by hand |
 | `_impronte.ps1`, `COME AGGIORNARE - HOW TO UPDATE.txt` | servono solo a chi pubblica il pacchetto / only for whoever publishes the pack |

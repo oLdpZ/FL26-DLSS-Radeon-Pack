@@ -326,6 +326,9 @@ function Leggi-Manifesto {
         try { $testo = Get-Content -LiteralPath $CACHE_MANIFESTO -Raw; $fonte = 'cache' } catch { $testo = $null }
     }
     if (-not $testo) { return }
+    # via il BOM, altrimenti ConvertFrom-Json di PowerShell 5.1 va in errore
+    # strip the BOM, otherwise PowerShell 5.1's ConvertFrom-Json errors out
+    $testo = $testo.TrimStart([char]0xFEFF)
     $m = $null
     try { $m = $testo | ConvertFrom-Json } catch { $m = $null }
     if (-not $m) { return }
@@ -335,7 +338,7 @@ function Leggi-Manifesto {
         try {
             $d = Split-Path $CACHE_MANIFESTO -Parent
             if (-not (Test-Path $d)) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
-            $testo | Set-Content -LiteralPath $CACHE_MANIFESTO -Encoding UTF8
+            [IO.File]::WriteAllText($CACHE_MANIFESTO, $testo, (New-Object Text.UTF8Encoding($false)))
         } catch { }
     }
 }
@@ -596,8 +599,8 @@ function Installa {
                           "dlss5-neural.ini already exists: keeping YOUR settings.")
         } else {
             Copy-Item -LiteralPath $ini -Destination $destIni -Force
-            Ok (T "dlss5-neural.ini  (impostazioni consigliate, Scale=0.60)" `
-                  "dlss5-neural.ini  (recommended settings, Scale=0.60)")
+            Ok (T "dlss5-neural.ini  (impostazioni consigliate, Scale=0.50)" `
+                  "dlss5-neural.ini  (recommended settings, Scale=0.50)")
             $registro += 'dlss5-neural.ini'
         }
     }
