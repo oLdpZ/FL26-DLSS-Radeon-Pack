@@ -66,7 +66,7 @@
       Scale 0.76 (1946x1094)      ->   19 fps
       Scale 0.96                  ->   31 fps
       Scale 1.00 (2560x1440)      ->   20 fps
-      [TO BE MEASURED]  the same numbers with v1.6 (runtime 0.4.3)
+      v1.6 (runtime 0.4.3), Scale 0.50  ->  about 108 fps (in the editor)
 
   That is not a typo: from almost 500 frames per second down to under 30.
   In an actual match, with twenty-two players on the pitch, expect less.
@@ -339,7 +339,7 @@
       Scale=0.76  (network at 1946x1094) 19-31 fps
       Scale=0.60                         not measured on screen: both cost
       Scale=0.50                         less than the rest  0.50 RECOMMENDED
-      [TO BE MEASURED]  the same values with v1.6 (runtime 0.4.3)
+      v1.6 (runtime 0.4.3), Scale=0.50   about 108 fps (in the editor)
 
   These numbers come from ReShade's own counter, captured on video, in the
   game menus. In an actual match, expect less. With the new runtime they

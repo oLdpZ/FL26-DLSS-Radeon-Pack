@@ -43,7 +43,8 @@ questa mod NON aumenta gli fps, LI FA CALARE. Non e' un accelleratore: e' una
 modifica alla resa dell'immagine. Sulla mia scheda, a 2560x1440, con la v1.5
 (runtime 0.3.0) si passava da 499-515 fps a effetto spento a 20-31 fps con
 l'effetto acceso (misurati a schermo nei menu). Con la v1.6 il runtime e'
-molto piu' veloce: [DA MISURARE]. Resta il fatto che gli fps CALANO.
+molto piu' veloce: a Scale 0.50 sto sui 108 fps
+nell'editor. Resta il fatto che gli fps CALANO.
 Se cercate fluidita', questa mod non fa per voi.
 
 Funziona SOLO su AMD Radeon RX 7000 (RDNA 3) e RX 9000 (RDNA 4).
@@ -99,7 +100,7 @@ MISURATI CON LA v1.5 DEL PACCHETTO (RUNTIME 0.3.0)
   Scale 1,00 (2560x1440)     20 fps
   Scale 0,96                 31 fps
   Scale 0,76 (1946x1094)     19 fps
-  Con la v1.6 (runtime 0.4.3): [DA MISURARE]
+  Con la v1.6 (runtime 0.4.3), Scale 0,50: circa 108 fps (nell'editor)
   Passes: lasciare 1. A 2 il costo raddoppia.
   Nel pannello NON toccate i controlli rossi: possono far crashare il driver.
 
@@ -181,7 +182,8 @@ this mod does NOT raise your fps, it LOWERS them. It is not a performance
 booster: it changes how the image looks. On my card at 2560x1440, with v1.5
 (runtime 0.3.0), it went from 499-515 fps with the effect off down to
 20-31 fps with it on (measured on screen, in the menus). With v1.6 the runtime
-is much faster: [TO BE MEASURED]. The fact remains: fps go DOWN.
+is much faster: at Scale 0.50 I get about 108 fps in
+the editor. The fact remains: fps go DOWN.
 If you want smoothness, this is not for you.
 
 Works ONLY on AMD Radeon RX 7000 (RDNA 3) and RX 9000 (RDNA 4).
@@ -239,7 +241,7 @@ MEASURED WITH PACK v1.5 (RUNTIME 0.3.0)
   Scale=0.76 (1946x1094)   19-31 fps
   Scale=0.50 RECOMMENDED   not measured on screen, cheaper than all the above
                            (0.50 is what I play with; 0.60 for a touch more detail)
-  With v1.6 (runtime 0.4.3): [TO BE MEASURED]
+  With v1.6 (runtime 0.4.3), Scale=0.50: about 108 fps (in the editor)
   Passes: leave at 1. At 2 the cost doubles.
   In the panel, do NOT touch the red controls: they can crash the driver.
 

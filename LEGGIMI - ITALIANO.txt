@@ -68,7 +68,7 @@
       Scale 0,76 (1946x1094)      ->   19 fps
       Scale 0,96                  ->   31 fps
       Scale 1,00 (2560x1440)      ->   20 fps
-      [DA MISURARE]  gli stessi numeri con la v1.6 (runtime 0.4.3)
+      v1.6 (runtime 0.4.3), Scale 0,50  ->  circa 108 fps (nell'editor)
 
   Non e' un errore di stampa: si passa da quasi 500 fotogrammi al secondo a
   meno di 30. In partita, con ventidue giocatori in campo, sara' anche meno.
@@ -343,7 +343,7 @@
       Scale=0.76  (rete a 1946x1094)     19-31 fps
       Scale=0.60                        non misurate a schermo: costano meno
       Scale=0.50                        di tutte le altre     0.50 CONSIGLIATA
-      [DA MISURARE]  gli stessi valori con la v1.6 (runtime 0.4.3)
+      v1.6 (runtime 0.4.3), Scale=0.50   circa 108 fps (nell'editor)
 
   Questi numeri vengono dal contatore di ReShade ripreso in video, nei menu
   del gioco. In partita aspettati di meno. Con il runtime nuovo dovrebbero

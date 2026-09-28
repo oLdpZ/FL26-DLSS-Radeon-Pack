@@ -10,13 +10,13 @@ by **oLd_pZ**
 
 ## ⚠️ Leggi prima / Read this first
 
-- **Questa mod NON aumenta gli fps: LI FA CALARE.** Cambia la resa dell'immagine, non la velocità. Misurato su RX 9070 XT a 2560x1440, nei menu, con la v1.5 del pacchetto (runtime 0.3.0): **~500 fps** a effetto spento, **20-31 fps** con l'effetto acceso. Con la v1.6 (runtime 0.4.3, molto più veloce): **[DA MISURARE]**.
+- **Questa mod NON aumenta gli fps: LI FA CALARE.** Cambia la resa dell'immagine, non la velocità. Misurato su RX 9070 XT a 2560x1440, nei menu, con la v1.5 del pacchetto (runtime 0.3.0): **~500 fps** a effetto spento, **20-31 fps** con l'effetto acceso. Con la v1.6 (runtime 0.4.3, molto più veloce): **circa 108 fps** a Scale 0.50, nell'editor del gioco.
 - Serve una **Radeon RX 7000 (RDNA 3)** o **RX 9000 (RDNA 4)**. Su NVIDIA è inutile (hanno il DLSS vero), su AMD più vecchie non funziona.
 - **Solo offline.** Prima di myClub o dell'online, disinstalla: spegnere l'effetto non basta.
 
 <!-- -->
 
-- **This mod does NOT raise your fps: it LOWERS them.** It changes how the image looks, not how fast it runs. Measured on an RX 9070 XT at 2560x1440, in the menus, with pack v1.5 (runtime 0.3.0): **~500 fps** with the effect off, **20-31 fps** with it on. With v1.6 (runtime 0.4.3, much faster): **[TO BE MEASURED]**.
+- **This mod does NOT raise your fps: it LOWERS them.** It changes how the image looks, not how fast it runs. Measured on an RX 9070 XT at 2560x1440, in the menus, with pack v1.5 (runtime 0.3.0): **~500 fps** with the effect off, **20-31 fps** with it on. With v1.6 (runtime 0.4.3, much faster): **about 108 fps** at Scale 0.50, in the game's editor.
 - You need a **Radeon RX 7000 (RDNA 3)** or **RX 9000 (RDNA 4)**. Pointless on NVIDIA (they have real DLSS), does not work on older AMD cards.
 - **Offline only.** Uninstall before myClub or online play: switching the effect off is not enough.
 
