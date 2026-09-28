@@ -45,14 +45,18 @@
           il file FL_2026.exe (Football Life) o PES2021.exe (PES 2021).
           NON rinominare l'eseguibile del gioco: non serve.
 
-       5. Scarica da solo l'add-on. Poi si apre l'installer ufficiale di
-          Daniel Blanco (la sua licenza chiede di passare da li'):
-          scegli la lingua, fai il controllo della scheda, scarica i file
-          (circa 165 MB) e CHIUDILO. Al resto pensa l'installatore.
+       5. Scarica da solo l'add-on e prepara il runtime dall'installer
+          ufficiale di Daniel Blanco (lo scarica, non lo avvia).
+          Poi, SOLO se sul PC non ci sono gia' i pesi della rete (cioe' se
+          non hai mai installato prima), si apre l'installer ufficiale
+          dell'add-on (AMD-NR, la licenza chiede di passare dal canale
+          ufficiale): nella pagina "This machine" fagli scaricare i file
+          (circa 160 MB), NON installare niente nei giochi e CHIUDILO.
+          Al resto pensa l'installatore.
 
        6. Se serve, si apre il setup di ReShade: scegli Direct3D 10/11/12
-          e nessun effetto. Di solito non serve, perche' ReShade arriva gia'
-          insieme ai file di Blanco.
+          e nessun effetto. Se il ReShade giusto e' gia' sul PC, questo
+          passo non compare.
 
        7. Aspetta la scritta FATTO!  Poi avvia il gioco come sempre.
           In partita: HOME apre il pannello, CTRL+FINE accende l'effetto.
@@ -63,8 +67,15 @@
   rete quali versioni ho provato io e, se sei indietro, ti aggiorna tenendo le
   tue impostazioni (dei file sostituiti tiene una copia .precedente.bak).
 
+  SE VIENI DALLA v1.5: questa volta devi usare INSTALLA di QUESTO pacchetto
+  (la v1.6), non quello vecchio. L'add-on ha cambiato nome
+  (dlss5-neural.addon64 -> amd-nr.addon64) e il runtime nuovo si prepara in
+  un altro modo. L'installatore riconosce la v1.5, tiene le tue impostazioni
+  (dlss5-neural.ini lo trasforma l'add-on in amd-nr.ini da solo) e mette da
+  parte il vecchio add-on e il vecchio runtime come .precedente.bak.
+
   PER TOGLIERE TUTTO:   DISINSTALLA - UNINSTALL.bat
-  Attenzione: toglie anche le tue impostazioni (dlss5-neural.ini e
+  Attenzione: toglie anche le tue impostazioni (amd-nr.ini e
   ReShade.ini). I file originali del gioco non vengono toccati.
 
   SE PREFERISCI FARE A MANO, O SE L'INSTALLATORE SI FERMA CON UN ERRORE,
@@ -76,12 +87,14 @@
 
        INSTALLA - INSTALL.bat      l'installatore: doppio clic e fa tutto lui
        DISINSTALLA - UNINSTALL.bat toglie tutto quello che ha installato
-       dlss5-neural.ini            le impostazioni gia' tarate (le copia
+       amd-nr.ini                  le impostazioni gia' tarate (le copia
                                    l'installatore, o tu a mano)
        files\                      serve solo se l'installatore non trova i
                                    file scaricati: dentro c'e' spiegato
-       versioni.json               l'elenco delle versioni provate (copia di
+       versioni-v2.json            l'elenco delle versioni provate (copia di
                                    riserva: quello che conta sta online)
+       versioni.json               l'elenco per gli installatori fino alla
+                                   v1.5: a questo pacchetto non serve
        musica\                     la musica dell'installatore
        RIPRISTINO - RESTORE.txt    come togliere tutto a mano
        CREDITI - CREDITS.txt       chi ha fatto cosa, e le licenze
@@ -130,14 +143,18 @@
           FL_2026.exe (Football Life) or PES2021.exe (PES 2021) yourself.
           Do NOT rename the game executable: there is no need.
 
-       5. It downloads the add-on by itself. Then Daniel Blanco's official
-          installer opens (his licence asks to go through it): pick a
-          language, run the machine check, download the files (about
-          165 MB) and CLOSE IT. The installer does the rest.
+       5. It downloads the add-on by itself and prepares the runtime from
+          Daniel Blanco's official installer (it downloads it, it does not
+          run it). Then, ONLY if the network weights are not on your PC
+          yet (that is, if you never installed before), the add-on's
+          official installer opens (AMD-NR, the licence asks to go through
+          the official channel): on the "This machine" page let it download
+          the files (about 160 MB), do NOT install anything into your games
+          and CLOSE IT. The installer does the rest.
 
        6. If needed, the ReShade setup opens: pick Direct3D 10/11/12 and no
-          effects. Usually it is not needed, because ReShade already comes
-          with Blanco's files.
+          effects. If the right ReShade is already on your PC, this step
+          does not show up.
 
        7. Wait for DONE!  Then start the game as usual.
           In game: HOME opens the panel, CTRL+END switches the effect on.
@@ -149,8 +166,15 @@
   versions I have tested and, if you are behind, updates you while keeping your
   settings (each replaced file is kept as a .precedente.bak copy).
 
+  IF YOU ARE COMING FROM v1.5: this time you must use INSTALLA from THIS
+  pack (v1.6), not the old one. The add-on was renamed
+  (dlss5-neural.addon64 -> amd-nr.addon64) and the new runtime is prepared
+  differently. The installer recognises v1.5, keeps your settings (the
+  add-on turns dlss5-neural.ini into amd-nr.ini by itself) and sets the old
+  add-on and the old runtime aside as .precedente.bak.
+
   TO REMOVE EVERYTHING:   DISINSTALLA - UNINSTALL.bat
-  Note: it also removes your settings (dlss5-neural.ini and ReShade.ini).
+  Note: it also removes your settings (amd-nr.ini and ReShade.ini).
   The game's original files are never touched.
 
   IF YOU PREFER DOING IT BY HAND, OR IF THE INSTALLER STOPS WITH AN ERROR,
@@ -163,12 +187,14 @@
        INSTALLA - INSTALL.bat      the installer: double-click and it does
                                    the lot
        DISINSTALLA - UNINSTALL.bat removes everything it installed
-       dlss5-neural.ini            the pre-tuned settings (the installer
+       amd-nr.ini                  the pre-tuned settings (the installer
                                    copies them, or you can by hand)
        files\                      only needed if the installer cannot find
                                    your downloads: there is a note inside
-       versioni.json               the list of tested versions (backup copy:
+       versioni-v2.json            the list of tested versions (backup copy:
                                    the one that counts is online)
+       versioni.json               the list for installers up to v1.5: this
+                                   pack does not need it
        musica\                     the installer's music
        RIPRISTINO - RESTORE.txt    how to remove everything by hand
        CREDITI - CREDITS.txt       who made what, and the licences

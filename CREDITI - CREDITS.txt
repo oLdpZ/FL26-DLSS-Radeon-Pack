@@ -20,7 +20,7 @@
 -------------------------------------------------------------------------------
 
   Nessuno dei programmi di cui parla questa guida e' opera mia. Io ho scritto
-  soltanto: questa guida, il file dlss5-neural.ini tarato, il file di
+  soltanto: questa guida, il file amd-nr.ini tarato, il file di
   ripristino e l'installatore. Tutto il resto e' lavoro di altri, e va scaricato dalle loro
   pagine ufficiali.
 
@@ -42,13 +42,25 @@
        - uso commerciale: vietato (le donazioni volontarie all'autore no)
      Testo completo:  _licenze\LICENSE-DLSS-NR-on-AMD.txt
 
-     Per questo motivo questo pacchetto NON contiene quei file.
+     Per questo motivo questo pacchetto NON contiene quei file. Il runtime
+     (dlssnr_amd_pass1.dll) l'installatore lo ricava sul PC dell'utente dal
+     setup ufficiale di Blanco, scaricato dalla sua pagina GitHub.
 
   2. ADD-ON PER RESHADE
-     Progetto "dlss5-neural-amd", di cLohan (zmodelerlover)
+     Progetto "AMD Neural Rendering" (prima "dlss5-neural-amd"),
+     di cLohan (zmodelerlover)
      https://github.com/zmodelerlover/dlss5-neural-amd
      Licenza MIT, Copyright (c) 2026 cLohan.
      Testo completo:  _licenze\LICENSE-dlss5-neural-amd-MIT.txt
+
+     Sono di cLohan anche le due modifiche al runtime di Blanco che l'add-on
+     richiede: l'installatore le prende, byte per byte, dal suo file
+     tools/runtime-patches.json.
+
+     E' di cLohan anche l'installer ufficiale dell'add-on, che questo
+     pacchetto apre per scaricare i pesi dal canale ufficiale:
+     "AMD-NR-ReShade-Installer"
+     https://github.com/zmodelerlover/AMD-NR-ReShade-Installer
 
   3. RESHADE
      di crosire (Patrick Mours) -- https://reshade.me
@@ -70,7 +82,7 @@
 -------------------------------------------------------------------------------
 
   None of the software this guide talks about is mine. I only wrote: this
-  guide, the tuned dlss5-neural.ini, the restore file and the installer. Everything else is
+  guide, the tuned amd-nr.ini, the restore file and the installer. Everything else is
   other people's work and must be downloaded from their official pages.
 
   This guide describes how it worked on MY install, with MY graphics card.
@@ -91,13 +103,25 @@
        - commercial use: forbidden (voluntary donations to the author are not)
      Full text:  _licenze\LICENSE-DLSS-NR-on-AMD.txt
 
-     This is why this pack does NOT contain those files.
+     This is why this pack does NOT contain those files. The runtime
+     (dlssnr_amd_pass1.dll) is built by the installer on the user's PC from
+     Blanco's official setup, downloaded from his GitHub page.
 
   2. RESHADE ADD-ON
-     "dlss5-neural-amd", by cLohan (zmodelerlover)
+     "AMD Neural Rendering" (formerly "dlss5-neural-amd"),
+     by cLohan (zmodelerlover)
      https://github.com/zmodelerlover/dlss5-neural-amd
      MIT Licence, Copyright (c) 2026 cLohan.
      Full text:  _licenze\LICENSE-dlss5-neural-amd-MIT.txt
+
+     The two changes to Blanco's runtime that the add-on needs are cLohan's
+     work too: the installer takes them, byte for byte, from his
+     tools/runtime-patches.json.
+
+     The add-on's official installer, which this pack opens to download the
+     weights through the official channel, is also cLohan's:
+     "AMD-NR-ReShade-Installer"
+     https://github.com/zmodelerlover/AMD-NR-ReShade-Installer
 
   3. RESHADE
      by crosire (Patrick Mours) -- https://reshade.me

@@ -61,15 +61,24 @@
   fermo ad aspettarla a ogni fotogramma.
 
   Numeri MISURATI a schermo su una Radeon RX 9070 XT a 2560x1440, nei menu
-  del gioco (contatore fps di ReShade):
+  del gioco (contatore fps di ReShade), con la v1.5 di questo pacchetto
+  (runtime di Blanco 0.3.0):
 
       EFFETTO SPENTO              ->  circa 500 fps (letti 499 e 515)
       Scale 0,76 (1946x1094)      ->   19 fps
       Scale 0,96                  ->   31 fps
       Scale 1,00 (2560x1440)      ->   20 fps
+      [DA MISURARE]  gli stessi numeri con la v1.6 (runtime 0.4.3)
 
   Non e' un errore di stampa: si passa da quasi 500 fotogrammi al secondo a
   meno di 30. In partita, con ventidue giocatori in campo, sara' anche meno.
+
+  La v1.6 usa il runtime 0.4.3, che secondo i suoi autori e' parecchio piu'
+  veloce: l'autore dell'add-on ha misurato un fotogramma di prova (960x540)
+  in 8,9 ms con la 0.4.0 contro 15,5 ms con la 0.3.0, e Blanco dice che la
+  0.4.3 guadagna un altro 20% circa sulla 0.4.2. I numeri nuovi a schermo li
+  devo ancora misurare io. Ma il concetto non cambia: con l'effetto acceso
+  resti comunque molto sotto l'effetto spento.
 
   Se giochi a PES per la fluidita', questa mod non fa per te.
   Se ti interessa vedere come cambia l'immagine, vai avanti.
@@ -81,6 +90,10 @@
 
   I file veri della mod si scaricano con il programma ufficiale del progetto,
   che li prende dalle fonti giuste e ne verifica la firma digitale:
+
+      https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases
+
+  L'add-on per ReShade ha la sua pagina:
 
       https://github.com/zmodelerlover/dlss5-neural-amd/releases
 
@@ -96,32 +109,35 @@
   facendo qui. Vieta anche qualsiasi uso commerciale, quindi niente link a
   pagamento o pubblicita' sul download.
 
-  Nella pagina, scarica il file:      AMD-NR-ReShade-Installer-v0.1.1.zip
-  (oppure la versione piu' recente che trovi in cima alla pagina)
+  Nella pagina del programma, scarica il file:   AMD-NR-ReShade-Installer.exe
+  (versione 0.6.7, oppure la piu' recente che trovi in cima alla pagina)
 
-  Estrai lo zip in una cartella qualsiasi, per esempio sul Desktop.
-  ATTENZIONE: il programma ha bisogno dei tre file .json che stanno nello
-  zip insieme a lui. Non separarli, non spostare solo il .exe.
+  E' un .exe solo, niente zip da estrarre. Avvialo, vai sulla pagina
+  "This machine" (questo computer) e premi  Download : scarica i file, una
+  volta sola.
 
-  Avvia  AMD-NR-ReShade-Installer.exe  e segui i quattro passaggi:
-      1. lingua
-      2. controllo della tua scheda video
-      3. scaricamento dei file (circa 165 MB, una volta sola)
-      4. ricerca dei giochi
-
-  DOPO IL PASSO 3, CHIUDI IL PROGRAMMA.
-  Non usare la sua installazione automatica: non conosce Football Life e
-  installerebbe nel posto sbagliato. Facciamo il passo 4 a mano, qui sotto.
+  QUANDO HA FINITO DI SCARICARE, CHIUDI IL PROGRAMMA.
+  Non usare la sua installazione nei giochi: non conosce Football Life e
+  installerebbe nel posto sbagliato. Lo facciamo a mano, al punto 5.
 
   I file scaricati si trovano in questa cartella (copiala nella barra degli
   indirizzi di una finestra di Esplora File):
 
-      %AppData%\AmdNrInstaller
+      %AppData%\AmdNrInstaller\cache\runtime\0.4.3
 
-  Cerca dentro le sottocartelle questi tre file:
-      dlss5-neural.addon64          (circa 540 KB)
-      dlssnr_amd_pass1.dll          (circa 7 MB)
+  Prendi da li' questi due file:
+      dlssnr_amd_pass1.dll          (circa 12 MB)
       dlssnr_on_amd_weights.bin     (circa 141 MB)
+
+  Il dlssnr_amd_pass1.dll che trovi li' e' gia' quello con i due piccoli
+  ritocchi che servono all'add-on. ATTENZIONE: il version.dll che mette il
+  setup di Blanco, cosi' com'e', con questo add-on NON funziona.
+
+  Il terzo file, l'add-on, lo scarichi dalla pagina di cLohan (release v0.7.1):
+      amd-nr.addon64                (circa 830 KB)
+
+  Fino alla v0.6.4 si chiamava  dlss5-neural.addon64 : e' lo stesso add-on,
+  l'autore gli ha solo cambiato nome.
 
 
 -------------------------------------------------------------------------------
@@ -158,12 +174,19 @@
 
   Si apre una finestra con la musica (c'e' il pulsante per spegnerla) e un
   registro che scorre. Scarica da solo l'add-on da GitHub, verificandone
-  l'impronta digitale. Per il runtime e i pesi apre l'installer ufficiale di
-  Daniel Blanco, perche' la sua licenza chiede di passare dal suo canale:
-  scegli la lingua, fai il controllo della scheda, scarica i file, lo chiudi,
-  e l'installatore riprende da solo. Di solito ReShade arriva gia' insieme ai
-  file di Blanco; se manca, l'installatore lo scarica dal sito ufficiale e
-  apre il suo setup (scegli Direct3D 10/11/12 e nessun effetto).
+  l'impronta digitale. Il runtime lo ricava dal setup ufficiale di Daniel
+  Blanco, scaricato dalla sua pagina GitHub: NON lo avvia, ne estrae solo la
+  DLL, ne controlla l'impronta, applica i due piccoli ritocchi che servono
+  all'add-on (documentati dall'autore dell'add-on) e ricontrolla l'impronta.
+  Tu non devi fare niente.
+  I pesi (il file da 141 MB): se li avevi gia' scaricati, l'installatore li
+  trova da solo. Solo se sul PC non ci sono apre il programma ufficiale
+  dell'add-on (AMD-NR-ReShade-Installer.exe): vai sulla pagina
+  "This machine", premi Download, e quando ha finito lo chiudi SENZA
+  installare nei giochi; l'installatore riprende da solo. Di solito ReShade
+  si trova gia' insieme ai file scaricati; se manca, l'installatore lo
+  scarica dal sito ufficiale e apre il suo setup (scegli Direct3D 10/11/12 e
+  nessun effetto).
 
   Chiede i privilegi di amministratore (servono per scrivere nella cartella
   del gioco), poi fa tutto da solo:
@@ -185,9 +208,10 @@
         niente
 
   PER TOGLIERE TUTTO:   DISINSTALLA - UNINSTALL.bat
-  Rimuove i file della mod e anche le impostazioni (dlss5-neural.ini,
-  ReShade.ini): se vuoi tenerle, copiale da parte prima. I file originali del
-  gioco non vengono toccati.
+  Rimuove i file della mod e anche le impostazioni (amd-nr.ini,
+  ReShade.ini): se vuoi tenerle, copiale da parte prima. Toglie anche i file
+  delle versioni vecchie (dlss5-neural.*) e tutti i  .precedente.bak . I file
+  originali del gioco non vengono toccati.
 
   Se l'installatore dice che non trova i file, mettili nella cartella "files"
   di questo pacchetto e rilancialo: dentro quella cartella c'e' un foglietto
@@ -212,9 +236,13 @@
   Copia dentro questa cartella, accanto all'eseguibile, questi quattro file:
 
       d3d11.dll                     <- e' ReShade, RINOMINATO
-      dlss5-neural.addon64
+      amd-nr.addon64
       dlssnr_amd_pass1.dll
       dlssnr_on_amd_weights.bin
+
+  SE NELLA CARTELLA C'E' ANCORA UN VECCHIO  dlss5-neural.addon64 , TOGLILO
+  (o rinominalo in  dlss5-neural.addon64.off ): altrimenti ReShade carica
+  due add-on insieme.
 
   ATTENZIONE AL NOME DEL FILE DI RESHADE:
 
@@ -243,7 +271,7 @@
 
   ULTIMO FILE: copia nella cartella del gioco anche il file
 
-      dlss5-neural.ini
+      amd-nr.ini
 
   che trovi in questo pacchetto. E' la configurazione gia' tarata (vedi il
   punto 8 per capire cosa contiene).
@@ -297,7 +325,7 @@
   8. LE IMPOSTAZIONI CONSIGLIATE
 -------------------------------------------------------------------------------
 
-  Il file  dlss5-neural.ini  incluso in questo pacchetto contiene gia' la
+  Il file  amd-nr.ini  incluso in questo pacchetto contiene gia' la
   taratura consigliata. La voce che conta e' una sola:
 
       Scale=0.50
@@ -307,7 +335,7 @@
   0.50 e' il valore con cui gioco io: e' il compromesso che ho trovato
   migliore. Se vuoi un filo piu' di dettaglio fine, prova 0.60.
 
-  Valori misurati su RX 9070 XT a 2560x1440:
+  Valori misurati su RX 9070 XT a 2560x1440, con la v1.5 (runtime 0.3.0):
 
       EFFETTO SPENTO                       499 fps
       Scale=1.00  (rete a 2560x1440)        20 fps
@@ -315,11 +343,25 @@
       Scale=0.76  (rete a 1946x1094)     19-31 fps
       Scale=0.60                        non misurate a schermo: costano meno
       Scale=0.50                        di tutte le altre     0.50 CONSIGLIATA
+      [DA MISURARE]  gli stessi valori con la v1.6 (runtime 0.4.3)
 
   Questi numeri vengono dal contatore di ReShade ripreso in video, nei menu
-  del gioco. In partita aspettati di meno.
+  del gioco. In partita aspettati di meno. Con il runtime nuovo dovrebbero
+  migliorare (vedi il punto 2), ma non li ho ancora rimisurati.
 
   Tutto il resto lascialo com'e'.
+
+  Dalla v1.6 il file del pacchetto contiene solo il minimo: effetto spento
+  all'avvio, tasti Ctrl+Fine, Scale=0.50, Passes=1 e lingua. Tutto il resto
+  lo decide l'add-on con i suoi valori di fabbrica, che dalla sua v0.7.0 sono
+  i piu' stabili misurati dall'autore (Temporal, Fixed seed e Output
+  smoothing accesi). Quando tocchi un controllo nel pannello, l'add-on
+  aggiunge da solo le altre voci al file.
+
+  SE HAI TENUTO UN FILE DI IMPOSTAZIONI VECCHIO e vedi qualcosa di strano:
+  i file vecchi forzavano Temporal=0 e Skin=1 (Skin=1 era un errore nei
+  valori di fabbrica dell'add-on: quello giusto e' -1, automatico). Nel
+  pannello premi "Factory Defaults", poi rimetti Scale a 0.50.
 
   NEL PANNELLO NON TOCCARE I CONTROLLI ROSSI:
   l'autore della mod li segna in rosso perche' possono FAR CRASHARE IL DRIVER
@@ -327,7 +369,7 @@
   Anche "Passes" (numero di passaggi) va lasciato a 1: metterlo a 2 raddoppia
   il costo e ti riporta sotto i 30 fps.
 
-  Se vuoi che l'effetto sia gia' acceso all'avvio, apri dlss5-neural.ini con
+  Se vuoi che l'effetto sia gia' acceso all'avvio, apri amd-nr.ini con
   il Blocco note e cambia    StartOn=0    in    StartOn=1
 
 
@@ -362,9 +404,14 @@
       stessa cartella di FL_2026.exe / PES2021.exe, non in una sottocartella.
 
   IL PANNELLO SI APRE MA NELLA SCHEDA "ADD-ONS" NON C'E' NIENTE
-      Manca dlss5-neural.addon64, oppure e' stato disattivato.
+      Manca amd-nr.addon64, oppure e' stato disattivato.
       Apri  ReShade.ini  con il Blocco note e cerca la riga DisabledAddons:
       deve essere vuota.
+
+  NELLA SCHEDA "ADD-ONS" CI SONO DUE ADD-ON
+      Nella cartella del gioco e' rimasto il vecchio  dlss5-neural.addon64 .
+      Toglilo (o rinominalo in  dlss5-neural.addon64.off ): deve restare
+      solo  amd-nr.addon64 .
 
   TUTTO SEMBRA A POSTO MA NON CAMBIA NIENTE
       Vedi il punto 7. Quasi sempre e' il pannello aperto che si mangia
@@ -373,12 +420,15 @@
   VOGLIO TOGLIERE TUTTO
       Cancella questi file dalla cartella del gioco:
           d3d11.dll
-          dlss5-neural.addon64
+          amd-nr.addon64
           dlssnr_amd_pass1.dll
           dlssnr_on_amd_weights.bin
-          dlss5-neural.ini
+          amd-nr.ini
           dlssnr_on_amd.ini
-          ReShade.ini, ReShade.log, dlss5-neural.log, dlssnr_on_amd.log
+          ReShade.ini, ReShade.log, amd-nr.log, dlssnr_on_amd.log
+      e, se ci sono ancora, i file delle versioni vecchie:
+          dlss5-neural.addon64, dlss5-neural.ini, dlss5-neural.log
+          tutti i file che finiscono in  .precedente.bak
       Nient'altro. Il gioco torna esattamente com'era: nessun file originale
       viene modificato o sovrascritto da questa procedura.
 
@@ -421,7 +471,7 @@
   provato io e installa quelle. Quindi:
 
       - se sei indietro, ti aggiorna: sostituisce i file e TIENE le tue
-        impostazioni (dlss5-neural.ini e ReShade.ini non si toccano)
+        impostazioni (amd-nr.ini e ReShade.ini non si toccano)
       - se sei gia' aggiornato, ti dice "gia' installato" e non tocca niente
       - dei file che sostituisce tiene una copia  nome-file.precedente.bak ,
         cosi' se la versione nuova non ti piace torni indietro in dieci secondi
@@ -433,12 +483,33 @@
   SE SEI SENZA INTERNET l'installatore usa l'ultimo elenco che aveva salvato,
   oppure le versioni scritte dentro di lui: funziona comunque.
 
+  DALLA v1.5 ALLA v1.6: QUESTA VOLTA SERVE IL PACCHETTO NUOVO.
+  Di solito basta rilanciare l'installatore che hai gia'. Questa volta no:
+  l'add-on ha cambiato nome e il runtime va preparato in un modo nuovo, quindi
+  ho dovuto cambiare l'installatore stesso. Quello della v1.5 continua a
+  installare la vecchia combinazione (che funziona) e ti avvisa con un
+  messaggio di scaricare il pacchetto nuovo.
+  Scarica la v1.6 e lancia il SUO  INSTALLA - INSTALL.bat . Riconosce
+  l'installazione della v1.5 e:
+      - tiene le tue impostazioni: al primo avvio l'add-on copia da solo
+        dlss5-neural.ini in amd-nr.ini (e lascia li' il file vecchio; se poi
+        vedi qualcosa di strano, vedi il punto 8)
+      - mette da parte il vecchio add-on come
+        dlss5-neural.addon64.precedente.bak
+      - mette da parte il vecchio runtime come
+        dlssnr_amd_pass1.dll.precedente.bak
+  Per tornare alla v1.5: rinomina quei due file togliendo il  .precedente.bak
+  e cancella  amd-nr.addon64 .
+  Da qui in poi l'aggiornamento automatico dall'elenco in rete torna a
+  funzionare come prima.
+
   SE VUOI FARLO A MANO (non serve, ma e' utile saperlo):
   i tre file della mod sono indipendenti da tutto il resto. Scarichi le versioni
-  nuove con il programma ufficiale di Blanco (passo 3), poi in
-  %AppData%\AmdNrInstaller prendi  dlssnr_amd_pass1.dll  e
-  dlssnr_on_amd_weights.bin  e li copi sopra quelli nella cartella del gioco;
-  l'add-on  dlss5-neural.addon64  lo prendi dalla pagina GitHub di cLohan.
+  nuove con il programma ufficiale dell'add-on (passo 3), poi in
+  %AppData%\AmdNrInstaller\cache\runtime\<versione>  prendi
+  dlssnr_amd_pass1.dll  e  dlssnr_on_amd_weights.bin  e li copi sopra quelli
+  nella cartella del gioco; l'add-on  amd-nr.addon64  lo prendi dalla pagina
+  GitHub di cLohan.
   Runtime e add-on devono andare d'accordo tra loro: se dopo l'aggiornamento
   l'effetto non si accende piu', o aggiorni anche l'altro pezzo o torni
   indietro con i  .precedente.bak .
@@ -469,5 +540,6 @@
   NOTA IMPORTANTE SUI FILE NON INCLUSI:
   i file della rete neurale (dlssnr_amd_pass1.dll e dlssnr_on_amd_weights.bin)
   NON sono in questo pacchetto e non lo saranno mai: contengono dati derivati
-  da NVIDIA e gli autori originali hanno scelto di non distribuirli. Vanno
-  scaricati dal programma ufficiale, come spiegato al punto 3.
+  da NVIDIA e gli autori originali hanno scelto di non distribuirli. Il
+  runtime lo ricava l'installatore sul tuo PC dal setup ufficiale di Blanco;
+  i pesi arrivano dal programma ufficiale, come spiegato al punto 3.

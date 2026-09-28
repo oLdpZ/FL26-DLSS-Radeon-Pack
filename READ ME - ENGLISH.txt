@@ -59,15 +59,23 @@
   every single frame.
 
   MEASURED on screen on a Radeon RX 9070 XT at 2560x1440, in the game menus
-  (ReShade's own fps counter):
+  (ReShade's own fps counter), with v1.5 of this pack (Blanco's runtime
+  0.3.0):
 
       EFFECT OFF                  ->  about 500 fps (499 and 515 read)
       Scale 0.76 (1946x1094)      ->   19 fps
       Scale 0.96                  ->   31 fps
       Scale 1.00 (2560x1440)      ->   20 fps
+      [TO BE MEASURED]  the same numbers with v1.6 (runtime 0.4.3)
 
   That is not a typo: from almost 500 frames per second down to under 30.
   In an actual match, with twenty-two players on the pitch, expect less.
+
+  v1.6 uses runtime 0.4.3, which its authors say is a lot faster: the
+  add-on's author measured a test frame (960x540) at 8.9 ms on 0.4.0 against
+  15.5 ms on 0.3.0, and Blanco says 0.4.3 gains another ~20% over 0.4.2.
+  I still have to measure the new on-screen numbers myself. But the idea does
+  not change: with the effect on you stay well below the effect-off figure.
 
   If you play PES for smoothness, this mod is not for you.
   If you want to see how the image changes, read on.
@@ -79,6 +87,10 @@
 
   The actual mod files are downloaded by the project's official tool, which
   fetches them from the right sources and verifies their checksums:
+
+      https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases
+
+  The ReShade add-on has its own page:
 
       https://github.com/zmodelerlover/dlss5-neural-amd/releases
 
@@ -94,32 +106,34 @@
   It also forbids any commercial use, so no paid links and no ad-gated
   downloads.
 
-  On that page, download:      AMD-NR-ReShade-Installer-v0.1.1.zip
-  (or the newest version at the top of the page)
+  On the tool's page, download:      AMD-NR-ReShade-Installer.exe
+  (version 0.6.7, or the newest one at the top of the page)
 
-  Extract the zip anywhere, for example on your Desktop.
-  IMPORTANT: the tool needs the three .json files that sit next to it inside
-  the zip. Do not separate them, do not move just the .exe.
+  It is a single .exe, no zip to extract. Run it, go to the "This machine"
+  page and press  Download : it downloads the files, once only.
 
-  Run  AMD-NR-ReShade-Installer.exe  and follow the four steps:
-      1. language
-      2. a check of your graphics card
-      3. downloading the files (about 165 MB, once only)
-      4. finding your games
-
-  AFTER STEP 3, CLOSE THE TOOL.
-  Do not use its automatic install: it does not know Football Life and would
-  install into the wrong folder. We do step 4 by hand, below.
+  ONCE IT HAS FINISHED DOWNLOADING, CLOSE THE TOOL.
+  Do not use its install-into-games: it does not know Football Life and would
+  install into the wrong folder. We do that by hand, in section 5.
 
   The downloaded files live in this folder (paste it into the address bar of
   a File Explorer window):
 
-      %AppData%\AmdNrInstaller
+      %AppData%\AmdNrInstaller\cache\runtime\0.4.3
 
-  Look inside the subfolders for these three files:
-      dlss5-neural.addon64          (about 540 KB)
-      dlssnr_amd_pass1.dll          (about 7 MB)
+  Take these two files from there:
+      dlssnr_amd_pass1.dll          (about 12 MB)
       dlssnr_on_amd_weights.bin     (about 141 MB)
+
+  The dlssnr_amd_pass1.dll you find there already has the two small patches
+  the add-on needs. IMPORTANT: the version.dll that Blanco's setup drops, as
+  it is, does NOT work with this add-on.
+
+  The third file, the add-on, comes from cLohan's page (release v0.7.1):
+      amd-nr.addon64                (about 830 KB)
+
+  Up to v0.6.4 it was called  dlss5-neural.addon64 : it is the same add-on,
+  the author just renamed it.
 
 
 -------------------------------------------------------------------------------
@@ -156,12 +170,19 @@
 
   A window opens, with music (there is a button to switch it off) and a log
   that scrolls. It downloads the add-on from GitHub by itself, verifying its
-  fingerprint. For the runtime and the weights it opens Daniel Blanco's
-  official installer, because his licence asks you to go through his own
-  channel: pick a language, run the machine check, download the files, close
-  it, and our installer carries on by itself. ReShade usually comes along
-  with Blanco's files; if it is missing, the installer downloads it from the
-  official site and opens its setup (pick Direct3D 10/11/12 and no effects).
+  fingerprint. The runtime is derived from Daniel Blanco's official setup,
+  downloaded from his GitHub page: it does NOT run it, it only extracts the
+  DLL, checks its fingerprint, applies the two small patches the add-on needs
+  (documented by the add-on's author) and checks the fingerprint again.
+  You do not have to do anything.
+  The weights (the 141 MB file): if you downloaded them before, the installer
+  finds them by itself. Only if they are not on your PC does it open the
+  add-on's official tool (AMD-NR-ReShade-Installer.exe): go to the
+  "This machine" page, press Download, and when it has finished close it
+  WITHOUT installing into any game; our installer carries on by itself.
+  ReShade is usually already there with the downloaded files; if it is
+  missing, the installer downloads it from the official site and opens its
+  setup (pick Direct3D 10/11/12 and no effects).
 
   It asks for administrator rights (needed to write into the game folder),
   then does everything by itself:
@@ -185,9 +206,10 @@
         and touches NOTHING
 
   TO REMOVE EVERYTHING:   DISINSTALLA - UNINSTALL.bat
-  It removes the mod files and your settings too (dlss5-neural.ini,
-  ReShade.ini): if you want to keep them, copy them somewhere first. The
-  game's original files are never touched.
+  It removes the mod files and your settings too (amd-nr.ini,
+  ReShade.ini): if you want to keep them, copy them somewhere first. It also
+  removes the files of older versions (dlss5-neural.*) and every
+  .precedente.bak . The game's original files are never touched.
 
   If the installer says it cannot find the files, put them in this pack's
   "files" folder and run it again: there is a note inside that folder
@@ -212,9 +234,13 @@
   Copy these four files into that folder, next to the executable:
 
       d3d11.dll                     <- this is ReShade, RENAMED
-      dlss5-neural.addon64
+      amd-nr.addon64
       dlssnr_amd_pass1.dll
       dlssnr_on_amd_weights.bin
+
+  IF AN OLD  dlss5-neural.addon64  IS STILL IN THE FOLDER, REMOVE IT
+  (or rename it to  dlss5-neural.addon64.off ): otherwise ReShade loads two
+  add-ons at once.
 
   MIND THE RESHADE FILE NAME:
 
@@ -243,7 +269,7 @@
 
   ONE MORE FILE: also copy into the game folder the file
 
-      dlss5-neural.ini
+      amd-nr.ini
 
   included in this pack. It is the pre-tuned configuration (see section 8).
 
@@ -296,7 +322,7 @@
   8. RECOMMENDED SETTINGS
 -------------------------------------------------------------------------------
 
-  The  dlss5-neural.ini  file in this pack is already tuned. Only one setting
+  The  amd-nr.ini  file in this pack is already tuned. Only one setting
   really matters:
 
       Scale=0.50
@@ -305,7 +331,7 @@
   Lower is faster, and fine detail is lost. 0.50 is what I play with: the best
   compromise I found. For a touch more fine detail, try 0.60.
 
-  Measured on an RX 9070 XT at 2560x1440:
+  Measured on an RX 9070 XT at 2560x1440, with v1.5 (runtime 0.3.0):
 
       EFFECT OFF                           499 fps
       Scale=1.00  (network at 2560x1440)    20 fps
@@ -313,11 +339,25 @@
       Scale=0.76  (network at 1946x1094) 19-31 fps
       Scale=0.60                         not measured on screen: both cost
       Scale=0.50                         less than the rest  0.50 RECOMMENDED
+      [TO BE MEASURED]  the same values with v1.6 (runtime 0.4.3)
 
   These numbers come from ReShade's own counter, captured on video, in the
-  game menus. In an actual match, expect less.
+  game menus. In an actual match, expect less. With the new runtime they
+  should improve (see section 2), but I have not re-measured them yet.
 
   Leave everything else alone.
+
+  From v1.6 the file in the pack holds only the bare minimum: effect off at
+  startup, Ctrl+End hotkey, Scale=0.50, Passes=1 and language. Everything
+  else is left to the add-on's own factory defaults, which since its v0.7.0
+  are the steadiest set its author measured (Temporal, Fixed seed and Output
+  smoothing on). When you touch a control in the panel, the add-on adds the
+  remaining settings to the file by itself.
+
+  IF YOU KEPT AN OLD SETTINGS FILE and something looks odd:
+  old files forced Temporal=0 and Skin=1 (Skin=1 was a mistake in the
+  add-on's factory defaults: the right value is -1, automatic). In the panel
+  press "Factory Defaults", then set Scale back to 0.50.
 
   DO NOT TOUCH THE RED CONTROLS IN THE PANEL:
   the mod's author marks them red because they CAN CRASH THE DISPLAY DRIVER.
@@ -325,7 +365,7 @@
   Also leave "Passes" at 1: setting it to 2 doubles the cost and puts you
   back below 30 fps.
 
-  If you want the effect already on at startup, open dlss5-neural.ini in
+  If you want the effect already on at startup, open amd-nr.ini in
   Notepad and change    StartOn=0    to    StartOn=1
 
 
@@ -360,9 +400,14 @@
       FL_2026.exe / PES2021.exe, not in a subfolder.
 
   THE PANEL OPENS BUT THE "ADD-ONS" TAB IS EMPTY
-      dlss5-neural.addon64 is missing, or it was disabled.
+      amd-nr.addon64 is missing, or it was disabled.
       Open  ReShade.ini  in Notepad and find the DisabledAddons line:
       it must be empty.
+
+  THE "ADD-ONS" TAB SHOWS TWO ADD-ONS
+      The old  dlss5-neural.addon64  is still in the game folder.
+      Remove it (or rename it to  dlss5-neural.addon64.off ): only
+      amd-nr.addon64  must remain.
 
   EVERYTHING LOOKS FINE BUT NOTHING CHANGES
       See section 7. Almost always it is the open panel swallowing Ctrl+End.
@@ -370,12 +415,15 @@
   I WANT TO REMOVE EVERYTHING
       Delete these files from the game folder:
           d3d11.dll
-          dlss5-neural.addon64
+          amd-nr.addon64
           dlssnr_amd_pass1.dll
           dlssnr_on_amd_weights.bin
-          dlss5-neural.ini
+          amd-nr.ini
           dlssnr_on_amd.ini
-          ReShade.ini, ReShade.log, dlss5-neural.log, dlssnr_on_amd.log
+          ReShade.ini, ReShade.log, amd-nr.log, dlssnr_on_amd.log
+      and, if they are still there, the files of older versions:
+          dlss5-neural.addon64, dlss5-neural.ini, dlss5-neural.log
+          every file ending in  .precedente.bak
       Nothing else. The game goes back exactly as it was: this procedure
       never modifies or overwrites any original game file.
 
@@ -416,7 +464,7 @@
   tested and installs those. So:
 
       - if you are behind, it updates you: it replaces the files and KEEPS
-        your settings (dlss5-neural.ini and ReShade.ini are never touched)
+        your settings (amd-nr.ini and ReShade.ini are never touched)
       - if you are already up to date, it says "already installed" and touches
         nothing
       - each replaced file is kept as  filename.precedente.bak , so if you do
@@ -429,11 +477,31 @@
   WITH NO INTERNET the installer uses the last list it saved, or the versions
   written inside it: it works either way.
 
+  FROM v1.5 TO v1.6: THIS TIME YOU NEED THE NEW PACK.
+  Normally re-running the installer you already have is enough. Not this
+  time: the add-on was renamed and the runtime has to be prepared in a new
+  way, so I had to change the installer itself. The v1.5 installer keeps
+  installing the old combination (which works) and shows a message telling
+  you to download the new pack.
+  Download v1.6 and run ITS OWN  INSTALLA - INSTALL.bat . It recognises the
+  v1.5 install and:
+      - keeps your settings: on first start the add-on copies
+        dlss5-neural.ini to amd-nr.ini by itself (and leaves the old file
+        there; if something then looks odd, see section 8)
+      - sets the old add-on aside as
+        dlss5-neural.addon64.precedente.bak
+      - sets the old runtime aside as
+        dlssnr_amd_pass1.dll.precedente.bak
+  To go back to v1.5: rename those two files dropping the  .precedente.bak
+  and delete  amd-nr.addon64 .
+  From then on, the automatic update from the online list works as before.
+
   IF YOU WOULD RATHER DO IT BY HAND (not needed, but worth knowing):
   the three mod files are self-contained. Download the new versions with
-  Blanco's official tool (section 3), then from %AppData%\AmdNrInstaller copy
+  the add-on's official tool (section 3), then from
+  %AppData%\AmdNrInstaller\cache\runtime\<version>  copy
   dlssnr_amd_pass1.dll  and  dlssnr_on_amd_weights.bin  over the ones in the
-  game folder; get the add-on  dlss5-neural.addon64  from cLohan's GitHub
+  game folder; get the add-on  amd-nr.addon64  from cLohan's GitHub
   releases page. Runtime and add-on have to match each other: if the effect
   stops switching on after an update, either update the other piece too or roll
   back with the  .precedente.bak  files.
@@ -464,5 +532,6 @@
   IMPORTANT NOTE ABOUT THE FILES THAT ARE NOT INCLUDED:
   the neural network files (dlssnr_amd_pass1.dll and dlssnr_on_amd_weights.bin)
   are NOT in this pack and never will be: they contain NVIDIA-derived data and
-  the original authors chose not to distribute them. Download them with the
-  official tool, as explained in section 3.
+  the original authors chose not to distribute them. The runtime is derived
+  on your PC by the installer from Blanco's official setup; the weights come
+  from the official tool, as explained in section 3.

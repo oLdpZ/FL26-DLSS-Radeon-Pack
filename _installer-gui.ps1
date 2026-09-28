@@ -5,15 +5,22 @@
   Installer grafico  /  Graphical installer
 --------------------------------------------------------------------------------
   COSA SCARICA DA SOLO / DOWNLOADS BY ITSELF
-    - dlss5-neural.addon64   dalla release ufficiale GitHub (licenza MIT)
+    - amd-nr.addon64         dalla release ufficiale GitHub (licenza MIT)
     - ReShade 6.8.0 Addon    dal sito ufficiale reshade.me (licenza BSD)
+    - dlssnr_on_amd_setup.exe, l'installer ufficiale di Daniel Blanco, dalla
+      sua pagina GitHub. Non lo esegue: ne estrae il runtime e gli applica le
+      due modifiche che l'add-on richiede (le stesse, byte per byte, dello
+      strumento patch_runtime.py dell'add-on). Impronta controllata prima e dopo.
+      Blanco's official setup, from his GitHub page. It is not run: the runtime
+      is lifted out of it and given the two changes the add-on needs (the same,
+      byte for byte, as the add-on's patch_runtime.py). Hash checked before/after.
 
   COSA NON SCARICA / WHAT IT DOES NOT DOWNLOAD
-    - dlssnr_amd_pass1.dll e dlssnr_on_amd_weights.bin: sono di Daniel Blanco e
-      la sua licenza vieta di includerli in altri installer. Questo programma
-      lancia il SUO installer ufficiale, che li scarica dal suo canale.
-      -> Se l'autore ti autorizza, metti $AutorizzatoDallAutore = $true qui sotto
-         e scrivi il download diretto nella funzione Scarica-RuntimeDiretto.
+    - dlssnr_on_amd_weights.bin: la sua licenza vieta di includerli in altri
+      installer. Se non li hai gia', si apre l'installer ufficiale dell'add-on
+      (AMD-NR ReShade Installer), che li scarica dal suo canale.
+      If you do not have them yet, the add-on's official installer opens and
+      downloads them through its own channel.
 ================================================================================
 #>
 
@@ -25,27 +32,42 @@ param([switch]$Test, [switch]$Disinstalla, [string]$CartellaProva,
 $ErrorActionPreference = 'Stop'
 $PACK = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# ---- INTERRUTTORE PERMESSO / PERMISSION SWITCH -------------------------------
-$AutorizzatoDallAutore = $false
-# ------------------------------------------------------------------------------
-
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 # =============================================================== COSTANTI =====
 $HASH = @{
-    'dlss5-neural.addon64'      = '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6'
-    'dlssnr_amd_pass1.dll'      = '70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6'
+    'amd-nr.addon64'            = '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d'
+    'dlssnr_amd_pass1.dll'      = 'f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
     'ReShade64.dll'             = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'
 }
 $URL = @{
-    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.5.2/dlss5-neural.addon64'
+    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.1/amd-nr.addon64'
     reshadeSetup = 'https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe'
-    amdnrZip     = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.5.2/AMD-NR-ReShade-Installer-v0.1.1.zip'
+    blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.4.3/dlssnr_on_amd_setup.exe'
+    amdnr        = 'https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe'
     paginaBlanco = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases'
 }
+# Come si ricava dlssnr_amd_pass1.dll dal setup di Blanco: la DLL estratta deve
+# avere l'impronta "originale", poi si cambiano quei byte e il risultato deve
+# avere l'impronta di $HASH. Valori da tools/runtime-patches.json dell'add-on.
+# How dlssnr_amd_pass1.dll is made from Blanco's setup: the extracted DLL must
+# match "originale", then those bytes change and the result must match $HASH.
+# Values from the add-on's tools/runtime-patches.json.
+$RUNTIME = @{
+    originale = 'd1e320862a8763ac39e7ce194536d4b6c55ba61bae9e8a92753cec32df67a457'
+    patch     = @(
+        @{ offset = 0x655d; prima = 'ff1555b70900'; dopo = '31c090909090' },
+        @{ offset = 0x9622; prima = 'ff1528790a00'; dopo = '909090909090' }
+    )
+}
+# Fino alla v1.5 del pacchetto l'add-on si chiamava dlss5-neural.addon64. Se c'e'
+# ancora va tolto: ReShade caricherebbe entrambi gli add-on.
+# Up to pack v1.5 the add-on was called dlss5-neural.addon64. If it is still
+# there it must go: ReShade would load both add-ons.
+$ADDON_VECCHIO = 'dlss5-neural.addon64'
 $PREFS = Join-Path $env:APPDATA 'FL26-DLSS-Installer\prefs.txt'
 $LAVORO = Join-Path $env:TEMP 'FL26-DLSS-Installer'
 
@@ -58,8 +80,12 @@ $LAVORO = Join-Path $env:TEMP 'FL26-DLSS-Installer'
 # read the tested-version list from the official gist: if it can, it uses those.
 # If it cannot, it falls back to the last saved copy, then to the factory
 # values. It never stops because of this.
-$URL.manifesto = 'https://gist.githubusercontent.com/oLdpZ/b99deca59ef76cc5fb7895b786fe36dc/raw/versioni.json'
-$CACHE_MANIFESTO = Join-Path $env:APPDATA 'FL26-DLSS-Installer\versioni.json'
+# versioni-v2.json e non versioni.json: quello resta per gli installer fino alla
+# v1.5, che non sanno costruire il runtime 0.4.x e devono restare sul vecchio.
+# versioni-v2.json, not versioni.json: that one stays for installers up to v1.5,
+# which cannot build the 0.4.x runtime and must stay on the old one.
+$URL.manifesto = 'https://gist.githubusercontent.com/oLdpZ/b99deca59ef76cc5fb7895b786fe36dc/raw/versioni-v2.json'
+$CACHE_MANIFESTO = Join-Path $env:APPDATA 'FL26-DLSS-Installer\versioni-v2.json'
 if ($Test -and $ElencoDiProva) { $URL.manifesto = $ElencoDiProva; $CACHE_MANIFESTO = Join-Path $env:TEMP 'FL26-DLSS-Installer\versioni-prova.json' }
 # domini da cui accettiamo download / domains we accept downloads from
 $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
@@ -67,13 +93,17 @@ $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 # versioni piu' vecchie ancora accettate (riempite dall'elenco online)
 # older versions still accepted (filled in from the online list)
 $ACCETTATI = @{
-    'dlss5-neural.addon64'      = @()
-    'dlssnr_amd_pass1.dll'      = @()
+    'amd-nr.addon64'            = @()
+    # v0.6.0 e v0.5.2 col vecchio nome / v0.6.0 and v0.5.2 under the old name
+    'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
+                                    '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6')
+    # runtime 0.3.0 installato dalla v1.5 / runtime 0.3.0 installed by v1.5
+    'dlssnr_amd_pass1.dll'      = @('70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
     'dlssnr_on_amd_weights.bin' = @()
     'ReShade64.dll'             = @()
 }
 $script:VERS = @{
-    addon = 'v0.5.2'; runtime = '0.3.0'; reshade = '6.8.0'
+    addon = 'v0.7.1'; runtime = '0.4.3'; reshade = '6.8.0'
     aggiornato = ''; avviso_it = ''; avviso_en = ''; fonte = 'script'
 }
 
@@ -276,9 +306,11 @@ function Mostra-Benvenuto {
     Scrivi (T '  Pronto. Premi INSTALLA.' '  Ready. Press INSTALL.') $GRIGIO
     Scrivi (T '  Scarica da solo: ReShade (reshade.me) e l''add-on (GitHub).' `
               '  Downloads by itself: ReShade (reshade.me) and the add-on (GitHub).') $GRIGIO
-    Scrivi (T '  Per runtime e pesi apre l''installer ufficiale di Daniel Blanco,' `
-              '  For runtime and weights it opens Daniel Blanco''s official installer,') $GRIGIO
-    Scrivi (T '  come chiede la sua licenza.' '  as his licence requires.') $GRIGIO
+    Scrivi (T '  Il runtime lo ricava dall''installer ufficiale di Daniel Blanco (GitHub).' `
+              '  The runtime is taken from Daniel Blanco''s official setup (GitHub).') $GRIGIO
+    Scrivi (T '  Per i pesi, se non li hai gia'', apre l''installer ufficiale dell''add-on,' `
+              '  For the weights, if you do not have them yet, it opens the add-on''s') $GRIGIO
+    Scrivi (T '  come chiede la licenza.' '  official installer, as the licence requires.') $GRIGIO
 }
 
 function Hash-Ok($percorso, $atteso) {
@@ -336,19 +368,35 @@ function Applica-Manifesto($m) {
     if (-not (Hash-Valido $m.runtime.pesi_sha256))  { return $false }
     if (-not (Url-Sicuro $m.addon.url))             { return $false }
     if (-not (Url-Sicuro $m.reshade.url))           { return $false }
-    if ($m.amdnr_zip -and $m.amdnr_zip.url -and -not (Url-Sicuro $m.amdnr_zip.url)) { return $false }
+    if (-not (Url-Sicuro $m.runtime.setup_url))     { return $false }
+    if (-not (Hash-Valido $m.runtime.originale_sha256)) { return $false }
+    if ($m.amdnr -and $m.amdnr.url -and -not (Url-Sicuro $m.amdnr.url)) { return $false }
+    # le modifiche al runtime: poche, corte, stessa lunghezza prima e dopo
+    # the runtime changes: few, short, same length before and after
+    $patch = @()
+    foreach ($p in @($m.runtime.patch)) {
+        if (-not $p -or "$($p.offset)" -notmatch '^0x[0-9a-fA-F]{1,8}$') { return $false }
+        if ("$($p.prima)" -notmatch '^([0-9a-f]{2}){1,16}$' -or "$($p.dopo)".Length -ne "$($p.prima)".Length -or
+            "$($p.dopo)" -notmatch '^([0-9a-f]{2}){1,16}$') { return $false }
+        $patch += @{ offset = [Convert]::ToInt32($p.offset.Substring(2), 16); prima = $p.prima; dopo = $p.dopo }
+    }
+    if ($patch.Count -eq 0 -or $patch.Count -gt 8) { return $false }
 
-    $HASH['dlss5-neural.addon64']      = $m.addon.sha256
+    $HASH['amd-nr.addon64']            = $m.addon.sha256
     $HASH['ReShade64.dll']             = $m.reshade.sha256
     $HASH['dlssnr_amd_pass1.dll']      = $m.runtime.pass1_sha256
     $HASH['dlssnr_on_amd_weights.bin'] = $m.runtime.pesi_sha256
+    $RUNTIME.originale = $m.runtime.originale_sha256
+    $RUNTIME.patch     = $patch
     $URL.addon        = $m.addon.url
     $URL.reshadeSetup = $m.reshade.url
-    if ($m.amdnr_zip -and $m.amdnr_zip.url) { $URL.amdnrZip = $m.amdnr_zip.url }
+    $URL.blancoSetup  = $m.runtime.setup_url
+    if ($m.amdnr -and $m.amdnr.url) { $URL.amdnr = $m.amdnr.url }
     if ($m.runtime.pagina -and (Url-Sicuro $m.runtime.pagina)) { $URL.paginaBlanco = $m.runtime.pagina }
 
     foreach ($c in @(
-        ,@('dlss5-neural.addon64',      $m.addon.accettati_anche)
+        ,@('amd-nr.addon64',            $m.addon.accettati_anche)
+        ,@('dlss5-neural.addon64',      $m.addon.vecchio_nome_accettati)
         ,@('ReShade64.dll',             $m.reshade.accettati_anche)
         ,@('dlssnr_amd_pass1.dll',      $m.runtime.pass1_accettati_anche)
         ,@('dlssnr_on_amd_weights.bin', $m.runtime.pesi_accettati_anche))) {
@@ -566,11 +614,11 @@ function Controlli {
 }
 
 function Prendi-Addon {
-    $p = Cerca-Ovunque 'dlss5-neural.addon64' $HASH['dlss5-neural.addon64']
-    if ($p) { Buono 'dlss5-neural.addon64'; return $p }
-    $dest = Join-Path $LAVORO 'dlss5-neural.addon64'
-    if (-not (Scarica $URL.addon $dest 'dlss5-neural.addon64')) { return $null }
-    if (Hash-Ok $dest $HASH['dlss5-neural.addon64']) { Buono (T 'impronta verificata' 'fingerprint verified'); return $dest }
+    $p = Cerca-Ovunque 'amd-nr.addon64' $HASH['amd-nr.addon64']
+    if ($p) { Buono 'amd-nr.addon64'; return $p }
+    $dest = Join-Path $LAVORO 'amd-nr.addon64'
+    if (-not (Scarica $URL.addon $dest 'amd-nr.addon64')) { return $null }
+    if (Hash-Ok $dest $HASH['amd-nr.addon64']) { Buono (T 'impronta verificata' 'fingerprint verified'); return $dest }
     Guaio (T 'Impronta sbagliata: file scartato.' 'Wrong fingerprint: file discarded.')
     return $null
 }
@@ -602,48 +650,130 @@ function Prendi-ReShade($gioco) {
     return $null
 }
 
+function Sha256-Byte([byte[]]$b) {
+    $h = [Security.Cryptography.SHA256]::Create()
+    try { return (-join ($h.ComputeHash($b) | ForEach-Object { $_.ToString('x2') })) } finally { $h.Dispose() }
+}
+
+function Estrai-Dll([byte[]]$d) {
+    # Il setup di Blanco contiene il runtime cosi' com'e', senza compressione.
+    # Stessa regola di tools/extract_runtime.py dell'add-on: si cercano tutti gli
+    # "MZ" che portano a un'intestazione PE di una DLL che finisce dentro il file;
+    # ce ne deve essere esattamente una, e finisce dove finisce la sua ultima
+    # sezione. Se sono zero o due, il setup e' cambiato: meglio fermarsi.
+    # Blanco's setup holds the runtime as is, uncompressed. Same rule as the
+    # add-on's tools/extract_runtime.py: every "MZ" leading to a PE header of a
+    # DLL that ends inside the file; there must be exactly one, and it ends where
+    # its last section ends. Zero or two means the setup changed: stop.
+    $trovate = @()
+    $i = [Array]::IndexOf($d, [byte]0x4D, 1)
+    while ($i -ge 0 -and $i -lt $d.Length - 0x40) {
+        if ($d[$i + 1] -eq 0x5A) {
+            $e = $i + [BitConverter]::ToInt32($d, $i + 0x3C)
+            if ($e -gt $i -and $e + 24 -le $d.Length -and
+                $d[$e] -eq 0x50 -and $d[$e + 1] -eq 0x45 -and $d[$e + 2] -eq 0 -and $d[$e + 3] -eq 0) {
+                $n     = [BitConverter]::ToUInt16($d, $e + 6)
+                $opt   = [BitConverter]::ToUInt16($d, $e + 20)
+                $flags = [BitConverter]::ToUInt16($d, $e + 22)
+                $tab   = $e + 24 + $opt
+                if ($n -gt 0 -and $tab + $n * 40 -le $d.Length -and ($flags -band 0x2000)) {
+                    $fine = [long]0
+                    for ($s = 0; $s -lt $n; $s++) {
+                        $r = $tab + $s * 40
+                        $f = [long]$i + [BitConverter]::ToUInt32($d, $r + 20) + [BitConverter]::ToUInt32($d, $r + 16)
+                        if ($f -gt $fine) { $fine = $f }
+                    }
+                    if ($fine -le $d.Length) { $trovate += ,@($i, [int]$fine) }
+                }
+            }
+        }
+        $i = [Array]::IndexOf($d, [byte]0x4D, $i + 1)
+    }
+    if ($trovate.Count -ne 1) { return $null }
+    $out = New-Object byte[] ($trovate[0][1] - $trovate[0][0])
+    [Array]::Copy($d, $trovate[0][0], $out, 0, $out.Length)
+    return ,$out
+}
+
+function Costruisci-Runtime {
+    # dlssnr_amd_pass1.dll = la DLL dentro il setup ufficiale di Blanco + le due
+    # modifiche che l'add-on richiede. Niente viene eseguito.
+    # dlssnr_amd_pass1.dll = the DLL inside Blanco's official setup + the two
+    # changes the add-on needs. Nothing is run.
+    Passo (T "Preparo il runtime $($script:VERS.runtime) dall'installer ufficiale di Daniel Blanco" `
+              "Preparing runtime $($script:VERS.runtime) from Daniel Blanco's official setup")
+    $setup = Join-Path $LAVORO "dlssnr_on_amd_setup-$($script:VERS.runtime).exe"
+    if (-not (Test-Path -LiteralPath $setup)) {
+        if (-not (Scarica $URL.blancoSetup $setup (T 'installer di Daniel Blanco (GitHub)' 'Daniel Blanco''s setup (GitHub)'))) { return $null }
+    }
+    $dll = Estrai-Dll ([IO.File]::ReadAllBytes($setup))
+    if (-not $dll) {
+        Guaio (T 'Non trovo il runtime dentro il setup: e'' cambiato il formato.' 'Cannot find the runtime inside the setup: its layout changed.')
+        Remove-Item -LiteralPath $setup -Force -ErrorAction SilentlyContinue
+        return $null
+    }
+    if ((Sha256-Byte $dll) -ne $RUNTIME.originale) {
+        Guaio (T 'Il runtime nel setup non e'' la versione attesa: mi fermo.' 'The runtime in the setup is not the expected version: stopping.')
+        Remove-Item -LiteralPath $setup -Force -ErrorAction SilentlyContinue
+        return $null
+    }
+    Buono (T 'runtime originale estratto e verificato' 'original runtime extracted and verified')
+    foreach ($p in $RUNTIME.patch) {
+        $lung = $p.prima.Length / 2
+        $ora = -join ($dll[$p.offset..($p.offset + $lung - 1)] | ForEach-Object { $_.ToString('x2') })
+        if ($ora -ne $p.prima) { Guaio (T 'Byte inattesi nel runtime: mi fermo.' 'Unexpected bytes in the runtime: stopping.'); return $null }
+        for ($k = 0; $k -lt $lung; $k++) { $dll[$p.offset + $k] = [Convert]::ToByte($p.dopo.Substring($k * 2, 2), 16) }
+    }
+    if ((Sha256-Byte $dll) -ne $HASH['dlssnr_amd_pass1.dll']) {
+        Guaio (T 'Il runtime modificato non ha l''impronta attesa: scartato.' 'The patched runtime does not have the expected fingerprint: discarded.')
+        return $null
+    }
+    $dest = Join-Path $LAVORO 'dlssnr_amd_pass1.dll'
+    [IO.File]::WriteAllBytes($dest, $dll)
+    Buono (T 'runtime pronto per l''add-on, impronta verificata' 'runtime ready for the add-on, fingerprint verified')
+    return $dest
+}
+
+function Prendi-Pesi {
+    # I pesi non sono cambiati dalla 0.3.0: chi ha gia' installato una volta li ha.
+    # Altrimenti si apre l'installer ufficiale dell'add-on e li scarica lui.
+    # The weights have not changed since 0.3.0: anyone who installed once has them.
+    # Otherwise the add-on's official installer opens and downloads them.
+    $n = 'dlssnr_on_amd_weights.bin'
+    $p = Cerca-Ovunque $n $HASH[$n]
+    if ($p) { Buono $n; return $p }
+
+    Passo (T 'Servono i pesi della rete: uso l''installer ufficiale dell''add-on' `
+              'The network weights are needed: using the add-on''s official installer')
+    Avviso (T 'La licenza chiede di passare dal canale ufficiale: e'' quello che facciamo.' `
+              'The licence asks to go through the official channel: that is what we do.')
+    $exe = Join-Path $LAVORO 'AMD-NR-ReShade-Installer.exe'
+    if (-not (Test-Path -LiteralPath $exe)) {
+        if (-not (Scarica $URL.amdnr $exe (T 'AMD-NR ReShade Installer (ufficiale)' 'AMD-NR ReShade Installer (official)'))) { return $null }
+    }
+    [Windows.Forms.MessageBox]::Show(
+        (T "Ora si apre l'installer ufficiale dell'add-on (AMD-NR).`n`n1. Fagli scaricare runtime e pesi (circa 160 MB): pagina 'This machine', pulsante Download`n2. NON installare niente nei giochi`n3. CHIUDILO: al resto pensiamo noi" `
+           "The add-on's official installer (AMD-NR) will open now.`n`n1. Let it download the runtime and weights (about 160 MB): 'This machine' page, Download button`n2. Do NOT install anything into your games`n3. CLOSE IT: we do the rest"),
+        'AMD-NR', 'OK', 'Information') | Out-Null
+    Start-Process -FilePath $exe -Wait
+
+    $p = Cerca-Ovunque $n $HASH[$n]
+    if ($p) { Buono $n; return $p }
+    Guaio (T "$n non trovato." "$n not found.")
+    return $null
+}
+
 function Prendi-Runtime {
     $r = @{}
-    foreach ($n in 'dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
-        $p = Cerca-Ovunque $n $HASH[$n]
-        if ($p) { Buono $n; $r[$n] = $p }
-    }
-    if ($r.Count -eq 2) { return $r }
-
-    if ($AutorizzatoDallAutore) {
-        Avviso (T 'Permesso attivo: qui va il download diretto (da scrivere).' `
-                  'Permission enabled: direct download goes here (to be written).')
-    }
-
-    Passo (T 'Servono i file di Daniel Blanco: uso il suo installer ufficiale' `
-              'Daniel Blanco''s files are needed: using his official installer')
-    Avviso (T 'La sua licenza chiede di passare dal suo canale: e'' quello che facciamo.' `
-              'His licence asks to go through his own channel: that is what we do.')
-    $zip = Join-Path $LAVORO 'AMD-NR-ReShade-Installer.zip'
-    if (-not (Test-Path $zip)) {
-        if (-not (Scarica $URL.amdnrZip $zip (T 'AMD-NR ReShade Installer (ufficiale)' 'AMD-NR ReShade Installer (official)'))) { return $null }
-    }
-    $cartella = Join-Path $LAVORO 'amdnr'
-    if (-not (Test-Path $cartella)) { Expand-Archive -LiteralPath $zip -DestinationPath $cartella -Force }
-    $exe = Get-ChildItem $cartella -Recurse -Filter '*.exe' | Select-Object -First 1
-    if (-not $exe) { Guaio (T 'Installer ufficiale non trovato nello zip.' 'Official installer not found in the zip.'); return $null }
-
-    Avviso (T 'Si apre l''installer ufficiale: arriva al passo 3 (download) e chiudilo.' `
-              'The official installer opens: go to step 3 (download) and close it.')
-    [Windows.Forms.MessageBox]::Show(
-        (T "Ora si apre l'installer ufficiale di AMD-NR.`n`n1. Scegli la lingua`n2. Fai il controllo della scheda`n3. Scarica i file (circa 165 MB)`n4. CHIUDILO: al resto pensiamo noi" `
-           "The official AMD-NR installer will open now.`n`n1. Pick a language`n2. Run the machine check`n3. Download the files (about 165 MB)`n4. CLOSE IT: we do the rest"),
-        'AMD-NR', 'OK', 'Information') | Out-Null
-    Start-Process -FilePath $exe.FullName -Wait
-
-    foreach ($n in 'dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
-        if (-not $r.ContainsKey($n)) {
-            $p = Cerca-Ovunque $n $HASH[$n]
-            if ($p) { Buono $n; $r[$n] = $p } else { Guaio (T "$n non trovato." "$n not found.") }
-        }
-    }
-    if ($r.Count -eq 2) { return $r }
-    return $null
+    $n = 'dlssnr_amd_pass1.dll'
+    $p = Cerca-Ovunque $n $HASH[$n]
+    if ($p) { Buono $n } else { $p = Costruisci-Runtime }
+    if (-not $p) { return $null }
+    $r[$n] = $p
+    $p = Prendi-Pesi
+    if (-not $p) { return $null }
+    $r['dlssnr_on_amd_weights.bin'] = $p
+    return $r
 }
 
 function Descrivi-Dll($p) {
@@ -714,8 +844,10 @@ function Installa {
     if (-not (Controlla-Conflitti $gioco)) { Stato @('Interrotto.', 'Aborted.') 0; return }
 
     # --- gia' installato? allora non tocchiamo niente -------------------------
-    $giaFatto = (Hash-Ok (Join-Path $gioco 'd3d11.dll') $HASH['ReShade64.dll'])
-    foreach ($n in 'dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
+    $vecchioAddon = Join-Path $gioco $ADDON_VECCHIO
+    $giaFatto = (Hash-Ok (Join-Path $gioco 'd3d11.dll') $HASH['ReShade64.dll']) -and
+                -not (Test-Path -LiteralPath $vecchioAddon)
+    foreach ($n in 'amd-nr.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
         if (-not (Hash-Ok (Join-Path $gioco $n) $HASH[$n])) { $giaFatto = $false }
     }
     # --- non e' l'ultima versione, ma e' roba nostra? allora e' un aggiornamento
@@ -723,7 +855,11 @@ function Installa {
     $aggiornamento = $false
     if (-not $giaFatto) {
         $tuttiNostri = (Hash-Accettabile (Join-Path $gioco 'd3d11.dll') 'ReShade64.dll')
-        foreach ($n in 'dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
+        # l'add-on puo' essere quello nuovo o quello col vecchio nome (pack fino alla v1.5)
+        # the add-on may be the new one or the one under the old name (pack up to v1.5)
+        if (-not ((Hash-Accettabile (Join-Path $gioco 'amd-nr.addon64') 'amd-nr.addon64') -or
+                  (Hash-Accettabile $vecchioAddon $ADDON_VECCHIO))) { $tuttiNostri = $false }
+        foreach ($n in 'dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
             if (-not (Hash-Accettabile (Join-Path $gioco $n) $n)) { $tuttiNostri = $false }
         }
         $aggiornamento = $tuttiNostri
@@ -732,15 +868,19 @@ function Installa {
         Passo (T 'Trovata una versione precedente: la aggiorno' 'An older version is installed: updating it')
         Scrivi (T "     passo a: add-on $($script:VERS.addon), runtime $($script:VERS.runtime), ReShade $($script:VERS.reshade)" `
                   "     moving to: add-on $($script:VERS.addon), runtime $($script:VERS.runtime), ReShade $($script:VERS.reshade)") $GRIGIO
-        Scrivi (T '     le tue impostazioni (dlss5-neural.ini, ReShade.ini) non si toccano' `
-                  '     your settings (dlss5-neural.ini, ReShade.ini) are left alone') $GRIGIO
+        Scrivi (T '     le tue impostazioni (amd-nr.ini, ReShade.ini) non si toccano' `
+                  '     your settings (amd-nr.ini, ReShade.ini) are left alone') $GRIGIO
+        if (Test-Path -LiteralPath (Join-Path $gioco 'dlss5-neural.ini')) {
+            Scrivi (T '     dlss5-neural.ini lo trasforma l''add-on in amd-nr.ini al primo avvio' `
+                      '     the add-on turns dlss5-neural.ini into amd-nr.ini on first start') $GRIGIO
+        }
         Scrivi (T '     dei file sostituiti tengo una copia .precedente.bak' `
                   '     a .precedente.bak copy of each replaced file is kept') $GRIGIO
     }
 
     if ($giaFatto) {
         Passo (T 'Controllo i file gia'' presenti nel gioco' 'Checking the files already in the game')
-        foreach ($n in 'd3d11.dll','dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') { Buono $n }
+        foreach ($n in 'd3d11.dll','amd-nr.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') { Buono $n }
         if (Risolvi-Conflitti $gioco) {
             Stato @('Conflitto con dxgi.dll risolto.', 'dxgi.dll conflict fixed.') 100
             Scrivi '' $VERDE
@@ -810,12 +950,23 @@ function Installa {
         }
     }
 
-    $destAddon = Join-Path $gioco 'dlss5-neural.addon64'
+    $destAddon = Join-Path $gioco 'amd-nr.addon64'
     if ($addon -ne $destAddon) {
-        Salva-Precedente $gioco 'dlss5-neural.addon64' $HASH['dlss5-neural.addon64']
+        Salva-Precedente $gioco 'amd-nr.addon64' $HASH['amd-nr.addon64']
         Copy-Item -LiteralPath $addon -Destination $destAddon -Force
     }
-    Buono 'dlss5-neural.addon64'; $messi += 'dlss5-neural.addon64'
+    Buono 'amd-nr.addon64'; $messi += 'amd-nr.addon64'
+    # l'add-on col vecchio nome va via, o ReShade ne caricherebbe due: se e' il
+    # nostro diventa un .precedente.bak, se e' di qualcun altro .prima-del-dlss.bak
+    # the add-on under the old name must go, or ReShade would load two: ours
+    # becomes a .precedente.bak, anyone else's a .prima-del-dlss.bak
+    if (Test-Path -LiteralPath (Join-Path $gioco $ADDON_VECCHIO)) {
+        if (Hash-Accettabile (Join-Path $gioco $ADDON_VECCHIO) $ADDON_VECCHIO) {
+            Salva-Precedente $gioco $ADDON_VECCHIO '-'
+        } else {
+            Metti-DaParte $gioco $ADDON_VECCHIO -Sempre
+        }
+    }
     foreach ($n in $rt.Keys) {
         $destN = Join-Path $gioco $n
         if ($rt[$n] -ne $destN) {
@@ -824,17 +975,23 @@ function Installa {
         }
         Buono $n; $messi += $n
     }
-    $ini = Join-Path $PACK 'dlss5-neural.ini'
-    $destIni = Join-Path $gioco 'dlss5-neural.ini'
-    if ((Test-Path $ini) -and -not (Test-Path $destIni)) {
+    # le impostazioni si copiano solo se non ce ne sono: un dlss5-neural.ini
+    # lasciato dalla v1.5 lo converte l'add-on al primo avvio
+    # settings are copied only when there are none: a dlss5-neural.ini left by
+    # v1.5 is converted by the add-on on first start
+    $ini = Join-Path $PACK 'amd-nr.ini'
+    $destIni = Join-Path $gioco 'amd-nr.ini'
+    if ((Test-Path $ini) -and -not (Test-Path $destIni) -and
+        -not (Test-Path (Join-Path $gioco 'dlss5-neural.ini'))) {
         Copy-Item -LiteralPath $ini -Destination $destIni -Force
-        Buono (T 'dlss5-neural.ini (Scale=0.50)' 'dlss5-neural.ini (Scale=0.50)'); $messi += 'dlss5-neural.ini'
+        Buono (T 'amd-nr.ini (Scale=0.50)' 'amd-nr.ini (Scale=0.50)'); $messi += 'amd-nr.ini'
     }
 
     Stato @('Verifica finale...', 'Final check...') 95
     Passo (T 'Ricontrollo le impronte dei file copiati' 'Re-checking the copied files')
     $errori = 0
-    foreach ($n in 'dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
+    if (Test-Path -LiteralPath (Join-Path $gioco $ADDON_VECCHIO)) { Guaio $ADDON_VECCHIO; $errori++ }
+    foreach ($n in 'amd-nr.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
         if (Hash-Ok (Join-Path $gioco $n) $HASH[$n]) { Buono $n } else { Guaio $n; $errori++ }
     }
     if (Hash-Ok (Join-Path $gioco 'd3d11.dll') $HASH['ReShade64.dll']) { Buono 'd3d11.dll' } else { Guaio 'd3d11.dll'; $errori++ }
@@ -894,10 +1051,13 @@ function Rimuovi {
     }
     # i file ReShade.* si tolgono solo insieme al nostro ReShade, altrimenti sono dell'altra mod
     # ReShade.* files go only together with our ReShade, otherwise they belong to the other mod
-    $daTogliere = @('dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin',
-                    'dlss5-neural.ini','dlssnr_on_amd.ini','dlssnr_on_amd.log','dlss5-neural.log','_dlss5-installato.txt')
+    $daTogliere = @('amd-nr.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin',
+                    'amd-nr.ini','amd-nr.log','dlssnr_on_amd.ini','dlssnr_on_amd.log','_dlss5-installato.txt')
+    # col vecchio nome solo se e' il nostro / under the old name only when it is ours
+    if (Hash-Accettabile (Join-Path $gioco $ADDON_VECCHIO) $ADDON_VECCHIO) { $daTogliere += $ADDON_VECCHIO }
+    $daTogliere += 'dlss5-neural.ini','dlss5-neural.log'
     # copie tenute dagli aggiornamenti / copies kept by the updates
-    foreach ($n in 'd3d11.dll','dlss5-neural.addon64','dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
+    foreach ($n in 'd3d11.dll','amd-nr.addon64',$ADDON_VECCHIO,'dlssnr_amd_pass1.dll','dlssnr_on_amd_weights.bin') {
         $daTogliere += "$n.precedente.bak"
     }
     if ($nostroReShade) { $daTogliere += 'ReShade.ini','ReShade.log','ReShadePreset.ini' }
@@ -907,7 +1067,7 @@ function Rimuovi {
     }
     # rimette a posto quello che l'installer aveva messo da parte
     # puts back what the installer had set aside
-    foreach ($n in 'd3d11.dll','dxgi.dll','ReShade.ini','ReShadePreset.ini') {
+    foreach ($n in 'd3d11.dll','dxgi.dll','ReShade.ini','ReShadePreset.ini',$ADDON_VECCHIO) {
         $p = Join-Path $gioco $n
         $bak = "$p.prima-del-dlss.bak"
         if (Test-Path -LiteralPath $bak) {
@@ -949,13 +1109,15 @@ if ($Test) {
     Write-Host "versioni     : addon $($script:VERS.addon) | runtime $($script:VERS.runtime) | reshade $($script:VERS.reshade)"
     Write-Host "aggiornato   : $($script:VERS.aggiornato)"
     Write-Host "avviso_it    : $($script:VERS.avviso_it)"
-    Write-Host "hash addon   : $($HASH['dlss5-neural.addon64'])"
+    Write-Host "hash addon   : $($HASH['amd-nr.addon64'])"
     Write-Host "hash reshade : $($HASH['ReShade64.dll'])"
     Write-Host "hash pass1   : $($HASH['dlssnr_amd_pass1.dll'])"
     Write-Host "hash pesi    : $($HASH['dlssnr_on_amd_weights.bin'])"
     Write-Host "url addon    : $($URL.addon)"
     Write-Host "url reshade  : $($URL.reshadeSetup)"
-    Write-Host "accettati    : addon=$($ACCETTATI['dlss5-neural.addon64'].Count) reshade=$($ACCETTATI['ReShade64.dll'].Count) pass1=$($ACCETTATI['dlssnr_amd_pass1.dll'].Count) pesi=$($ACCETTATI['dlssnr_on_amd_weights.bin'].Count)"
+    Write-Host "url blanco   : $($URL.blancoSetup)"
+    Write-Host "runtime orig.: $($RUNTIME.originale)  ($($RUNTIME.patch.Count) modifiche)"
+    Write-Host "accettati    : addon=$($ACCETTATI['amd-nr.addon64'].Count) vecchio-nome=$($ACCETTATI[$ADDON_VECCHIO].Count) reshade=$($ACCETTATI['ReShade64.dll'].Count) pass1=$($ACCETTATI['dlssnr_amd_pass1.dll'].Count) pesi=$($ACCETTATI['dlssnr_on_amd_weights.bin'].Count)"
     Scrivi (T '  [modalita'' test: chiudo]' '  [test mode: closing]') $GRIGIO
     $form.Show(); Start-Sleep -Milliseconds 300; $form.Close()
 } elseif ($Disinstalla) {

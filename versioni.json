@@ -1,7 +1,7 @@
 {
     "_leggimi":  "Elenco delle versioni provate per il pack DLSS 5 Neural su Radeon (Football Life 2026 / PES 2021), by oLd_pZ. L'installer legge questo file dal gist ufficiale a ogni avvio e usa queste versioni. Per aggiornarlo: prova le versioni nuove, lancia _impronte.ps1 per ottenere le SHA-256 e incollale qui. Istruzioni complete in COME AGGIORNARE - HOW TO UPDATE.txt",
     "_readme":  "List of tested versions for the DLSS 5 Neural on Radeon pack (Football Life 2026 / PES 2021), by oLd_pZ. The installer reads this file from the official gist at every run and installs these versions.",
-    "aggiornato":  "2026-09-21",
+    "aggiornato":  "2026-09-28",
     "addon":  {
                   "versione":  "v0.6.0",
                   "url":  "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.6.0/dlss5-neural.addon64",
@@ -37,6 +37,6 @@
     "amdnr_zip":  {
                       "url":  "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.5.2/AMD-NR-ReShade-Installer-v0.1.1.zip"
                   },
-    "avviso_it":  "",
-    "avviso_en":  ""
+    "avviso_it":  "E' uscita la v1.6 del pacchetto (add-on v0.7.1, runtime 0.4.3). Questo installatore non puo' installarla: scarica il pacchetto nuovo da https://github.com/oLdpZ/FL26-DLSS-Radeon-Pack/releases",
+    "avviso_en":  "Pack v1.6 is out (add-on v0.7.1, runtime 0.4.3). This installer cannot install it: download the new pack from https://github.com/oLdpZ/FL26-DLSS-Radeon-Pack/releases"
 }

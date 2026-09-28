@@ -13,26 +13,36 @@
   CANCELLA QUESTI FILE dalla cartella del gioco (con FL_2026.exe o PES2021.exe):
 
       d3d11.dll                     <- ReShade rinominato
-      dlss5-neural.addon64
+      amd-nr.addon64
       dlssnr_amd_pass1.dll
       dlssnr_on_amd_weights.bin
+      amd-nr.ini
+
+  E anche questi, se li trovi (sono i vecchi nomi, usati fino alla v1.5 del
+  pacchetto):
+
+      dlss5-neural.addon64
       dlss5-neural.ini
 
   E anche questi, se li trovi (li lascia un aggiornamento: sono le copie della
   versione precedente, e servono solo per tornare indietro):
 
       d3d11.dll.precedente.bak
+      amd-nr.addon64.precedente.bak
       dlss5-neural.addon64.precedente.bak
       dlssnr_amd_pass1.dll.precedente.bak
       dlssnr_on_amd_weights.bin.precedente.bak
 
   (per tornare alla versione precedente, invece di cancellarli, togli il
-   .precedente.bak dal nome: quello torna a essere il file buono)
+   .precedente.bak dal nome: quello torna a essere il file buono.
+   Se torni alla v1.5, cioe' rimetti  dlss5-neural.addon64 , cancella anche
+   amd-nr.addon64 : i due add-on insieme non devono mai stare)
 
   E anche questi, se li trovi (li creano i programmi al primo avvio):
 
       dlssnr_on_amd.ini
       dlssnr_on_amd.log
+      amd-nr.log
       dlss5-neural.log
       ReShade.ini
       ReShade.log
@@ -66,26 +76,35 @@
   DELETE THESE FILES from the game folder (with FL_2026.exe or PES2021.exe):
 
       d3d11.dll                     <- ReShade, renamed
-      dlss5-neural.addon64
+      amd-nr.addon64
       dlssnr_amd_pass1.dll
       dlssnr_on_amd_weights.bin
+      amd-nr.ini
+
+  And these too, if you find them (the old names, used up to pack v1.5):
+
+      dlss5-neural.addon64
       dlss5-neural.ini
 
   And these too, if you find them (left by an update: they are the copies of the
   previous version, only needed to roll back):
 
       d3d11.dll.precedente.bak
+      amd-nr.addon64.precedente.bak
       dlss5-neural.addon64.precedente.bak
       dlssnr_amd_pass1.dll.precedente.bak
       dlssnr_on_amd_weights.bin.precedente.bak
 
   (to go back to the previous version, instead of deleting them, drop the
-   .precedente.bak from the name: that file becomes the live one again)
+   .precedente.bak from the name: that file becomes the live one again.
+   If you go back to v1.5, i.e. you restore  dlss5-neural.addon64 , also
+   delete  amd-nr.addon64 : the two add-ons must never be there together)
 
   And these too, if you find them (created on first run):
 
       dlssnr_on_amd.ini
       dlssnr_on_amd.log
+      amd-nr.log
       dlss5-neural.log
       ReShade.ini
       ReShade.log
