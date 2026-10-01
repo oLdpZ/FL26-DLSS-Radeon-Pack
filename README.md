@@ -10,13 +10,13 @@ by **oLd_pZ**
 
 ## ⚠️ Leggi prima / Read this first
 
-- **Questa mod NON aumenta gli fps: LI FA CALARE.** Cambia la resa dell'immagine, non la velocità. Misurato su RX 9070 XT a 2560x1440, nei menu, con la v1.5 del pacchetto (runtime 0.3.0): **~500 fps** a effetto spento, **20-31 fps** con l'effetto acceso. Con la v1.6 (runtime 0.4.3, molto più veloce): **circa 108 fps** a Scale 0.50, nell'editor del gioco.
+- **Questa mod NON aumenta gli fps: LI FA CALARE.** Cambia la resa dell'immagine, non la velocità. Misurato su RX 9070 XT a 2560x1440, nei menu, con la v1.5 del pacchetto (runtime 0.3.0): **~500 fps** a effetto spento, **20-31 fps** con l'effetto acceso. Con la v1.6 (runtime 0.4.3, molto più veloce): **circa 108 fps** a Scale 0.50, nell'editor del gioco. La v1.7 usa il runtime 0.5.1, che non ho ancora rimisurato.
 - Serve una **Radeon RX 7000 (RDNA 3)** o **RX 9000 (RDNA 4)**. Su NVIDIA è inutile (hanno il DLSS vero), su AMD più vecchie non funziona.
 - **Solo offline.** Prima di myClub o dell'online, disinstalla: spegnere l'effetto non basta.
 
 <!-- -->
 
-- **This mod does NOT raise your fps: it LOWERS them.** It changes how the image looks, not how fast it runs. Measured on an RX 9070 XT at 2560x1440, in the menus, with pack v1.5 (runtime 0.3.0): **~500 fps** with the effect off, **20-31 fps** with it on. With v1.6 (runtime 0.4.3, much faster): **about 108 fps** at Scale 0.50, in the game's editor.
+- **This mod does NOT raise your fps: it LOWERS them.** It changes how the image looks, not how fast it runs. Measured on an RX 9070 XT at 2560x1440, in the menus, with pack v1.5 (runtime 0.3.0): **~500 fps** with the effect off, **20-31 fps** with it on. With v1.6 (runtime 0.4.3, much faster): **about 108 fps** at Scale 0.50, in the game's editor. v1.7 uses runtime 0.5.1, which I have not re-measured yet.
 - You need a **Radeon RX 7000 (RDNA 3)** or **RX 9000 (RDNA 4)**. Pointless on NVIDIA (they have real DLSS), does not work on older AMD cards.
 - **Offline only.** Uninstall before myClub or online play: switching the effect off is not enough.
 
@@ -42,24 +42,24 @@ Prefer doing it by hand, or the installer stopped? The full step-by-step is in *
 
 ## Aggiornamenti / Updates
 
-**Hai la v1.5? Scarica una volta il pacchetto v1.6** dalla pagina [Releases](../../releases) e lancia `INSTALLA - INSTALL.bat` da lì. L'add-on ha cambiato nome (`dlss5-neural.addon64` → `amd-nr.addon64`) e il runtime nuovo si prepara in un altro modo, cose che l'installatore della v1.5 non sa fare. Quello nuovo riconosce la v1.5, tiene le tue impostazioni e mette da parte i file vecchi come `*.precedente.bak` (il vecchio add-on non deve restare attivo, o ReShade ne caricherebbe due).
+**Hai la v1.5? Scarica una volta il pacchetto più recente** dalla pagina [Releases](../../releases) e lancia `INSTALLA - INSTALL.bat` da lì. L'add-on ha cambiato nome (`dlss5-neural.addon64` → `amd-nr.addon64`) e il runtime nuovo si prepara in un altro modo, cose che l'installatore della v1.5 non sa fare. Quello nuovo riconosce la v1.5, tiene le tue impostazioni e mette da parte i file vecchi come `*.precedente.bak` (il vecchio add-on non deve restare attivo, o ReShade ne caricherebbe due).
 
 **Dalla v1.6 in poi, per aggiornare rilancia `INSTALLA - INSTALL.bat`.** L'installatore, ogni volta che parte, controlla in rete quali versioni sono state provate su Football Life e installa quelle: se sei indietro ti aggiorna tenendo le tue impostazioni, se sei a posto non tocca niente. Dei file sostituiti tiene una copia `*.precedente.bak` per tornare indietro in dieci secondi.
 
 L'elenco delle versioni provate sta qui:
 **https://gist.github.com/oLdpZ/b99deca59ef76cc5fb7895b786fe36dc**
 
-Dentro ci sono due file: `versioni-v2.json` lo legge l'installatore dalla v1.6 in poi; `versioni.json` lo leggono solo gli installatori fino alla v1.5, resta su una combinazione vecchia che funziona e dice di scaricare la v1.6. Se il gist non è raggiungibile, l'installatore usa l'ultima copia salvata e poi le versioni scritte dentro di sé: funziona comunque. `versioni-v2.json` in questo repo è solo la copia di riserva che viaggia nel pacchetto.
+Dentro ci sono due file: `versioni-v2.json` lo legge l'installatore dalla v1.6 in poi; `versioni.json` lo leggono solo gli installatori fino alla v1.5, resta su una combinazione vecchia che funziona e dice di scaricare il pacchetto nuovo. Se il gist non è raggiungibile, l'installatore usa l'ultima copia salvata e poi le versioni scritte dentro di sé: funziona comunque. `versioni-v2.json` in questo repo è solo la copia di riserva che viaggia nel pacchetto.
 
 Se l'installatore ti dà una versione più vecchia di quella appena uscita, è voluto: significa che non è ancora stata provata. Runtime e add-on devono andare d'accordo tra loro, e quando non lo fanno l'effetto smette di accendersi.
 
 <!-- -->
 
-**On v1.5? Download the v1.6 pack once** from the [Releases](../../releases) page and run `INSTALLA - INSTALL.bat` from there. The add-on was renamed (`dlss5-neural.addon64` → `amd-nr.addon64`) and the new runtime is prepared differently, which the v1.5 installer cannot do. The new one recognises v1.5, keeps your settings and sets the old files aside as `*.precedente.bak` (the old add-on must not stay active, or ReShade would load two).
+**On v1.5? Download the latest pack once** from the [Releases](../../releases) page and run `INSTALLA - INSTALL.bat` from there. The add-on was renamed (`dlss5-neural.addon64` → `amd-nr.addon64`) and the new runtime is prepared differently, which the v1.5 installer cannot do. The new one recognises v1.5, keeps your settings and sets the old files aside as `*.precedente.bak` (the old add-on must not stay active, or ReShade would load two).
 
 **From v1.6 on, to update, run `INSTALLA - INSTALL.bat` again.** Every time it starts, the installer checks online which versions have been tested on Football Life and installs those: if you are behind it updates you while keeping your settings, if you are up to date it touches nothing. Each replaced file is kept as `*.precedente.bak` so rolling back takes ten seconds.
 
-The tested-version list lives in the gist linked above, as two files: `versioni-v2.json` is read by installers from v1.6 on; `versioni.json` is read only by installers up to v1.5, stays on an older combination that works and tells people to download v1.6. If the gist cannot be reached, the installer falls back to the last saved copy and then to the versions written inside it.
+The tested-version list lives in the gist linked above, as two files: `versioni-v2.json` is read by installers from v1.6 on; `versioni.json` is read only by installers up to v1.5, stays on an older combination that works and tells people to download the new pack. If the gist cannot be reached, the installer falls back to the last saved copy and then to the versions written inside it.
 
 ---
 

@@ -68,7 +68,7 @@
   tue impostazioni (dei file sostituiti tiene una copia .precedente.bak).
 
   SE VIENI DALLA v1.5: questa volta devi usare INSTALLA di QUESTO pacchetto
-  (la v1.6), non quello vecchio. L'add-on ha cambiato nome
+  (dalla v1.6 in poi), non quello vecchio. L'add-on ha cambiato nome
   (dlss5-neural.addon64 -> amd-nr.addon64) e il runtime nuovo si prepara in
   un altro modo. L'installatore riconosce la v1.5, tiene le tue impostazioni
   (dlss5-neural.ini lo trasforma l'add-on in amd-nr.ini da solo) e mette da
@@ -167,7 +167,7 @@
   settings (each replaced file is kept as a .precedente.bak copy).
 
   IF YOU ARE COMING FROM v1.5: this time you must use INSTALLA from THIS
-  pack (v1.6), not the old one. The add-on was renamed
+  pack (v1.6 or later), not the old one. The add-on was renamed
   (dlss5-neural.addon64 -> amd-nr.addon64) and the new runtime is prepared
   differently. The installer recognises v1.5, keeps your settings (the
   add-on turns dlss5-neural.ini into amd-nr.ini by itself) and sets the old

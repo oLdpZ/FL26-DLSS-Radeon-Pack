@@ -112,7 +112,11 @@ if ($Addon) {
 if ($Runtime) {
     Titolo "Runtime $Runtime"
     $spec = (Invoke-WebRequest -Uri $PATCHES -UseBasicParsing -TimeoutSec 15).Content | ConvertFrom-Json
-    $b = @($spec.builds | Where-Object { $_.runtime -eq "DLSS-NR-on-AMD v$Runtime" })
+    # cLohan scrive "DLSS-NR-on-AMD v0.4.3" ma anche "DLSS-NR-on-AMD 0.5.1 (supporter
+    # build, not distributed)": la versione va riconosciuta con o senza "v" e nota
+    # cLohan writes "DLSS-NR-on-AMD v0.4.3" but also "DLSS-NR-on-AMD 0.5.1 (supporter
+    # build, not distributed)": match the version with or without the "v" and the note
+    $b = @($spec.builds | Where-Object { $_.runtime -match ('^DLSS-NR-on-AMD v?' + [regex]::Escape($Runtime) + '( |$)') })
     if ($b.Count -ne 1) {
         Guaio "runtime-patches.json non ha ancora la v${Runtime}: l'add-on non la supporta ancora."
         Nota  "Versioni che ha: $(($spec.builds | ForEach-Object { $_.runtime }) -join ', ')"

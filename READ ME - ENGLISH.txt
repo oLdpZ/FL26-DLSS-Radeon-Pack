@@ -77,6 +77,11 @@
   I still have to measure the new on-screen numbers myself. But the idea does
   not change: with the effect on you stay well below the effect-off figure.
 
+  v1.7 moves to runtime 0.5.1. Against 0.4.3, Blanco reports another 5% on
+  RX 9000 cards with 0.5.0 and then 8% in Fast mode with 0.5.1; a lot more on
+  RX 7000 (up to 207%). He also says the output is richer, especially on skin
+  and faces. Those are his numbers: I have not re-measured mine on screen yet.
+
   If you play PES for smoothness, this mod is not for you.
   If you want to see how the image changes, read on.
 
@@ -129,7 +134,14 @@
   the add-on needs. IMPORTANT: the version.dll that Blanco's setup drops, as
   it is, does NOT work with this add-on.
 
-  The third file, the add-on, comes from cLohan's page (release v0.7.1):
+  FROM v1.7: what you find there is runtime 0.4.3, because cLohan's tool does
+  not download the 0.5.x versions. It still works with the add-on, but
+  INSTALLA - INSTALL.bat installs 0.5.1 (about 37 MB), which it builds by
+  itself from Blanco's official setup: that is the route I recommend. By hand,
+  0.5.1 is prepared with cLohan's tools (tools/extract_runtime.py and
+  tools/patch_runtime.py, explained in his README). The weights are the same.
+
+  The third file, the add-on, comes from cLohan's page (release v0.7.5):
       amd-nr.addon64                (about 830 KB)
 
   Up to v0.6.4 it was called  dlss5-neural.addon64 : it is the same add-on,
@@ -477,13 +489,21 @@
   WITH NO INTERNET the installer uses the last list it saved, or the versions
   written inside it: it works either way.
 
-  FROM v1.5 TO v1.6: THIS TIME YOU NEED THE NEW PACK.
+  FROM v1.6 TO v1.7: YOU DO NOT NEED THE NEW PACK.
+  Add-on v0.7.5 and runtime 0.5.1 reach v1.6 users too: just run its
+  INSTALLA - INSTALL.bat again. The v1.7 pack only adds the new versions
+  written inside it (for when you are offline) and, in the window, the
+  "Buy me a coffee" button: an optional donation for the guide and the
+  installer, which changes nothing about what gets installed.
+
+  FROM v1.5 TO v1.6 (OR LATER): THIS TIME YOU NEED THE NEW PACK.
   Normally re-running the installer you already have is enough. Not this
   time: the add-on was renamed and the runtime has to be prepared in a new
   way, so I had to change the installer itself. The v1.5 installer keeps
   installing the old combination (which works) and shows a message telling
   you to download the new pack.
-  Download v1.6 and run ITS OWN  INSTALLA - INSTALL.bat . It recognises the
+  Download the latest pack and run ITS OWN  INSTALLA - INSTALL.bat . It
+  recognises the
   v1.5 install and:
       - keeps your settings: on first start the add-on copies
         dlss5-neural.ini to amd-nr.ini by itself (and leaves the old file
@@ -502,7 +522,8 @@
   %AppData%\AmdNrInstaller\cache\runtime\<version>  copy
   dlssnr_amd_pass1.dll  and  dlssnr_on_amd_weights.bin  over the ones in the
   game folder; get the add-on  amd-nr.addon64  from cLohan's GitHub
-  releases page. Runtime and add-on have to match each other: if the effect
+  releases page. (The official tool does not download runtime 0.5.x: see
+  section 3.) Runtime and add-on have to match each other: if the effect
   stops switching on after an update, either update the other piece too or roll
   back with the  .precedente.bak  files.
 

@@ -80,6 +80,12 @@
   devo ancora misurare io. Ma il concetto non cambia: con l'effetto acceso
   resti comunque molto sotto l'effetto spento.
 
+  La v1.7 passa al runtime 0.5.1. Blanco dichiara, rispetto alla 0.4.3, un
+  altro 5% sulle RX 9000 con la 0.5.0 e poi un 8% in modalita' Fast con la
+  0.5.1; sulle RX 7000 molto di piu' (fino al 207%). Dice anche che la resa
+  e' piu' ricca, soprattutto su pelle e volti. Sono numeri suoi: i miei, a
+  schermo, non li ho ancora rimisurati.
+
   Se giochi a PES per la fluidita', questa mod non fa per te.
   Se ti interessa vedere come cambia l'immagine, vai avanti.
 
@@ -133,7 +139,14 @@
   ritocchi che servono all'add-on. ATTENZIONE: il version.dll che mette il
   setup di Blanco, cosi' com'e', con questo add-on NON funziona.
 
-  Il terzo file, l'add-on, lo scarichi dalla pagina di cLohan (release v0.7.1):
+  DALLA v1.7: quello che trovi li' e' il runtime 0.4.3, perche' il programma
+  di cLohan non scarica le versioni 0.5.x. Con l'add-on funziona ancora, ma
+  INSTALLA - INSTALL.bat mette lo 0.5.1 (circa 37 MB), che ricava da solo dal
+  setup ufficiale di Blanco: e' il modo che consiglio. A mano lo 0.5.1 si
+  prepara con gli strumenti di cLohan (tools/extract_runtime.py e
+  tools/patch_runtime.py, spiegati nel suo README). I pesi sono gli stessi.
+
+  Il terzo file, l'add-on, lo scarichi dalla pagina di cLohan (release v0.7.5):
       amd-nr.addon64                (circa 830 KB)
 
   Fino alla v0.6.4 si chiamava  dlss5-neural.addon64 : e' lo stesso add-on,
@@ -483,13 +496,20 @@
   SE SEI SENZA INTERNET l'installatore usa l'ultimo elenco che aveva salvato,
   oppure le versioni scritte dentro di lui: funziona comunque.
 
-  DALLA v1.5 ALLA v1.6: QUESTA VOLTA SERVE IL PACCHETTO NUOVO.
+  DALLA v1.6 ALLA v1.7: NON SERVE IL PACCHETTO NUOVO.
+  Add-on v0.7.5 e runtime 0.5.1 arrivano anche a chi ha la v1.6: basta
+  rilanciare il suo INSTALLA - INSTALL.bat. Il pacchetto v1.7 ha in piu' solo
+  le versioni nuove gia' scritte dentro (per chi e' senza internet) e, nella
+  finestra, il pulsante "Offrimi un caffe'": e' una donazione facoltativa per
+  la guida e l'installatore, non cambia niente di quello che viene installato.
+
+  DALLA v1.5 ALLA v1.6 (O SUCCESSIVE): QUESTA VOLTA SERVE IL PACCHETTO NUOVO.
   Di solito basta rilanciare l'installatore che hai gia'. Questa volta no:
   l'add-on ha cambiato nome e il runtime va preparato in un modo nuovo, quindi
   ho dovuto cambiare l'installatore stesso. Quello della v1.5 continua a
   installare la vecchia combinazione (che funziona) e ti avvisa con un
   messaggio di scaricare il pacchetto nuovo.
-  Scarica la v1.6 e lancia il SUO  INSTALLA - INSTALL.bat . Riconosce
+  Scarica l'ultima versione e lancia il SUO  INSTALLA - INSTALL.bat . Riconosce
   l'installazione della v1.5 e:
       - tiene le tue impostazioni: al primo avvio l'add-on copia da solo
         dlss5-neural.ini in amd-nr.ini (e lascia li' il file vecchio; se poi
@@ -509,7 +529,8 @@
   %AppData%\AmdNrInstaller\cache\runtime\<versione>  prendi
   dlssnr_amd_pass1.dll  e  dlssnr_on_amd_weights.bin  e li copi sopra quelli
   nella cartella del gioco; l'add-on  amd-nr.addon64  lo prendi dalla pagina
-  GitHub di cLohan.
+  GitHub di cLohan. (Il runtime 0.5.x il programma ufficiale non lo scarica:
+  vedi il punto 3.)
   Runtime e add-on devono andare d'accordo tra loro: se dopo l'aggiornamento
   l'effetto non si accende piu', o aggiorni anche l'altro pezzo o torni
   indietro con i  .precedente.bak .

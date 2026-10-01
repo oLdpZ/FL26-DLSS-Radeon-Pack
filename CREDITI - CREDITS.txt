@@ -15,6 +15,18 @@
           share with credit, never for money
       installatore / installer ................................. MIT
 
+  DONAZIONI / DONATIONS
+      Il pulsante "Offrimi un caffe'" dell'installatore porta a
+      https://buymeacoffee.com/oldpz : e' una donazione facoltativa a me, per
+      la guida e l'installatore. Il pacchetto resta gratis e completo anche
+      senza. Non riguarda i programmi degli altri autori, che non vendo e non
+      distribuisco: chi vuole sostenere loro trova i link sulle loro pagine.
+      The installer's "Buy me a coffee" button leads to
+      https://buymeacoffee.com/oldpz : an optional donation to me, for the
+      guide and the installer. The pack stays free and complete without it.
+      It does not cover the other authors' software, which I neither sell nor
+      distribute: to support them, use the links on their own pages.
+
 -------------------------------------------------------------------------------
   ITALIANO
 -------------------------------------------------------------------------------

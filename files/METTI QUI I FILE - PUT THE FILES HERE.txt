@@ -19,7 +19,7 @@
   INSTALLA - INSTALL.bat :
 
       amd-nr.addon64                circa 830 KB
-      dlssnr_amd_pass1.dll          circa 12 MB
+      dlssnr_amd_pass1.dll          circa 37 MB (runtime 0.5.1)
       dlssnr_on_amd_weights.bin     circa 141 MB
       ReShade64.dll                 circa 5,4 MB
 
@@ -29,9 +29,12 @@
       https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases
       (avvialo, pagina "This machine", Download, poi chiudilo senza
       installare niente nei giochi). Li trovi in
-      %AppData%\AmdNrInstaller\cache\  (il runtime in runtime\0.4.3\).
-      Il version.dll del setup di Blanco NON va bene: serve quello modificato.
-      Di solito non serve: il runtime l'installatore lo prepara da solo.
+      %AppData%\AmdNrInstaller\cache\ .
+      Il runtime che trovi li' (runtime\0.4.3\) NON e' quello che cerca
+      l'installatore dalla v1.7: lo 0.5.1 il programma ufficiale non lo
+      scarica. Non serve procurarselo: l'installatore lo prepara da solo dal
+      setup ufficiale di Blanco. Il version.dll di quel setup, cosi' com'e',
+      NON va bene: serve quello modificato.
 
       ReShade64.dll dal sito ufficiale, versione "with full add-on support":
       https://reshade.me
@@ -61,7 +64,7 @@
   INSTALLA - INSTALL.bat again:
 
       amd-nr.addon64                about 830 KB
-      dlssnr_amd_pass1.dll          about 12 MB
+      dlssnr_amd_pass1.dll          about 37 MB (runtime 0.5.1)
       dlssnr_on_amd_weights.bin     about 141 MB
       ReShade64.dll                 about 5.4 MB
 
@@ -71,9 +74,12 @@
       https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases
       (run it, "This machine" page, Download, then close it without
       installing anything into your games). They end up in
-      %AppData%\AmdNrInstaller\cache\  (the runtime in runtime\0.4.3\).
-      The version.dll from Blanco's setup does NOT work: the patched one is needed.
-      Usually not needed at all: the installer prepares the runtime by itself.
+      %AppData%\AmdNrInstaller\cache\ .
+      The runtime you find there (runtime\0.4.3\) is NOT the one the
+      installer looks for from v1.7 on: the official tool does not download
+      0.5.1. You do not need to get it: the installer prepares it by itself
+      from Blanco's official setup. That setup's version.dll, as it is, does
+      NOT work: the patched one is needed.
 
       ReShade64.dll from the official site, the "with full add-on support"
       build: https://reshade.me

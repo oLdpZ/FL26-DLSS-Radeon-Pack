@@ -25,6 +25,15 @@ Vale anche per PES 2021 da Steam, con o senza sider: Football Life 2026 e'
 PES 2021 con le patch, stesso eseguibile e stesso motore. Io l'ho provato
 su Football Life; su PES 2021 senza patch non l'ho provato di persona.
 
+NOVITA' DELLA v1.7
+- runtime di Blanco aggiornato alla 0.5.1 (prima 0.4.3): Blanco dichiara
+  circa il 13% in piu' sulle RX 9000 in modalita' Fast, molto di piu' sulle
+  RX 7000, e una resa piu' ricca su pelle e volti. Non l'ho ancora rimisurato
+- add-on di cLohan aggiornato alla v0.7.5 (dalla v0.7.3 non crasha piu' sui
+  giochi DirectX 11 quando parte l'optical flow)
+- CHI HA LA v1.6: non serve riscaricare niente, rilanciate
+  INSTALLA - INSTALL.bat e vi aggiorna tenendo le vostre impostazioni
+
 NOVITA' DELLA v1.6
 - add-on di cLohan aggiornato alla v0.7.1. Ha cambiato nome: adesso si
   chiama AMD Neural Rendering e il file e' amd-nr.addon64 (prima
@@ -70,8 +79,8 @@ ho provato IO su Football Life e installa quelle. Quindi per aggiornarvi
 rilanciate INSTALLA - INSTALL.bat: se siete indietro vi aggiorna tenendo le
 vostre impostazioni, se siete a posto ve lo dice e non tocca niente. Dei file
 sostituiti tiene una copia .precedente.bak per tornare indietro in dieci
-secondi. Non serve riscaricare il pacchetto (l'unica eccezione e' il salto
-dalla v1.5 alla v1.6, vedi sopra).
+secondi. Non serve riscaricare il pacchetto (l'unica eccezione e' chi parte
+dalla v1.5, vedi sopra).
 Se l'installatore vi da' una versione piu' vecchia di quella appena uscita, e'
 voluto: quella nuova non l'ho ancora provata.
 
@@ -164,6 +173,15 @@ It applies to PES 2021 from Steam too, with or without sider: Football Life
 2026 is PES 2021 with patches, same executable and same engine. I tested it
 on Football Life; I have not personally tested it on unpatched PES 2021.
 
+WHAT IS NEW IN v1.7
+- Blanco's runtime updated to 0.5.1 (was 0.4.3): Blanco reports about 13%
+  more on RX 9000 cards in Fast mode, a lot more on RX 7000, and richer
+  output on skin and faces. I have not re-measured it yet
+- cLohan's add-on updated to v0.7.5 (since v0.7.3 it no longer crashes on
+  DirectX 11 games when the optical flow starts)
+- IF YOU HAVE v1.6: nothing to download again, just run
+  INSTALLA - INSTALL.bat and it updates you while keeping your settings
+
 WHAT IS NEW IN v1.6
 - cLohan's add-on updated to v0.7.1. It has been renamed: it is now called
   AMD Neural Rendering and the file is amd-nr.addon64 (was
@@ -209,8 +227,8 @@ on Football Life and installs those. So to update, just run
 INSTALLA - INSTALL.bat again: if you are behind it updates you while keeping
 your settings, if you are up to date it says so and touches nothing. Each
 replaced file is kept as a .precedente.bak copy, so rolling back takes ten
-seconds. No need to download the pack again (the only exception is the jump
-from v1.5 to v1.6, see above).
+seconds. No need to download the pack again (the only exception is if you
+start from v1.5, see above).
 If the installer gives you an older version than the one just released, that is
 on purpose: it means I have not tested the new one yet.
 

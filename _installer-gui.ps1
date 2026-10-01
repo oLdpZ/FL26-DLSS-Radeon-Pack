@@ -38,15 +38,15 @@ Add-Type -AssemblyName System.Drawing
 
 # =============================================================== COSTANTI =====
 $HASH = @{
-    'amd-nr.addon64'            = '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d'
-    'dlssnr_amd_pass1.dll'      = 'f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a'
+    'amd-nr.addon64'            = '1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884'
+    'dlssnr_amd_pass1.dll'      = 'af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
     'ReShade64.dll'             = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'
 }
 $URL = @{
-    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.1/amd-nr.addon64'
+    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.5/amd-nr.addon64'
     reshadeSetup = 'https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe'
-    blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.4.3/dlssnr_on_amd_setup.exe'
+    blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.5.1/dlssnr_on_amd_setup.exe'
     amdnr        = 'https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe'
     paginaBlanco = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases'
 }
@@ -57,10 +57,10 @@ $URL = @{
 # match "originale", then those bytes change and the result must match $HASH.
 # Values from the add-on's tools/runtime-patches.json.
 $RUNTIME = @{
-    originale = 'd1e320862a8763ac39e7ce194536d4b6c55ba61bae9e8a92753cec32df67a457'
+    originale = '493b4a3b80a21f7255109172ab7bb01ba08d35f2941718f441768f1abfc48acd'
     patch     = @(
-        @{ offset = 0x655d; prima = 'ff1555b70900'; dopo = '31c090909090' },
-        @{ offset = 0x9622; prima = 'ff1528790a00'; dopo = '909090909090' }
+        @{ offset = 0x62ed; prima = 'ff15cd3a0a00'; dopo = '31c090909090' },
+        @{ offset = 0x9422; prima = 'ff15f8fb0a00'; dopo = '909090909090' }
     )
 }
 # Fino alla v1.5 del pacchetto l'add-on si chiamava dlss5-neural.addon64. Se c'e'
@@ -68,6 +68,11 @@ $RUNTIME = @{
 # Up to pack v1.5 the add-on was called dlss5-neural.addon64. If it is still
 # there it must go: ReShade would load both add-ons.
 $ADDON_VECCHIO = 'dlss5-neural.addon64'
+# Donazione facoltativa all'autore del pack: riguarda guida e installer, non i
+# programmi degli altri autori (runtime, add-on, ReShade).
+# Optional donation to the pack's author: it is for the guide and the installer,
+# not for the other authors' software (runtime, add-on, ReShade).
+$URL_CAFFE = 'https://buymeacoffee.com/oldpz'
 $PREFS = Join-Path $env:APPDATA 'FL26-DLSS-Installer\prefs.txt'
 $LAVORO = Join-Path $env:TEMP 'FL26-DLSS-Installer'
 
@@ -93,17 +98,19 @@ $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 # versioni piu' vecchie ancora accettate (riempite dall'elenco online)
 # older versions still accepted (filled in from the online list)
 $ACCETTATI = @{
-    'amd-nr.addon64'            = @()
+    # v0.7.1 installata dalla v1.6 / v0.7.1 installed by v1.6
+    'amd-nr.addon64'            = @('909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
     # v0.6.0 e v0.5.2 col vecchio nome / v0.6.0 and v0.5.2 under the old name
     'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
                                     '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6')
-    # runtime 0.3.0 installato dalla v1.5 / runtime 0.3.0 installed by v1.5
-    'dlssnr_amd_pass1.dll'      = @('70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
+    # runtime 0.4.3 (v1.6) e 0.3.0 (v1.5) / runtime 0.4.3 (v1.6) and 0.3.0 (v1.5)
+    'dlssnr_amd_pass1.dll'      = @('f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a',
+                                    '70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
     'dlssnr_on_amd_weights.bin' = @()
     'ReShade64.dll'             = @()
 }
 $script:VERS = @{
-    addon = 'v0.7.1'; runtime = '0.4.3'; reshade = '6.8.0'
+    addon = 'v0.7.5'; runtime = '0.5.1'; reshade = '6.8.0'
     aggiornato = ''; avviso_it = ''; avviso_en = ''; fonte = 'script'
 }
 
@@ -241,13 +248,24 @@ $btnVai.Font = New-Object Drawing.Font('Consolas', 11, [Drawing.FontStyle]::Bold
 $form.Controls.Add($btnVai)
 
 $btnTogli = New-Object Windows.Forms.Button
-$btnTogli.Size = New-Object Drawing.Size(180, 42)
+$btnTogli.Size = New-Object Drawing.Size(150, 42)
 $btnTogli.Location = New-Object Drawing.Point(250, 458)
 $btnTogli.FlatStyle = 'Flat'
 $btnTogli.BackColor = [Drawing.Color]::FromArgb(50, 20, 25)
 $btnTogli.ForeColor = [Drawing.Color]::FromArgb(255, 120, 120)
 $btnTogli.Font = $MONO
 $form.Controls.Add($btnTogli)
+
+$GIALLO = [Drawing.Color]::FromArgb(255, 210, 80)
+$btnCaffe = New-Object Windows.Forms.Button
+$btnCaffe.Size = New-Object Drawing.Size(150, 42)
+$btnCaffe.Location = New-Object Drawing.Point(410, 458)
+$btnCaffe.FlatStyle = 'Flat'
+$btnCaffe.BackColor = $NERO
+$btnCaffe.ForeColor = $GIALLO
+$btnCaffe.Font = $MONO
+$btnCaffe.FlatAppearance.BorderColor = $GIALLO
+$form.Controls.Add($btnCaffe)
 
 $btnMusica = New-Object Windows.Forms.Button
 $btnMusica.Size = New-Object Drawing.Size(150, 42)
@@ -291,6 +309,7 @@ NOTE: it LOWERS your fps, it does not raise them. Offline use only.
     $firma.Text     = T "a cura di`noLd_pZ" "made by`noLd_pZ"
     $btnVai.Text    = T 'INSTALLA' 'INSTALL'
     $btnTogli.Text  = T 'Disinstalla' 'Uninstall'
+    $btnCaffe.Text  = T 'Offrimi un caffè' 'Buy me a coffee'
     $btnMusica.Text = if ($script:musicaAccesa) { T 'MUSICA: ON' 'MUSIC: ON' } else { T 'MUSICA: OFF' 'MUSIC: OFF' }
     if ($script:ultimoStato) { $stato.Text = T $script:ultimoStato[0] $script:ultimoStato[1] }
     if ($script:soloBenvenuto) { Mostra-Benvenuto }
@@ -311,6 +330,17 @@ function Mostra-Benvenuto {
     Scrivi (T '  Per i pesi, se non li hai gia'', apre l''installer ufficiale dell''add-on,' `
               '  For the weights, if you do not have them yet, it opens the add-on''s') $GRIGIO
     Scrivi (T '  come chiede la licenza.' '  official installer, as the licence requires.') $GRIGIO
+}
+
+function Mostra-Caffe {
+    Scrivi (T '  Ti è stato utile? Se vuoi, offrimi un caffè (facoltativo):' `
+              '  Was this useful? If you like, buy me a coffee (optional):') $GRIGIO
+    Scrivi "  $($URL_CAFFE -replace '^https://', '')" $GIALLO
+}
+
+function Apri-Caffe {
+    try { Start-Process $URL_CAFFE }
+    catch { Avviso (T "Non riesco ad aprire il browser: $URL_CAFFE" "Could not open the browser: $URL_CAFFE") }
 }
 
 function Hash-Ok($percorso, $atteso) {
@@ -896,6 +926,7 @@ function Installa {
         }
         Scrivi '' $VERDE
         Scrivi (T '  Buon divertimento!  -- oLd_pZ' '  Have fun!  -- oLd_pZ') $MAGENTA
+        Mostra-Caffe
         return
     }
 
@@ -1023,6 +1054,7 @@ function Installa {
     Scrivi '' $VERDE
     Scrivi (T '  Buon divertimento!  -- oLd_pZ' '  Have fun!  -- oLd_pZ') $MAGENTA
     Scrivi (T '  Se condividi il pacchetto, cita l''autore. Grazie!' '  If you share this pack, please credit the author. Thanks!') $GRIGIO
+    Mostra-Caffe
 }
 
 function Rimuovi {
@@ -1093,6 +1125,7 @@ $btnVai.Add_Click({ $btnVai.Enabled = $false; $btnTogli.Enabled = $false
 $btnTogli.Add_Click({ $btnVai.Enabled = $false; $btnTogli.Enabled = $false
                       try { Rimuovi } catch { Guaio $_.Exception.Message }
                       $btnVai.Enabled = $true; $btnTogli.Enabled = $true })
+$btnCaffe.Add_Click({ Apri-Caffe })
 $form.Add_FormClosing({ Ferma-Musica; Salva-Prefs })
 
 # =================================================================== AVVIO ====

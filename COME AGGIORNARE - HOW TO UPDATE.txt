@@ -168,5 +168,5 @@
 
   A chi ha ancora la v1.5 (o prima):
 
-  "Scarica UNA volta il pack v1.6 e lancia INSTALLA da li'. Le tue
+  "Scarica UNA volta l'ultimo pack e lancia INSTALLA da li'. Le tue
    impostazioni restano. Da li' in poi basta rilanciare INSTALLA."

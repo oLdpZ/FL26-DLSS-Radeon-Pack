@@ -31,14 +31,14 @@ $PACK = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Valori pubblicati dai progetti ufficiali (payload.json / SHA256SUMS.txt).
 # Fingerprints published by the official projects.
 $ATTESI = @{
-    'amd-nr.addon64'            = '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d'
-    'dlssnr_amd_pass1.dll'      = 'f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a'
+    'amd-nr.addon64'            = '1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884'
+    'dlssnr_amd_pass1.dll'      = 'af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
 }
 $RESHADE_HASH = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'  # ReShade 6.8.0 Addon
 $DIMENSIONI = @{
-    'amd-nr.addon64'            = 849408
-    'dlssnr_amd_pass1.dll'      = 12749824
+    'amd-nr.addon64'            = 850432
+    'dlssnr_amd_pass1.dll'      = 38569472
     'dlssnr_on_amd_weights.bin' = 147689451
 }
 $RESHADE_SIZE = 5592064
@@ -47,18 +47,21 @@ $RESHADE_SIZE = 5592064
 # Valori da tools/runtime-patches.json dell'add-on.
 # dlssnr_amd_pass1.dll is built from Blanco's official setup: see Costruisci-Runtime.
 # Values from the add-on's tools/runtime-patches.json.
-$URL_SETUP = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.4.3/dlssnr_on_amd_setup.exe'
+$URL_SETUP = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.5.1/dlssnr_on_amd_setup.exe'
 $RUNTIME = @{
-    originale = 'd1e320862a8763ac39e7ce194536d4b6c55ba61bae9e8a92753cec32df67a457'
+    originale = '493b4a3b80a21f7255109172ab7bb01ba08d35f2941718f441768f1abfc48acd'
     patch     = @(
-        @{ offset = 0x655d; prima = 'ff1555b70900'; dopo = '31c090909090' },
-        @{ offset = 0x9622; prima = 'ff1528790a00'; dopo = '909090909090' }
+        @{ offset = 0x62ed; prima = 'ff15cd3a0a00'; dopo = '31c090909090' },
+        @{ offset = 0x9422; prima = 'ff15f8fb0a00'; dopo = '909090909090' }
     )
 }
 # fino alla v1.5 l'add-on si chiamava cosi': se resta, ReShade ne carica due
 # up to v1.5 the add-on had this name: if it stays, ReShade loads two
 $ADDON_VECCHIO = 'dlss5-neural.addon64'
 $LAVORO = Join-Path $env:TEMP 'FL26-DLSS-Installer'
+# donazione facoltativa all'autore del pack (guida e installer, non i programmi altrui)
+# optional donation to the pack's author (guide and installer, not the others' software)
+$URL_CAFFE = 'https://buymeacoffee.com/oldpz'
 
 # ---- ELENCO VERSIONI ONLINE / ONLINE VERSION LIST ----------------------------
 # I valori qui sopra sono quelli "di fabbrica". All'avvio si prova a leggere
@@ -73,14 +76,15 @@ $URL_MANIFESTO = 'https://gist.githubusercontent.com/oLdpZ/b99deca59ef76cc5fb789
 $CACHE_MANIFESTO = Join-Path $env:APPDATA 'FL26-DLSS-Installer\versioni-v2.json'
 $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 $ACCETTATI = @{
-    'amd-nr.addon64'            = @()
+    'amd-nr.addon64'            = @('909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
     'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
                                     '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6')
-    'dlssnr_amd_pass1.dll'      = @('70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
+    'dlssnr_amd_pass1.dll'      = @('f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a',
+                                    '70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
     'dlssnr_on_amd_weights.bin' = @()
     'ReShade64.dll'             = @()
 }
-$VERS = @{ addon = 'v0.7.1'; runtime = '0.4.3'; reshade = '6.8.0'; aggiornato = ''
+$VERS = @{ addon = 'v0.7.5'; runtime = '0.5.1'; reshade = '6.8.0'; aggiornato = ''
            avviso_it = ''; avviso_en = ''; fonte = 'script' }
 
 # ------------------------------------------------------------------ lingua ---
@@ -108,6 +112,12 @@ function Ok($t)     { Write-Host "     [OK] $t" -ForegroundColor Green }
 function Attenzione($t) { Write-Host "     [!]  $t" -ForegroundColor Yellow }
 function Errore($t) { Write-Host "     [X]  $t" -ForegroundColor Red }
 function Info($t)   { Write-Host "     $t" }
+
+function Mostra-Caffe {
+    Info (T "Ti è stato utile? Se vuoi, offrimi un caffè (facoltativo):" `
+            "Was this useful? If you like, buy me a coffee (optional):")
+    Write-Host "     $URL_CAFFE" -ForegroundColor Yellow
+}
 
 function Esci($codice) {
     Write-Host ""
@@ -626,6 +636,7 @@ function Installa {
             Info (T "Non ho toccato nulla: le tue impostazioni restano come sono." "Nothing was touched: your settings stay as they are.")
         }
         Write-Host (T "   Buon divertimento!  -- oLd_pZ" "   Have fun!  -- oLd_pZ") -ForegroundColor Magenta
+        Mostra-Caffe
         Esci 0
     }
 
@@ -800,6 +811,8 @@ function Installa {
                   "Use it OFFLINE only, never in online matches.")
     Attenzione (T "Prima di myClub o dell'online: lancia DISINSTALLA - UNINSTALL.bat" `
                   "Before myClub or online: run DISINSTALLA - UNINSTALL.bat")
+    Write-Host ""
+    Mostra-Caffe
     Esci 0
 }
 
