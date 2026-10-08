@@ -38,15 +38,15 @@ Add-Type -AssemblyName System.Drawing
 
 # =============================================================== COSTANTI =====
 $HASH = @{
-    'amd-nr.addon64'            = '1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884'
-    'dlssnr_amd_pass1.dll'      = 'af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0'
+    'amd-nr.addon64'            = '44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a'
+    'dlssnr_amd_pass1.dll'      = '430be589020685d03f0ad92194457bafe1a186bf658c8cfe2fb7a0bdb7592cc4'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
     'ReShade64.dll'             = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'
 }
 $URL = @{
-    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.5/amd-nr.addon64'
+    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.12/amd-nr.addon64'
     reshadeSetup = 'https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe'
-    blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.5.1/dlssnr_on_amd_setup.exe'
+    blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.6.0/dlssnr_on_amd_setup.exe'
     amdnr        = 'https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe'
     paginaBlanco = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases'
 }
@@ -57,10 +57,10 @@ $URL = @{
 # match "originale", then those bytes change and the result must match $HASH.
 # Values from the add-on's tools/runtime-patches.json.
 $RUNTIME = @{
-    originale = '493b4a3b80a21f7255109172ab7bb01ba08d35f2941718f441768f1abfc48acd'
+    originale = '195c4a891b6eac4c1cb7671e10ff62bbbe2b17f1dfae1344dc5a6714e4775721'
     patch     = @(
-        @{ offset = 0x62ed; prima = 'ff15cd3a0a00'; dopo = '31c090909090' },
-        @{ offset = 0x9422; prima = 'ff15f8fb0a00'; dopo = '909090909090' }
+        @{ offset = 0x64ed; prima = 'ff157d800a00'; dopo = '31c090909090' },
+        @{ offset = 0xa8c2; prima = 'ff1540380b00'; dopo = '909090909090' }
     )
 }
 # Fino alla v1.5 del pacchetto l'add-on si chiamava dlss5-neural.addon64. Se c'e'
@@ -98,19 +98,21 @@ $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 # versioni piu' vecchie ancora accettate (riempite dall'elenco online)
 # older versions still accepted (filled in from the online list)
 $ACCETTATI = @{
-    # v0.7.1 installata dalla v1.6 / v0.7.1 installed by v1.6
-    'amd-nr.addon64'            = @('909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
+    # v0.7.5 (v1.7) e v0.7.1 (v1.6) / v0.7.5 (v1.7) and v0.7.1 (v1.6)
+    'amd-nr.addon64'            = @('1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884',
+                                    '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
     # v0.6.0 e v0.5.2 col vecchio nome / v0.6.0 and v0.5.2 under the old name
     'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
                                     '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6')
-    # runtime 0.4.3 (v1.6) e 0.3.0 (v1.5) / runtime 0.4.3 (v1.6) and 0.3.0 (v1.5)
-    'dlssnr_amd_pass1.dll'      = @('f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a',
+    # runtime 0.5.1 (v1.7), 0.4.3 (v1.6), 0.3.0 (v1.5)
+    'dlssnr_amd_pass1.dll'      = @('af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0',
+                                    'f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a',
                                     '70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6')
     'dlssnr_on_amd_weights.bin' = @()
     'ReShade64.dll'             = @()
 }
 $script:VERS = @{
-    addon = 'v0.7.5'; runtime = '0.5.1'; reshade = '6.8.0'
+    addon = 'v0.7.12'; runtime = '0.6.0'; reshade = '6.8.0'
     aggiornato = ''; avviso_it = ''; avviso_en = ''; fonte = 'script'
 }
 

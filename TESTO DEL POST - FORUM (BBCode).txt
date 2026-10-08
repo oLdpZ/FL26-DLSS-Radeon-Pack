@@ -9,12 +9,12 @@
 
 TITOLO / TITLE:
 
-[GUIDA / GUIDE] DLSS 5 Neural Rendering su AMD Radeon - Football Life 2026 / PES 2021 - v1.7
+[GUIDA / GUIDE] DLSS 5 Neural Rendering su AMD Radeon - Football Life 2026 / PES 2021 - v1.8
 
 ----------------------------------- INIZIO -----------------------------------
 [CENTER][SIZE=6][B]DLSS 5 Neural Rendering su AMD Radeon[/B][/SIZE]
 [SIZE=4]Football Life 2026 / PES 2021 — insieme a sider[/SIZE]
-[SIZE=4][B]v1.7[/B] — by oLd_pZ[/SIZE]
+[SIZE=4][B]v1.8[/B] — by oLd_pZ[/SIZE]
 
 [SIZE=5][URL=https://github.com/oLdpZ/FL26-DLSS-Radeon-Pack/releases][B]>> DOWNLOAD <<[/B][/URL][/SIZE][/CENTER]
 
@@ -29,6 +29,13 @@ Vale anche per PES 2021 da Steam, con o senza sider: Football Life 2026 è PES 2
 [*]Questa mod [B]NON aumenta gli fps, LI FA CALARE[/B]. Non è un acceleratore: cambia la resa dell'immagine.
 [*]Funziona [B]SOLO su AMD Radeon RX 7000 (RDNA 3) e RX 9000 (RDNA 4)[/B]. Su NVIDIA no (hanno già il DLSS vero), su schede AMD più vecchie no.
 [*][B]SOLO OFFLINE.[/B] Prima di myClub o dell'online lanciate [I]DISINSTALLA - UNINSTALL.bat[/I]: spegnere l'effetto col tasto non basta.
+[/LIST]
+
+[SIZE=4][B]Novità della v1.8[/B][/SIZE]
+[LIST]
+[*][B]Runtime di Blanco 0.6.0[/B] (prima 0.5.1): Blanco dichiara una resa migliore e due sfarfallii corretti in modalità pre-upscale (zone scure, piccole luci e oggetti). Provato in gioco su RX 9070 XT: parte e lavora senza errori. Gli fps non li ho ancora rimisurati.
+[*][B]Add-on di cLohan v0.7.12[/B] (prima v0.7.5): tra le altre cose una mappa delle ombre non può più essere presa per la profondità della scena sui giochi DirectX 11.
+[*][B]Chi ha la v1.6 o la v1.7[/B] non deve riscaricare niente: rilanciate [I]INSTALLA - INSTALL.bat[/I] e vi aggiorna tenendo le vostre impostazioni.
 [/LIST]
 
 [SIZE=4][B]Novità della v1.7[/B][/SIZE]
@@ -117,6 +124,13 @@ It applies to PES 2021 from Steam too, with or without sider: Football Life 2026
 [*]This mod [B]does NOT raise your fps, it LOWERS them[/B]. It is not a booster: it changes how the image looks.
 [*]Works [B]ONLY on AMD Radeon RX 7000 (RDNA 3) and RX 9000 (RDNA 4)[/B]. Not on NVIDIA (they already have real DLSS), not on older AMD cards.
 [*][B]OFFLINE ONLY.[/B] Before myClub or online play, run [I]DISINSTALLA - UNINSTALL.bat[/I]: switching the effect off with the hotkey is not enough.
+[/LIST]
+
+[SIZE=4][B]What is new in v1.8[/B][/SIZE]
+[LIST]
+[*][B]Blanco's runtime 0.6.0[/B] (was 0.5.1): Blanco reports better image quality and two flicker fixes in pre-upscale mode (dark areas, small lights and objects). Tested in game on an RX 9070 XT: it starts and runs with no errors. I have not re-measured the fps yet.
+[*][B]cLohan's add-on v0.7.12[/B] (was v0.7.5): among other things, a shadow map can no longer be mistaken for the scene depth on DirectX 11 games.
+[*][B]If you have v1.6 or v1.7[/B] there is nothing to download again: run [I]INSTALLA - INSTALL.bat[/I] and it updates you while keeping your settings.
 [/LIST]
 
 [SIZE=4][B]What is new in v1.7[/B][/SIZE]

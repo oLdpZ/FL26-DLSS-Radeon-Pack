@@ -86,6 +86,11 @@
   e' piu' ricca, soprattutto su pelle e volti. Sono numeri suoi: i miei, a
   schermo, non li ho ancora rimisurati.
 
+  La v1.8 passa al runtime 0.6.0. Qui Blanco non parla di velocita' ma di
+  resa: immagine piu' fedele e due sfarfallii corretti in modalita'
+  pre-upscale (zone scure, piccole luci e oggetti). Gli fps a schermo non li
+  ho rimisurati nemmeno con questa.
+
   Se giochi a PES per la fluidita', questa mod non fa per te.
   Se ti interessa vedere come cambia l'immagine, vai avanti.
 
@@ -139,15 +144,15 @@
   ritocchi che servono all'add-on. ATTENZIONE: il version.dll che mette il
   setup di Blanco, cosi' com'e', con questo add-on NON funziona.
 
-  DALLA v1.7: quello che trovi li' e' il runtime 0.4.3, perche' il programma
-  di cLohan non scarica le versioni 0.5.x. Con l'add-on funziona ancora, ma
-  INSTALLA - INSTALL.bat mette lo 0.5.1 (circa 37 MB), che ricava da solo dal
-  setup ufficiale di Blanco: e' il modo che consiglio. A mano lo 0.5.1 si
-  prepara con gli strumenti di cLohan (tools/extract_runtime.py e
-  tools/patch_runtime.py, spiegati nel suo README). I pesi sono gli stessi.
+  DALLA v1.7: il runtime che trovi li' puo' essere piu' vecchio di quello che
+  mette INSTALLA - INSTALL.bat. Dalla v1.8 l'installatore mette lo 0.6.0
+  (circa 54 MB), che ricava da solo dal setup ufficiale di Blanco: e' il modo
+  che consiglio. A mano lo 0.6.0 si prepara con gli strumenti di cLohan
+  (tools/extract_runtime.py e tools/patch_runtime.py, spiegati nel suo
+  README). I pesi sono gli stessi.
 
-  Il terzo file, l'add-on, lo scarichi dalla pagina di cLohan (release v0.7.5):
-      amd-nr.addon64                (circa 830 KB)
+  Il terzo file, l'add-on, lo scarichi dalla pagina di cLohan (release v0.7.12):
+      amd-nr.addon64                (circa 850 KB)
 
   Fino alla v0.6.4 si chiamava  dlss5-neural.addon64 : e' lo stesso add-on,
   l'autore gli ha solo cambiato nome.
@@ -496,12 +501,13 @@
   SE SEI SENZA INTERNET l'installatore usa l'ultimo elenco che aveva salvato,
   oppure le versioni scritte dentro di lui: funziona comunque.
 
-  DALLA v1.6 ALLA v1.7: NON SERVE IL PACCHETTO NUOVO.
-  Add-on v0.7.5 e runtime 0.5.1 arrivano anche a chi ha la v1.6: basta
-  rilanciare il suo INSTALLA - INSTALL.bat. Il pacchetto v1.7 ha in piu' solo
-  le versioni nuove gia' scritte dentro (per chi e' senza internet) e, nella
-  finestra, il pulsante "Offrimi un caffe'": e' una donazione facoltativa per
-  la guida e l'installatore, non cambia niente di quello che viene installato.
+  DALLA v1.6 O v1.7 ALLA v1.8: NON SERVE IL PACCHETTO NUOVO.
+  Add-on v0.7.12 e runtime 0.6.0 arrivano anche a chi ha la v1.6 o la v1.7:
+  basta rilanciare il suo INSTALLA - INSTALL.bat. Il pacchetto v1.8 ha in piu'
+  solo le versioni nuove gia' scritte dentro (per chi e' senza internet).
+  Dalla v1.7 nella finestra c'e' il pulsante "Offrimi un caffe'": e' una
+  donazione facoltativa per la guida e l'installatore, non cambia niente di
+  quello che viene installato.
 
   DALLA v1.5 ALLA v1.6 (O SUCCESSIVE): QUESTA VOLTA SERVE IL PACCHETTO NUOVO.
   Di solito basta rilanciare l'installatore che hai gia'. Questa volta no:

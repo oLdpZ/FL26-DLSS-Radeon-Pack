@@ -82,6 +82,11 @@
   RX 7000 (up to 207%). He also says the output is richer, especially on skin
   and faces. Those are his numbers: I have not re-measured mine on screen yet.
 
+  v1.8 moves to runtime 0.6.0. This time Blanco does not talk about speed but
+  about the picture: better fidelity and two flicker fixes in pre-upscale
+  mode (dark areas, small lights and objects). I have not re-measured the
+  on-screen fps with this one either.
+
   If you play PES for smoothness, this mod is not for you.
   If you want to see how the image changes, read on.
 
@@ -134,15 +139,15 @@
   the add-on needs. IMPORTANT: the version.dll that Blanco's setup drops, as
   it is, does NOT work with this add-on.
 
-  FROM v1.7: what you find there is runtime 0.4.3, because cLohan's tool does
-  not download the 0.5.x versions. It still works with the add-on, but
-  INSTALLA - INSTALL.bat installs 0.5.1 (about 37 MB), which it builds by
-  itself from Blanco's official setup: that is the route I recommend. By hand,
-  0.5.1 is prepared with cLohan's tools (tools/extract_runtime.py and
-  tools/patch_runtime.py, explained in his README). The weights are the same.
+  FROM v1.7: the runtime you find there may be older than the one
+  INSTALLA - INSTALL.bat installs. From v1.8 the installer puts in 0.6.0
+  (about 54 MB), which it builds by itself from Blanco's official setup: that
+  is the route I recommend. By hand, 0.6.0 is prepared with cLohan's tools
+  (tools/extract_runtime.py and tools/patch_runtime.py, explained in his
+  README). The weights are the same.
 
-  The third file, the add-on, comes from cLohan's page (release v0.7.5):
-      amd-nr.addon64                (about 830 KB)
+  The third file, the add-on, comes from cLohan's page (release v0.7.12):
+      amd-nr.addon64                (about 850 KB)
 
   Up to v0.6.4 it was called  dlss5-neural.addon64 : it is the same add-on,
   the author just renamed it.
@@ -489,10 +494,10 @@
   WITH NO INTERNET the installer uses the last list it saved, or the versions
   written inside it: it works either way.
 
-  FROM v1.6 TO v1.7: YOU DO NOT NEED THE NEW PACK.
-  Add-on v0.7.5 and runtime 0.5.1 reach v1.6 users too: just run its
-  INSTALLA - INSTALL.bat again. The v1.7 pack only adds the new versions
-  written inside it (for when you are offline) and, in the window, the
+  FROM v1.6 OR v1.7 TO v1.8: YOU DO NOT NEED THE NEW PACK.
+  Add-on v0.7.12 and runtime 0.6.0 reach v1.6 and v1.7 users too: just run
+  your INSTALLA - INSTALL.bat again. The v1.8 pack only adds the new versions
+  written inside it (for when you are offline). Since v1.7 the window has a
   "Buy me a coffee" button: an optional donation for the guide and the
   installer, which changes nothing about what gets installed.
 
