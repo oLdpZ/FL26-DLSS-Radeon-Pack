@@ -106,7 +106,7 @@ Il progetto originale è dichiarato dall'autore "proof of concept, not finished 
 [LIST]
 [*]Guida, impostazioni, installatore e musica: [B]oLd_pZ[/B]
 [*]Motore neurale e runtime: [B]Daniel Blanco[/B] (danielblnc) — [URL=https://github.com/danielblnc/DLSS-NR-on-AMD]DLSS-NR-on-AMD[/URL]
-[*]Add-on per ReShade, modifiche al runtime e installer AMD-NR: [B]cLohan[/B] (zmodelerlover) — [URL=https://github.com/zmodelerlover/dlss5-neural-amd]AMD Neural Rendering[/URL], [URL=https://github.com/zmodelerlover/AMD-NR-ReShade-Installer]AMD-NR-ReShade-Installer[/URL]
+[*]Add-on per ReShade, modifiche al runtime e installer AMD-NR: [B]cLohan[/B] (zmodelerlover) — [URL=https://github.com/zmodelerlover/OpenNR-ReShade]OpenNR (ex AMD Neural Rendering)[/URL], [URL=https://github.com/zmodelerlover/AMD-NR-ReShade-Installer]AMD-NR-ReShade-Installer[/URL]
 [*]ReShade: [B]crosire[/B] (Patrick Mours) — [URL=https://reshade.me]reshade.me[/URL]
 [/LIST]
 Scaricate i file solo dalle pagine ufficiali. Non ricaricateli altrove: le licenze lo vietano e chiedono di linkare la pagina ufficiale. Vietato anche qualsiasi uso commerciale, quindi niente link a pagamento.
@@ -201,7 +201,7 @@ The upstream project is described by its own author as "proof of concept, not fi
 [LIST]
 [*]Guide, settings, installer and music: [B]oLd_pZ[/B]
 [*]Neural engine and runtime: [B]Daniel Blanco[/B] (danielblnc) — [URL=https://github.com/danielblnc/DLSS-NR-on-AMD]DLSS-NR-on-AMD[/URL]
-[*]ReShade add-on, runtime patches and AMD-NR installer: [B]cLohan[/B] (zmodelerlover) — [URL=https://github.com/zmodelerlover/dlss5-neural-amd]AMD Neural Rendering[/URL], [URL=https://github.com/zmodelerlover/AMD-NR-ReShade-Installer]AMD-NR-ReShade-Installer[/URL]
+[*]ReShade add-on, runtime patches and AMD-NR installer: [B]cLohan[/B] (zmodelerlover) — [URL=https://github.com/zmodelerlover/OpenNR-ReShade]OpenNR (ex AMD Neural Rendering)[/URL], [URL=https://github.com/zmodelerlover/AMD-NR-ReShade-Installer]AMD-NR-ReShade-Installer[/URL]
 [*]ReShade: [B]crosire[/B] (Patrick Mours) — [URL=https://reshade.me]reshade.me[/URL]
 [/LIST]
 Download the files only from the official pages. Do not re-upload them anywhere: the licences forbid it and ask you to link the official page instead. Commercial use is forbidden too, so no paid or ad-gated links.
