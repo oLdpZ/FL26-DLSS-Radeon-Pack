@@ -87,6 +87,9 @@
   mode (dark areas, small lights and objects). I have not re-measured the
   on-screen fps with this one either.
 
+  v1.9 keeps runtime 0.6.0 and only changes the add-on (v0.7.15): nothing
+  new on speed.
+
   If you play PES for smoothness, this mod is not for you.
   If you want to see how the image changes, read on.
 
@@ -146,8 +149,8 @@
   (tools/extract_runtime.py and tools/patch_runtime.py, explained in his
   README). The weights are the same.
 
-  The third file, the add-on, comes from cLohan's page (release v0.7.12):
-      amd-nr.addon64                (about 850 KB)
+  The third file, the add-on, comes from cLohan's page (release v0.7.15):
+      amd-nr.addon64                (about 870 KB)
 
   Up to v0.6.4 it was called  dlss5-neural.addon64 : it is the same add-on,
   the author just renamed it.
@@ -494,9 +497,9 @@
   WITH NO INTERNET the installer uses the last list it saved, or the versions
   written inside it: it works either way.
 
-  FROM v1.6 OR v1.7 TO v1.8: YOU DO NOT NEED THE NEW PACK.
-  Add-on v0.7.12 and runtime 0.6.0 reach v1.6 and v1.7 users too: just run
-  your INSTALLA - INSTALL.bat again. The v1.8 pack only adds the new versions
+  FROM v1.6, v1.7 OR v1.8 TO v1.9: YOU DO NOT NEED THE NEW PACK.
+  Add-on v0.7.15 and runtime 0.6.0 reach v1.6, v1.7 and v1.8 users too: just
+  run your INSTALLA - INSTALL.bat again. The v1.9 pack only adds the new versions
   written inside it (for when you are offline). Since v1.7 the window has a
   "Buy me a coffee" button: an optional donation for the guide and the
   installer, which changes nothing about what gets installed.

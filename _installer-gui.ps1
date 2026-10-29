@@ -38,13 +38,13 @@ Add-Type -AssemblyName System.Drawing
 
 # =============================================================== COSTANTI =====
 $HASH = @{
-    'amd-nr.addon64'            = '44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a'
+    'amd-nr.addon64'            = '31a1664f0ceee46349498199fad3479598de1a640e03e285cf5dfe004a5075b6'
     'dlssnr_amd_pass1.dll'      = '430be589020685d03f0ad92194457bafe1a186bf658c8cfe2fb7a0bdb7592cc4'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
     'ReShade64.dll'             = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'
 }
 $URL = @{
-    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.12/amd-nr.addon64'
+    addon        = 'https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.15/amd-nr.addon64'
     reshadeSetup = 'https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe'
     blancoSetup  = 'https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.6.0/dlssnr_on_amd_setup.exe'
     amdnr        = 'https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe'
@@ -98,8 +98,10 @@ $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 # versioni piu' vecchie ancora accettate (riempite dall'elenco online)
 # older versions still accepted (filled in from the online list)
 $ACCETTATI = @{
-    # v0.7.5 (v1.7) e v0.7.1 (v1.6) / v0.7.5 (v1.7) and v0.7.1 (v1.6)
-    'amd-nr.addon64'            = @('1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884',
+    # v0.7.14 (mai nel pack), v0.7.12 (v1.8), v0.7.5 (v1.7), v0.7.1 (v1.6) / v0.7.14 (never in the pack), v0.7.12 (v1.8), v0.7.5 (v1.7), v0.7.1 (v1.6)
+    'amd-nr.addon64'            = @('6a4a54ee9e0607db7da54ed76ec79898484dc8e7a41f7ecaea9e957b24566172',
+                                    '44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a',
+                                    '1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884',
                                     '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
     # v0.6.0 e v0.5.2 col vecchio nome / v0.6.0 and v0.5.2 under the old name
     'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
@@ -112,7 +114,7 @@ $ACCETTATI = @{
     'ReShade64.dll'             = @()
 }
 $script:VERS = @{
-    addon = 'v0.7.12'; runtime = '0.6.0'; reshade = '6.8.0'
+    addon = 'v0.7.15'; runtime = '0.6.0'; reshade = '6.8.0'
     aggiornato = ''; avviso_it = ''; avviso_en = ''; fonte = 'script'
 }
 

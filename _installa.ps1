@@ -31,13 +31,13 @@ $PACK = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Valori pubblicati dai progetti ufficiali (payload.json / SHA256SUMS.txt).
 # Fingerprints published by the official projects.
 $ATTESI = @{
-    'amd-nr.addon64'            = '44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a'
+    'amd-nr.addon64'            = '31a1664f0ceee46349498199fad3479598de1a640e03e285cf5dfe004a5075b6'
     'dlssnr_amd_pass1.dll'      = '430be589020685d03f0ad92194457bafe1a186bf658c8cfe2fb7a0bdb7592cc4'
     'dlssnr_on_amd_weights.bin' = '6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab'
 }
 $RESHADE_HASH = '0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7'  # ReShade 6.8.0 Addon
 $DIMENSIONI = @{
-    'amd-nr.addon64'            = 868352
+    'amd-nr.addon64'            = 887296
     'dlssnr_amd_pass1.dll'      = 56677888
     'dlssnr_on_amd_weights.bin' = 147689451
 }
@@ -76,7 +76,9 @@ $URL_MANIFESTO = 'https://gist.githubusercontent.com/oLdpZ/b99deca59ef76cc5fb789
 $CACHE_MANIFESTO = Join-Path $env:APPDATA 'FL26-DLSS-Installer\versioni-v2.json'
 $DOMINI_OK = '^https://(github\.com|reshade\.me)/'
 $ACCETTATI = @{
-    'amd-nr.addon64'            = @('1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884',
+    'amd-nr.addon64'            = @('6a4a54ee9e0607db7da54ed76ec79898484dc8e7a41f7ecaea9e957b24566172',
+                                    '44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a',
+                                    '1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884',
                                     '909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d')
     'dlss5-neural.addon64'      = @('c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f',
                                     '0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6')
@@ -86,7 +88,7 @@ $ACCETTATI = @{
     'dlssnr_on_amd_weights.bin' = @()
     'ReShade64.dll'             = @()
 }
-$VERS = @{ addon = 'v0.7.12'; runtime = '0.6.0'; reshade = '6.8.0'; aggiornato = ''
+$VERS = @{ addon = 'v0.7.15'; runtime = '0.6.0'; reshade = '6.8.0'; aggiornato = ''
            avviso_it = ''; avviso_en = ''; fonte = 'script' }
 
 # ------------------------------------------------------------------ lingua ---

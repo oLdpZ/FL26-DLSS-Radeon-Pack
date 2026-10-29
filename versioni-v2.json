@@ -1,52 +1,62 @@
 {
-    "_leggimi": "Elenco delle versioni provate per il pack DLSS 5 Neural su Radeon (Football Life 2026 / PES 2021), by oLd_pZ, dalla v1.6 del pack in poi. L'installer legge questo file dal gist ufficiale a ogni avvio e usa queste versioni. Il runtime lo ricava dal setup ufficiale di Blanco (setup_url): estrae la DLL, controlla originale_sha256, applica le modifiche in patch e controlla pass1_sha256. Istruzioni complete in COME AGGIORNARE - HOW TO UPDATE.txt",
-    "_readme": "List of tested versions for the DLSS 5 Neural on Radeon pack (Football Life 2026 / PES 2021), by oLd_pZ, from pack v1.6 on. The installer reads this file from the official gist at every run and installs these versions. The runtime is built from Blanco's official setup (setup_url): the DLL is extracted, checked against originale_sha256, given the changes in patch and checked against pass1_sha256.",
-    "formato": 2,
-    "aggiornato": "2026-10-08",
-    "addon": {
-        "versione": "v0.7.12",
-        "url": "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.12/amd-nr.addon64",
-        "sha256": "44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a",
-        "dimensione": 868352,
-        "accettati_anche": [
-            "1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884",
-            "909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d"
-        ],
-        "vecchio_nome_accettati": [
-            "c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f",
-            "0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6"
-        ]
-    },
-    "runtime": {
-        "versione": "0.6.0",
-        "pagina": "https://github.com/danielblnc/DLSS-NR-on-AMD/releases",
-        "setup_url": "https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.6.0/dlssnr_on_amd_setup.exe",
-        "originale_sha256": "195c4a891b6eac4c1cb7671e10ff62bbbe2b17f1dfae1344dc5a6714e4775721",
-        "patch": [
-            { "offset": "0x64ed", "prima": "ff157d800a00", "dopo": "31c090909090" },
-            { "offset": "0xa8c2", "prima": "ff1540380b00", "dopo": "909090909090" }
-        ],
-        "pass1_sha256": "430be589020685d03f0ad92194457bafe1a186bf658c8cfe2fb7a0bdb7592cc4",
-        "pass1_dimensione": 56677888,
-        "pesi_sha256": "6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab",
-        "pesi_dimensione": 147689451,
-        "pass1_accettati_anche": [
-            "af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0",
-            "f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a",
-            "70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6"
-        ],
-        "pesi_accettati_anche": []
-    },
-    "reshade": {
-        "versione": "6.8.0",
-        "url": "https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe",
-        "sha256": "0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7",
-        "dimensione": 5592064,
-        "accettati_anche": []
-    },
-    "amdnr": {
-        "url": "https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe"
-    },
-    "avviso_it": "",
-    "avviso_en": ""
+  "_leggimi": "Elenco delle versioni provate per il pack DLSS 5 Neural su Radeon (Football Life 2026 / PES 2021), by oLd_pZ, dalla v1.6 del pack in poi. L'installer legge questo file dal gist ufficiale a ogni avvio e usa queste versioni. Il runtime lo ricava dal setup ufficiale di Blanco (setup_url): estrae la DLL, controlla originale_sha256, applica le modifiche in patch e controlla pass1_sha256. Istruzioni complete in COME AGGIORNARE - HOW TO UPDATE.txt",
+  "_readme": "List of tested versions for the DLSS 5 Neural on Radeon pack (Football Life 2026 / PES 2021), by oLd_pZ, from pack v1.6 on. The installer reads this file from the official gist at every run and installs these versions. The runtime is built from Blanco's official setup (setup_url): the DLL is extracted, checked against originale_sha256, given the changes in patch and checked against pass1_sha256.",
+  "formato": 2,
+  "aggiornato": "2026-10-29",
+  "addon": {
+    "versione": "v0.7.15",
+    "url": "https://github.com/zmodelerlover/dlss5-neural-amd/releases/download/v0.7.15/amd-nr.addon64",
+    "sha256": "31a1664f0ceee46349498199fad3479598de1a640e03e285cf5dfe004a5075b6",
+    "dimensione": 887296,
+    "accettati_anche": [
+      "6a4a54ee9e0607db7da54ed76ec79898484dc8e7a41f7ecaea9e957b24566172",
+      "44f6935f5545d35e855704011728dcf7207e71985430dc98d3857107568d246a",
+      "1d9368fd67f30052a6dc7bb5cd6c7e0ae08a9618c1b343696055bb746428c884",
+      "909a7b7d26e967b2a3324bc0ba23d2c201b63be483ff3e465bd84099e305952d"
+    ],
+    "vecchio_nome_accettati": [
+      "c037a69f31105a7bf029843fbf7e78b420d0f9dbfa0f89610ec2718a6a03942f",
+      "0d0a63f6ac886fafb0d04a0df3c5d4f2908e1a44a966648bba949ad2dcc33cc6"
+    ]
+  },
+  "runtime": {
+    "versione": "0.6.0",
+    "pagina": "https://github.com/danielblnc/DLSS-NR-on-AMD/releases",
+    "setup_url": "https://github.com/danielblnc/DLSS-NR-on-AMD/releases/download/v0.6.0/dlssnr_on_amd_setup.exe",
+    "originale_sha256": "195c4a891b6eac4c1cb7671e10ff62bbbe2b17f1dfae1344dc5a6714e4775721",
+    "patch": [
+      {
+        "offset": "0x64ed",
+        "prima": "ff157d800a00",
+        "dopo": "31c090909090"
+      },
+      {
+        "offset": "0xa8c2",
+        "prima": "ff1540380b00",
+        "dopo": "909090909090"
+      }
+    ],
+    "pass1_sha256": "430be589020685d03f0ad92194457bafe1a186bf658c8cfe2fb7a0bdb7592cc4",
+    "pass1_dimensione": 56677888,
+    "pesi_sha256": "6bf8dc931ef3ccffe18c82de26ab374156e7f19539ffcf8eabaa25dca5cf15ab",
+    "pesi_dimensione": 147689451,
+    "pass1_accettati_anche": [
+      "af67f066a250da5cabce87d8c70ddb148b5149eaaf0225279dd8489773bc79b0",
+      "f3d9f2e53b775e4870917572f1f87a28c73068a4dc97252d6fb52360ddf8597a",
+      "70af3fb757f83f71ec947ce461970fdecc9636864bc01d952abffb36ae310be6"
+    ],
+    "pesi_accettati_anche": []
+  },
+  "reshade": {
+    "versione": "6.8.0",
+    "url": "https://reshade.me/downloads/ReShade_Setup_6.8.0_Addon.exe",
+    "sha256": "0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7",
+    "dimensione": 5592064,
+    "accettati_anche": []
+  },
+  "amdnr": {
+    "url": "https://github.com/zmodelerlover/AMD-NR-ReShade-Installer/releases/download/v0.6.7/AMD-NR-ReShade-Installer.exe"
+  },
+  "avviso_it": "",
+  "avviso_en": ""
 }
